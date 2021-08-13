@@ -59,7 +59,7 @@ router.post("/", (req, res) => {
 
   file.mv(`${__dirname}/../../frontend/public/${file.name}`, (err) => {
     if (err) {
-      console.log("erro no upload da foto: ", err);
+      console.log("erro no upload da foto:", err);
       return res.status(500).send(err);
     }
 

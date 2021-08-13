@@ -1,0 +1,45 @@
+.topHome {
+  height: 220px;
+  width: 309px;
+}
+
+.topHome img{
+  height: 242px;
+  width: 309px;
+}
+
+@media(max-width : 767px){
+  
+.topHome {
+  height: 220px;
+  width: 309px;
+  margin-bottom: 32px;
+}
+
+.topHome img{
+  height: 242px;
+  width: 309px;
+}
+ 
+}
+
+
+@media(min-width: 768px) and (max-width: 1024px){
+  .topHome {
+    margin: 60px 0;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    height: 220px;
+    width: 309px;
+  }
+  
+  .topHome img{
+    height: 242px;
+    width: 309px;
+  }
+}
+
+
+
+

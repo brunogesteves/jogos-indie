@@ -1,0 +1,31 @@
+.topContent {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 30px;
+}
+
+@media (max-width: 767px) {
+  .topContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .topContent {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
+  .topContent div:nth-child(1) {
+    display: block;
+  }
+}

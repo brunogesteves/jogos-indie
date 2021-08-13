@@ -1,0 +1,41 @@
+.front-area {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.front-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 98%;
+}
+
+.front-sidebar {
+  width: 300px;
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .front-sidebar {
+    display: none;
+  }
+
+  .front-area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+  }
+
+  .sun-editor-editable {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+  }
+}

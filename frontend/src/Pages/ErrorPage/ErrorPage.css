@@ -1,0 +1,63 @@
+.errorPage-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.errorPage-content {
+  margin-top: 20px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.errorPage-content input {
+  width: 50%;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.errorPage-warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.errorPage-warning p:nth-child(1) {
+  font-size: 130px;
+  font-weight: bold;
+}
+
+.errorPage-content-items {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.errorPage-sidebar {
+  display: block;
+  width: 400px;
+  height: 100vh;
+}
+
+@media (max-width: 767px) {
+  .errorPage-content input {
+    display: none;
+  }
+
+  .errorPage-sidebar {
+    display: none;
+  }
+
+  .errorPage-warning {
+    margin: 0 90%;
+  }
+}

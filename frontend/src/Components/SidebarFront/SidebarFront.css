@@ -1,0 +1,14 @@
+.sidebar-front-area{
+  display:flex;
+  justify-content:flex-start;
+  align-Items: center;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.sidebar-front-area img{
+  width: 300px;
+  margin-top: 20px;
+}
+
+

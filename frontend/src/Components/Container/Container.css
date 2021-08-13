@@ -1,0 +1,12 @@
+.container-body {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .container-body {
+    width: 100vw;
+  }
+  .content {
+    width: 97vw;
+  }
+}

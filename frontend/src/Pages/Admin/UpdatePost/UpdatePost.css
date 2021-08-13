@@ -1,0 +1,155 @@
+.updateContent {
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.updateContent-field {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.updateContent-field input,
+.updateContent-field select,
+.updateContent-field button {
+  margin: 0 0px 20px;
+  width: 200px;
+}
+
+.updateContent-field input {
+  width: 200px;
+}
+
+.updateContent-field div {
+  display: contents;
+}
+
+.updateContent-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 709px;
+}
+
+.updateContent-field img {
+  width: 200px;
+}
+
+.updateContent-field input:nth-child(3) {
+  margin-right: 5px;
+}
+
+#schedule {
+  display: none;
+}
+
+#schedule-show {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .updateContent {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .updateContent-field {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .updateContent-field input,
+  .updateContent-field select,
+  .updateContent-field button {
+    margin: 0 0px 20px;
+    width: 200px;
+  }
+
+  .updateContent-field input {
+    margin-right: 10px;
+    width: 200px;
+  }
+
+  .updateContent-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .updateContent-field img {
+    width: 200px;
+  }
+
+  .updateContent-field input:nth-child(3) {
+    margin-right: 5px;
+  }
+
+  #schedule {
+    display: none;
+  }
+
+  #schedule-show {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .updateContent {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .updateContent-field {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .updateContent-field input,
+  .updateContent-field select,
+  .updateContent-field button {
+    margin: 0 0px 20px;
+    width: 200px;
+  }
+
+  .updateContent-field input {
+    margin-right: 10px;
+    width: 200px;
+  }
+
+  .updateContent-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .updateContent-field img {
+    width: 200px;
+  }
+
+  .updateContent-field input:nth-child(3) {
+    margin-right: 5px;
+  }
+
+  #schedule {
+    display: none;
+  }
+
+  #schedule-show {
+    display: flex;
+  }
+}

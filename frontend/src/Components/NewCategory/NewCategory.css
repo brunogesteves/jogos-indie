@@ -1,0 +1,11 @@
+.new-category {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.new-category input {
+  margin: 0 5px;
+}

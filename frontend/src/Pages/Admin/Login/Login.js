@@ -53,7 +53,7 @@ export default function Login(props) {
         />
         <div>
           <Link to="/" className="login-home">
-            Home
+            Hom
           </Link>
           <Link to="/" className="login-remember-password">
             Lembrar Senha

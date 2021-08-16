@@ -14,8 +14,9 @@ router.get("/:id", function (req, res) {
 });
 
 router.put("/:id", function (req, res) {
+  const { id } = req.params;
   const {
-    namePost,
+    name,
     content,
     category,
     thumb,
@@ -28,8 +29,7 @@ router.put("/:id", function (req, res) {
   } = req.body;
   updatepost
     .update(
-      req.params.id,
-      namePost,
+      name,
       content,
       category,
       thumb,
@@ -38,13 +38,14 @@ router.put("/:id", function (req, res) {
       middle,
       gameplay,
       gallery,
-      publicPost
+      publicPost,
+      id
     )
     .then((data) => {
       return res.json({ msg: "Atualizado" });
     })
     .catch((error) => {
-      console.log("erro");
+      console.log("erro ao tentar atualizar");
       res.sendStatus(500);
     });
 });

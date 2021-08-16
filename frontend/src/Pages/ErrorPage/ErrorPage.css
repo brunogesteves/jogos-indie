@@ -1,9 +1,10 @@
-.errorPage-area {
+.errorPage-body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   font-weight: 400;
   font-size: 20px;
+  height: 100%;
 }
 
 .errorPage-content {
@@ -35,7 +36,6 @@
 }
 
 .errorPage-content-items {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

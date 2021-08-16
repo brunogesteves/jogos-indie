@@ -82,10 +82,22 @@ router.delete("/", function (req, res) {
     });
 });
 
-router.post("/search", function (req, res) {
-  const { word } = req.body;
+router.get("/search/:searchword", function (req, res) {
+  const { searchword } = req.params;
   posts
-    .getSearch(word)
+    .getSearch(searchword)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.sendStatus(500);
+    });
+});
+
+router.get("/category/:categoryName", function (req, res) {
+  const { categoryName } = req.params;
+  posts
+    .getCategory(categoryName)
     .then((data) => {
       res.json(data);
     })

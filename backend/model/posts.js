@@ -66,14 +66,26 @@ const posts = {
     });
   },
 
-  getSearch: function (word) {
+  getSearch: function (searchword) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT name, category, slug, category, images 
+      const query = `SELECT name, category, slug, thumb
                      FROM posts
-                     WHERE name LIKE "%${word}%"
-                     OR content LIKE "%${word}%"
-                     OR category LIKE "%${word}%"`;
+                     WHERE name LIKE "%${searchword}%"
+                     OR category LIKE "%${searchword}%"`;
       db.query(query, (er, res) => {
+        if (er) {
+          reject("erro no banco, tentar novamente");
+        } else {
+          resolve(res);
+        }
+      });
+    });
+  },
+
+  getCategory: function (categoryName) {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT slug, thumb from posts WHERE category = ?`;
+      db.query(query, [categoryName], (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
         } else {

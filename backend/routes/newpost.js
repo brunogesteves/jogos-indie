@@ -4,32 +4,32 @@ const newpost = require("../model/newpost");
 
 router.post("/", function (req, res) {
   const {
-    namePost,
+    name,
     content,
     category,
     thumb,
-    slugify,
+    slug,
+    schedule,
     datetime,
     slide,
     middle,
     gameplay,
     gallery,
-    schedule,
     publicpost,
   } = req.body;
   newpost
     .set(
-      namePost,
+      name,
       content,
       category,
       thumb,
-      slugify,
+      slug,
+      schedule,
       datetime,
       slide,
       middle,
       gameplay,
       gallery,
-      schedule,
       publicpost
     )
     .then((data) => {

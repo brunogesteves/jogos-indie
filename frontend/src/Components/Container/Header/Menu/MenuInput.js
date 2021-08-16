@@ -14,14 +14,21 @@ export default function MenuInput(props) {
 
   function toPageSearch(e) {
     setSearchWord(word);
-    history.push(`/search`);
+    history.push(`/procurar`);
   }
 
   return (
     <div className="search">
-      <input type="text" placeholder="Procurar" onChange={(e) => setWord(e.target.value)} />
+      <input
+        type="text"
+        placeholder="Procurar"
+        onChange={(e) => setWord(e.target.value)}
+      />
 
-      <AiOutlineSearch className="click-search" onClick={() => toPageSearch()} />
+      <AiOutlineSearch
+        className="click-search"
+        onClick={() => toPageSearch()}
+      />
     </div>
   );
 }

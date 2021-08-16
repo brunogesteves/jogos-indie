@@ -14,17 +14,17 @@ const newpost = {
     });
   },
   set: function (
-    namePost,
+    name,
     content,
     category,
     thumb,
-    slugify,
+    slug,
+    schedule,
     datetime,
     slide,
     middle,
     gameplay,
     gallery,
-    schedule,
     publicpost
   ) {
     return new Promise((resolve, reject) => {
@@ -32,11 +32,11 @@ const newpost = {
       db.query(
         query,
         [
-          namePost,
+          name,
           content,
           category,
           thumb,
-          slugify,
+          slug,
           schedule,
           datetime,
           slide,

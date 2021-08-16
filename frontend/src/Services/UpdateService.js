@@ -17,7 +17,7 @@ const UpdateService = {
   },
   update: (
     id,
-    namePost,
+    name,
     content,
     category,
     thumb,
@@ -28,13 +28,14 @@ const UpdateService = {
     gallery,
     publicPost
   ) => {
+    console.log("res-services: ", category);
     return fetch(`${base_url}/updatepost/${id}`, {
       method: "put",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        namePost,
+        name,
         content,
         category,
         thumb,

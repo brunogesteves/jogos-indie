@@ -5,7 +5,6 @@ import SunEditor from "suneditor-react";
 
 import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
 import axios from "axios";
-import { Button } from "react-bootstrap";
 import Modal from "@material-ui/core/Modal";
 import { base_url } from "../../../config";
 
@@ -20,7 +19,7 @@ export default function UpdatePost(props) {
   const nameParams = useParams();
   let idNumber = nameParams.id;
 
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
   const [namePost, setNamePost] = useState("");
   const [content, setContent] = useState("");
   const [thumb, setThumb] = useState("");
@@ -30,10 +29,9 @@ export default function UpdatePost(props) {
   const [gallery, setGallery] = useState(false);
   const [publicPost, setPublicPost] = useState();
   const [file, setFile] = useState("");
-  const [currentCategory, setCurrentCategory] = useState("");
+  const [category, setCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [word, setWord] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const [warning, setWarning] = useState("");
   const editor = useRef(null);
@@ -43,13 +41,13 @@ export default function UpdatePost(props) {
       setNamePost(res[0].name);
       setContent(res[0].content);
       setThumb(res[0].thumb);
-      setId(res[0].id);
+      // setId(res[0].id);
       setSlide(res[0].slide);
       setGameplay(res[0].gameplay);
       setMiddle(res[0].middle);
       setGallery(res[0].gallery);
       setPublicPost(res[0].publicpost);
-      setCurrentCategory(res[0].category);
+      setCategory(res[0].category);
     });
     // eslint-disable-next-line
   }, []);
@@ -67,10 +65,10 @@ export default function UpdatePost(props) {
   function update() {
     namePost && content
       ? UpdateService.update(
-          id,
+          idNumber,
           namePost,
           content,
-          selectedCategory,
+          category,
           thumb,
           slugify(namePost, { delimiter: "-" }),
           slide ? 1 : 0,
@@ -103,7 +101,7 @@ export default function UpdatePost(props) {
     };
     axios.post(url, data, options);
   }, [file]);
-
+  console.log("res-post: ", category);
   return (
     <div>
       <Admin>
@@ -153,8 +151,8 @@ export default function UpdatePost(props) {
             </div>
             <NewCategory addCategory={setWord} />
             <select
-              value={currentCategory}
-              onClick={(e) => setSelectedCategory(e.target.value)}
+              value={category}
+              onClick={(e) => setCategory(e.target.value)}
             >
               <option>Escolha uma Categoria</option>
               {categories.map((res, i) => (
@@ -162,9 +160,9 @@ export default function UpdatePost(props) {
               ))}
             </select>
             <img src={`/${thumb}`} alt={thumb} />
-            <Button variant="primary" onClick={() => setModalShow(true)}>
+            <button type="button" onClick={() => setModalShow(true)}>
               Mudar Imagem
-            </Button>
+            </button>
             <Modal
               open={modalShow}
               onClose={() => setModalShow(false)}

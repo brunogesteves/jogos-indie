@@ -2,16 +2,17 @@ import { base_url } from "../config";
 
 const NewPost = {
   new: (
-    namePost,
+    name,
     content,
     category,
     thumb,
-    slugify,
+    slug,
+    schedule,
     datetime,
     slide,
     middle,
     gameplay,
-    schedule,
+    gallery,
     publicpost
   ) => {
     return fetch(`${base_url}/newpost`, {
@@ -20,16 +21,17 @@ const NewPost = {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        namePost,
+        name,
         content,
         category,
         thumb,
-        slugify,
+        slug,
+        schedule,
         datetime,
         slide,
         middle,
         gameplay,
-        schedule,
+        gallery,
         publicpost,
       }),
     })

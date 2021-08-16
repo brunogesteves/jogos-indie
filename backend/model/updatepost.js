@@ -14,19 +14,34 @@ const updatepost = {
     });
   },
   update: function (
-    id,
     name,
     content,
     category,
     thumb,
+    slug,
     slide,
     middle,
     gameplay,
     gallery,
-    publicpost
+    publicPost,
+    id
   ) {
     return new Promise((resolve, reject) => {
-      const query = `UPDATE posts SET name = ?, content = ?, thumb = ?, slide = ?, middle = ?, gameplay = ?, gallery= ?, publicpost = ?, slug = ? where id= ? `;
+      console.log(
+        "res-model: ",
+        name,
+        content,
+        category,
+        thumb,
+        slug,
+        slide,
+        middle,
+        gameplay,
+        gallery,
+        publicPost,
+        id
+      );
+      const query = `UPDATE posts SET name = ?, content = ?, category = ?, thumb = ?, slug = ?, slide = ?, middle = ?, gameplay = ?, gallery = ?, publicpost = ? where id = ? `;
       db.query(
         query,
         [
@@ -34,11 +49,12 @@ const updatepost = {
           content,
           category,
           thumb,
+          slug,
           slide,
           middle,
           gameplay,
           gallery,
-          publicpost,
+          publicPost,
           id,
         ],
         (er, res) => {

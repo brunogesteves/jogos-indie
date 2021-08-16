@@ -2,22 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./CategoryPage.css";
 
-import CategoryPage from "../../Services/CategoryPage";
+import PostsServices from "../../Services/Posts";
 
 export default function Categorypage() {
   const nameParams = useParams();
-  let name = nameParams.category;
+  let categoryName = nameParams.category;
 
   const [slug, setSlug] = useState([]);
-  const [images, setImages] = useState([]);
+  const [thumb, setThumb] = useState([]);
 
   useEffect(() => {
-    CategoryPage.posts(name)
-      .then((res) => res.json())
-      .then((res) => {
-        setImages(res.map((res) => res.images));
-        setSlug(res.map((res) => res.slug));
-      });
+    PostsServices.category(categoryName).then((res) => {
+      setThumb(res.map((res) => res.thumb));
+      setSlug(res.map((res) => res.slug));
+    });
     // eslint-disable-next-line
   }, []);
 
@@ -26,7 +24,7 @@ export default function Categorypage() {
       {slug.map((res, i) => (
         <div key={i}>
           <Link to={`/${slug[i]}`}>
-            <img src={`/${images[i]}`} alt={images[i]} />
+            <img src={`/${thumb[i]}`} alt={thumb[i]} />
           </Link>
         </div>
       ))}

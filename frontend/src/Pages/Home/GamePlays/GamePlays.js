@@ -21,8 +21,9 @@ const Gameplay = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
+    useTransform: true,
     speed: 500,
     arrows: false,
     autoplay: true,
@@ -62,14 +63,11 @@ const Gameplay = () => {
         {name.map((res, i) => {
           return (
             <div key={i} className="gameplay-block">
-              <img src={thumb[i]} alt={res} />
-              <Link
-                to={`${slug[i]}`}
-                className="gameplay-title"
-                style={{ textDecoration: "none" }}
-              >
-                <span>{res}</span>
-              </Link>
+              <div>
+                <img src={thumb[i]} alt={res} />
+                <Link to={`${slug[i]}`}></Link>
+              </div>
+              <div className="gameplay-title">{res}</div>
             </div>
           );
         })}

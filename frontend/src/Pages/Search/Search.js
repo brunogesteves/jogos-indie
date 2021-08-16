@@ -5,7 +5,7 @@ import "./Search.css";
 
 import SidebarFront from "../../Components/SidebarFront/SidebarFront";
 import { SearchContext } from "../Contexts/Context";
-import searchPost from "../../Services/Search";
+import PostsServices from "../../Services/Posts";
 
 export default function Search() {
   const { searchWord, setSearchWord } = useContext(SearchContext);
@@ -14,26 +14,11 @@ export default function Search() {
   // const searchVal = word;
 
   useEffect(() => {
-    searchPost.search(searchWord).then((res) => {
+    PostsServices.search(searchWord).then((res) => {
       setResult(res);
     });
     // eslint-disable-next-line
   }, [searchWord]);
-
-  // const data = { searchVal };
-  // const makeSearch = () => {
-  //   const options = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  //   axios
-  //     .post(`http://localhost:3002/posts/search`, JSON.stringify(data), options)
-  //     .then(({ data }) => {
-  //       setResult(data);
-  //     });
-  // };
-  // makeSearch();
 
   return (
     <>
@@ -44,16 +29,22 @@ export default function Search() {
             placeholder="Procurar"
             className="search-content-input"
             onChange={(e) => setSearchWord(e.target.value)}
+            value={searchWord}
           />
           Termo buscado é "{searchWord}"
           {searchWord
             ? result.map((res, i) => {
-                const { images, name, slug, category } = res;
+                const { thumb, name, slug, category } = res;
                 return (
                   <div key={i} className="search-content-items">
-                    <Link to={`/${slug}`}>{name}</Link>
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={`/${slug}`}
+                    >
+                      {name}
+                    </Link>
                     <Link to={`/${slug}`}>
-                      <img src={images} alt={name} />
+                      <img src={thumb} alt={name} />
                     </Link>
                     Categoria: {category}
                   </div>

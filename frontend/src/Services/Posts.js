@@ -39,6 +39,19 @@ const posts = {
       }),
     });
   },
+
+  search: (searchword) => {
+    return fetch(`${base_url}/posts/search/${searchword}`)
+      .then((res) => res.json())
+      .then((res) => {
+        return res;
+      });
+  },
+  category: (categoryName) => {
+    return fetch(`${base_url}/posts/category/${categoryName}`).then((res) =>
+      res.json()
+    );
+  },
 };
 
 export default posts;

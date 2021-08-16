@@ -25,7 +25,7 @@ export default function Slide() {
         style={{
           ...style,
           display: "block",
-          right: "5px",
+          right: "34px",
           top: "-12px",
           background: "black",
           borderRadius: "13px",
@@ -43,7 +43,7 @@ export default function Slide() {
         style={{
           ...style,
           display: "block",
-          left: "641px",
+          left: "631px",
           top: "-12px",
           background: "black",
           borderRadius: "13px",
@@ -54,7 +54,7 @@ export default function Slide() {
   }
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 0,
     slidesToShow: 1,

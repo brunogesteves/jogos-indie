@@ -35,7 +35,7 @@ export default function Blocks() {
                   >
                     <Link to={`/${post.slug}`}>
                       <div>
-                        <img src={`/${post.images}`} alt={post.name} />
+                        <img src={`/${post.thumb}`} alt={post.name} />
                       </div>
                     </Link>
                     <Link

@@ -1,46 +1,29 @@
-import React, { useContext, useEffect, useState } from "react";
-// import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ErrorPage.css";
 
 import SidebarFront from "../../Components/SidebarFront/SidebarFront";
-import { SearchContext } from "./../Contexts/Context";
-import searchPost from "../../Services/Search";
+import PostsServices from "../../Services/Posts";
 
 export default function ErrorPage() {
   const nameParams = useParams();
   let namePage = nameParams.frontpage;
 
-  const { searchWord, setSearchWord } = useContext(SearchContext);
   const [result, setResult] = useState([]);
-
-  // const searchVal = word;
+  const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
-    searchPost.search(searchWord).then((res) => {
+    PostsServices.search(searchWord).then((res) => {
       setResult(res);
     });
     // eslint-disable-next-line
   }, [searchWord]);
 
-  // const data = { searchVal };
-  // const makeSearch = () => {
-  //   const options = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  //   axios
-  //     .post(`http://localhost:3002/posts/search`, JSON.stringify(data), options)
-  //     .then(({ data }) => {
-  //       setResult(data);
-  //     });
-  // };
-  // makeSearch();
+  console.log("res: ", result);
 
   return (
     <>
-      <div className="errorPage-area">
+      <div className="errorPage-body">
         <div className="errorPage-content">
           <div className="errorPage-warning">
             <p>OPS!</p>
@@ -56,11 +39,16 @@ export default function ErrorPage() {
           />
           {searchWord
             ? result.map((res, i) => {
-                const { images, name, slug, category } = res;
+                const { name, category, slug, thumb } = res;
                 return (
                   <div key={i} className="errorPage-content-items">
-                    <Link to={`/${slug}`}>{name}</Link>
-                    <img src={images} alt={name} />
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={`/${slug}`}
+                    >
+                      {name}
+                    </Link>
+                    <img src={thumb} alt={name} />
                     Categoria: {category}
                   </div>
                 );

@@ -70,16 +70,16 @@ router.post("/", (req, res) => {
 // var upload = multer({ storage: storage, limits: { fileSize: Infinity } });
 
 router.post("/image", function (req, res) {
-  console.log("sendFile: " + req.body.file);
-  // images
-  //   .set(imageFile)
-  //   .then((data) => {
-  //     res.sendStatus(200);
-  //   })
-  //   .catch((error) => {
-  //     console.log("erro");
-  //     res.sendStatus(500);
-  //   });
+  const { file } = req.body;
+  images
+    .set(file.name)
+    .then((data) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("erro");
+      res.sendStatus(500);
+    });
 });
 
 router.delete("/", function (req, res) {

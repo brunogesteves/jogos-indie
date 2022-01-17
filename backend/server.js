@@ -6,7 +6,7 @@ const fileUpload = require("express-fileupload");
 
 const category = require("./routes/category");
 const sign = require("./routes/sign");
-const posts = require("./routes/posts");
+// const posts = require("./routes/posts");
 const newpost = require("./routes/newpost");
 const updatepost = require("./routes/updatepost");
 const images = require("./routes/images");
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use("/category", category);
 app.use("/sign", sign);
-app.use("/posts", posts);
+// app.use("/posts", posts);
 app.use("/newpost", newpost);
 app.use("/updatepost/", updatepost);
 app.use("/images/", images);

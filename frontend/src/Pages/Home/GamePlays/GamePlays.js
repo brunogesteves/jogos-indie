@@ -13,8 +13,6 @@ const Gameplay = () => {
     });
   }, []);
 
-  console.log("gameplays: ", gameplays);
-
   return (
     <div className="gameplay">
       {gameplays &&

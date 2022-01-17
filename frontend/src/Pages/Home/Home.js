@@ -5,7 +5,7 @@ import Slide from "./Slide/Slide";
 import Middle from "./Middle/Middle";
 import GamePlays from "./GamePlays/GamePlays";
 import Gallery from "./Gallery/Gallery";
-import Blocks from "./Blocks/Blocks";
+// import Blocks from "./Blocks/Blocks";
 
 export default function Home() {
   return (

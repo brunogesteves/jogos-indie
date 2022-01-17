@@ -16,9 +16,9 @@ export default function Home() {
         <GamePlays />
       </div>
       <Gallery />
-      <div className="topContent">
+      {/* <div className="topContent">
         <Blocks />
-      </div>
+      </div> */}
     </>
   );
 }

@@ -3,7 +3,7 @@ const db = require("../db/db");
 const category = {
   get: function () {
     return new Promise((resolve, reject) => {
-      const query = "select name from categories ORDER BY name asc";
+      const query = "select name from Cats ORDER BY name asc";
       db.query(query, (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
@@ -15,7 +15,7 @@ const category = {
   },
   set: function (name) {
     return new Promise((resolve, reject) => {
-      const query = `insert into categories (name) values (?)`;
+      const query = `insert into Cats (name) values (?)`;
       db.query(query, [name], (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
@@ -27,7 +27,7 @@ const category = {
   },
   del: function (name) {
     return new Promise((resolve, reject) => {
-      const query = `delete from categories where name= ?`;
+      const query = `delete from Cats where name= ?`;
       db.query(query, [name], (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
@@ -40,7 +40,7 @@ const category = {
 
   fourMenus: function () {
     return new Promise((resolve, reject) => {
-      const query = `select name from category order by Rand() limit 4`;
+      const query = `select name from Cats order by Rand() limit 4`;
       db.query(query, (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
@@ -53,7 +53,7 @@ const category = {
 
   resetFront: function () {
     return new Promise((resolve, reject) => {
-      const query = `update category set front = 0 where front = 1 `;
+      const query = `update Cats set front = 0 where front = 1 `;
       db.query(query, (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
@@ -71,7 +71,7 @@ const category = {
     const menu3 = result[2].name;
     const menu4 = result[3].name;
     return new Promise((resolve, reject) => {
-      const query = `update category set front = 1 where name in ("${menu1}", "${menu2}", "${menu3}", "${menu4}") `;
+      const query = `update Cats set front = 1 where name in ("${menu1}", "${menu2}", "${menu3}", "${menu4}") `;
       db.query(query, (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
@@ -84,7 +84,7 @@ const category = {
 
   getFront: function () {
     return new Promise((resolve, reject) => {
-      const query = `select name from category where front = 1 `;
+      const query = `select name from Cats where front = 1 `;
       db.query(query, (er, res) => {
         if (er) {
           reject("erro no banco, tentar novamente");
@@ -114,12 +114,6 @@ const category = {
       return category.getPostsData(cat.name);
     });
     return Promise.all(catposts).then((results) => {
-      // const res = [
-      //   {
-      //     name: "Tiro"
-      //     posts:[]
-      //   }
-      // ]
       let ret = [];
       for (let i = 0; i < results.length; i++) {
         const name = categories[i].name;

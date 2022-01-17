@@ -39,6 +39,8 @@ router.get("/gameplay", function (req, res) {
   posts
     .getGameplay()
     .then((data) => {
+      // console.log("model-chamou: ", data);
+
       res.json(data);
     })
     .catch((error) => {

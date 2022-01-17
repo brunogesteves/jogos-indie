@@ -17,14 +17,14 @@ export default function MenuBar() {
   return (
     <div className="menu">
       <Link to="/" className="menu-item">
-        Home
+        HOME
       </Link>
       <Link to="/procurar" className="menu-item">
-        Procurar
+        PROCURAR
       </Link>
       {menu.map((res, i) => (
         <Link to={`/categories/${res}`} key={i} className="menu-item">
-          {res}
+          {res.toUpperCase()}
         </Link>
       ))}
     </div>

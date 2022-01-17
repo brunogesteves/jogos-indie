@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import axios from "axios";
-import "react-dropzone-uploader/dist/styles.css";
+// import "react-dropzone-uploader/dist/styles.css";
 import "./FileDrop.css";
 import { base_url } from "../../config";
 

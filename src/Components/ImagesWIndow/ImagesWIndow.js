@@ -76,10 +76,7 @@ export default function ImagesWindow(props) {
 
   return (
     <div className="tab-area">
-      <button
-        className="close-button-images-tab"
-        onClick={() => props.setModalShow(false)}
-      >
+      <button className="close-button-images-tab" onClick={() => props.setModalShow(false)}>
         Fechar
       </button>
       <AppBar position="static" color="default">

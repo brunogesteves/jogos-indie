@@ -12,7 +12,6 @@ const updatepost = require("./routes/updatepost");
 const images = require("./routes/images");
 const frontpage = require("./routes/frontpage");
 const schedule = require("./routes/schedule");
-const resetpassword = require("./routes/resetpassword");
 
 app.use(cors());
 app.use(fileUpload());
@@ -27,7 +26,6 @@ app.use("/updatepost/", updatepost);
 app.use("/images/", images);
 app.use("/frontpage/", frontpage);
 app.use("/schedule/", schedule);
-app.use("/resetpassword/", resetpassword);
 
 let port = 3001;
 app.listen(port, function () {

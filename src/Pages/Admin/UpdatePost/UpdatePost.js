@@ -5,7 +5,7 @@ import SunEditor from "suneditor-react";
 
 import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
 import axios from "axios";
-import Modal from "@material-ui/core/Modal";
+import Modal from "@mui/material/Modal";
 import { base_url } from "../../../config";
 
 import Admin from "../Admin";

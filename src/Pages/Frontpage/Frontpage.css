@@ -9,10 +9,18 @@
 
 .front-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
-  width: 98%;
+  width: 100%;
+}
+
+.front-content div:nth-child(1) {
+  zoom: 1.2;
+}
+
+.front-content div:nth-child(2) {
+  margin-right: 15px;
 }
 
 .front-sidebar {

@@ -27,7 +27,7 @@ export default function Ads(props) {
           </div>
           <div className="crowdfunding">
             <Crowdfunding />
-            <img  src={"/crowdfunding.jpg"} alt="crowdfunding" />
+            <img  src={"/apoie.jpg"} alt="crowdfunding" />
           </div>
         </div>
       </Admin>

@@ -6,7 +6,9 @@ import MenuBar from "./Menubar/MenuBar";
 import MenuInput from "./MenuInput";
 import Drawer from "./Drawer/Drawer";
 
+
 export default function Menu(props) {
+  
   return (
     <div className="menu-area">
       <MenuBar />

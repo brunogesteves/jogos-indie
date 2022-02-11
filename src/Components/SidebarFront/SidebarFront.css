@@ -1,14 +1,12 @@
-.sidebar-front-area{
-  display:flex;
-  justify-content:flex-start;
-  align-Items: center;
+.sidebar-front-area {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
-  padding: 0 10px;
+  padding: 10px;
 }
 
-.sidebar-front-area img{
-  width: 300px;
+.sidebar-front-area img {
+  width: 100%;
   margin-top: 20px;
 }
-
-

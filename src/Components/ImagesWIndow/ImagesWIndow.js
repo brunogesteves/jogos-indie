@@ -11,7 +11,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 import "./ImagesWIndow.css";
 import FileDrop from "../FileDrop/FileDrop";
-import Windows from "../../Services/Windows";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_ALL_IMAGES } from "../../Graphql/Queries";
+import { DELETE_IMAGE } from "../../Graphql/Mutations";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,32 +49,30 @@ function a11yProps(index) {
 }
 
 export default function ImagesWindow(props) {
-  const [images, setImages] = useState([]);
-  const [deleteThumb, setDeleteThumb] = useState([]);
-  const [loadImages, setLoadImages] = useState(false);
-
-  useEffect(() => {
-    Windows.thumbs().then((res) => {
-      setImages(res);
-    });
-  }, [loadImages]);
-
-  useEffect(() => {
-    Windows.images(deleteThumb.id, deleteThumb.name);
-    setImages(images.filter((item) => item !== deleteThumb));
-    // eslint-disable-next-line
-  }, [deleteThumb]);
+  const [thumbId, setThumbId] = useState(0);
 
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    setLoadImages(true);
   };
 
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+
+  const { data, refetch } = useQuery(GET_ALL_IMAGES);
+  const [deleteImage, { data: responseDelete }] = useMutation(DELETE_IMAGE);
+
+  useEffect(() => {
+    if (responseDelete && responseDelete.deleteImage.successfull) {
+      refetch();
+    }
+  }, [responseDelete]);
+
+  useEffect(() => {
+    deleteImage({ variables: { id: thumbId } });
+  }, [thumbId]);
 
   return (
     <div className="tab-area">
@@ -94,23 +94,24 @@ export default function ImagesWindow(props) {
       </AppBar>
       <SwipeableViews index={value} onChangeIndex={handleChangeIndex}>
         <TabPanel value={value} index={0}>
-          {images.map((res, i) => (
-            <div key={i} className="thumbs">
-              <div>
-                <img
-                  className="imgshow"
-                  src={`/${res.name}`}
-                  alt={res.name.slice(0, -4)}
-                  onClick={() => props.setThumb(res.name)}
-                />
+          {data &&
+            data.getAllImages.map((res, i) => (
+              <div key={i} className="thumbs">
+                <div>
+                  <img
+                    className="imgshow"
+                    src={`/${res.name}`}
+                    alt={res.name.slice(0, -4)}
+                    onClick={() => props.setThumb(res.name)}
+                  />
+                </div>
+                <div className="button-delete-thumbs">
+                  <IconButton aria-label="delete" style={{ color: "white" }}>
+                    <DeleteIcon onClick={() => setThumbId(res.id)} />
+                  </IconButton>
+                </div>
               </div>
-              <div className="button-delete-thumbs">
-                <IconButton aria-label="delete" style={{ color: "white" }}>
-                  <DeleteIcon onClick={() => setDeleteThumb(res)} />
-                </IconButton>
-              </div>
-            </div>
-          ))}
+            ))}
         </TabPanel>
         <TabPanel value={value} index={1}>
           <FileDrop />

@@ -7,6 +7,7 @@
 .gameplay-block {
   position: relative;
   margin-bottom: 8px;
+  text-decoration: none;
 }
 
 .gameplay-title {
@@ -14,6 +15,7 @@
   position: absolute;
   top: 35px;
   left: 133px;
+  text-decoration: non;
 }
 
 .gameplay img {

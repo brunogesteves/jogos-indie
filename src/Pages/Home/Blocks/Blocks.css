@@ -1,9 +1,9 @@
 .home-blocks {
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  width: 75%;
+  justify-content: space-between;
+  align-items: inherit;
+  margin: 10px;
+  width: 77%;
   flex-wrap: wrap;
 }
 
@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  width: 45%;
 }
 
 .home-block-post img {
@@ -35,15 +36,16 @@
   margin-left: 52px;
   text-transform: capitalize;
   color: black;
+  text-shadow: 5px 5px 10px black;
 }
 
 .first-post-name {
   position: absolute;
-  top: 302px;
   padding-left: 31px;
   color: white;
-  font-size: 19px;
+  font-size: 25px;
   text-shadow: 5px 5px 10px black;
+  color: black;
 }
 
 .home-blocks-content {
@@ -52,6 +54,7 @@
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  color: black;
 }
 
 .home-blocks-sidebar {
@@ -118,6 +121,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    width: 45%;
   }
 
   .home-block-post img {
@@ -239,7 +243,6 @@
 
   .first-post-name {
     position: absolute;
-    top: 281px;
     padding-left: 31px;
     color: white;
     font-size: 19px;

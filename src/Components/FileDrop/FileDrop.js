@@ -1,67 +1,89 @@
 import React, { useState } from "react";
 
-import axios from "axios";
 // import "react-dropzone-uploader/dist/styles.css";
 import "./FileDrop.css";
-import { base_url } from "../../config";
+import { FILE_UPLOAD, MULTIPLE_FILE_UPLOAD } from "../../Graphql/Mutations";
+import { useMutation } from "@apollo/client";
 
 export default function FileDrop(props) {
-  const [file, setFile] = useState("");
-  const [fileName, setFileName] = useState("");
-  const [uploadedFile, setUploadedFile] = useState({});
-  const [message, setMessage] = useState("");
-  const [uploadPercentage, setUploadPercentage] = useState();
+  // const [file, setFile] = useState("");
+  // const [fileName, setFileName] = useState("");
+  // const [uploadedFile, setUploadedFile] = useState({});
+  // const [response, setResponse] = useState("");
+  // const [uploadPercentage, setUploadPercentage] = useState();
 
-  function onChange(e) {
-    setFile(e.target.files[0]);
-    setFileName(e.target.files[0].name);
-  }
+  // function onChange(e) {
+  //   setFile(e.target.files[0]);
+  //   setFileName(e.target.files[0].name);
+  // }
 
-  async function uploadFile(e) {
-    e.preventDefault();
-    const data = new FormData();
-    data.append("file", file);
-    try {
-      const res = await axios.post(`${base_url}/images`, data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        onUploadProgress: (progressEvent) => {
-          setUploadPercentage(
-            parseInt(
-              Math.round((progressEvent.loaded * 100) / progressEvent.total)
-            )
-          );
-          setTimeout(() => {
-            setUploadPercentage(0);
-          }, 10000);
-        },
-      });
-      const { fileName, filePath } = res.data;
+  // const [uploadImage, { data: fileUploadData }] = useMutation(UPLOAD_IMAGE, {
+  //   onCompleted: (data) => {
+  //     console.log(data);
+  //     if (data.fileUpload?.success) {
+  //       alert(data.fileUpload?.message);
+  //       setResponse(data.fileUpload?.message);
+  //     }
+  //   },
+  // });
 
-      setUploadedFile({ fileName, filePath });
-      setMessage("Foto Adicionada");
-    } catch (err) {
-      if (err.response.status === 500) {
-        setMessage("erro no servidor");
-      } else {
-        setMessage(err.response.data.msg);
-      }
+  // async function uploadFile() {
+  //   if (!file) {
+  //     return;
+  //   }
+
+  //   // let data = {
+  //   //   file:e.target.files[0],
+  //   // }
+  //   uploadImage({
+  //     variables: file,
+  //   });
+  // }
+  const [response, setResponse] = useState("");
+  const [responseMultiple, setResponseMultiple] = useState("");
+
+  const [fileUpload, { data }] = useMutation(
+    FILE_UPLOAD,
+    {
+      onError: (err) => {
+        console.log(err);
+        setResponse(err.message);
+      },
+      onCompleted: (data) => {
+        console.log(data);
+        if (data.fileUpload?.success) {
+          alert(data.fileUpload?.message);
+          setResponse(data.fileUpload?.message);
+        }
+      },
+    },
+  );
+
+  console.log(data);
+  
+  const uploadFile = (e) => {
+    if (!e.target.files) {
+      return;
     }
-  }
+
+    let data = {
+      file: e.target.files[0],
+    };
+    fileUpload({
+      variables: data,
+    });
+  };
+
+  
 
   return (
     <>
       <div class="mb-3">
-        {message ? message : null}
-        <input
-          className="form-control"
-          type="file"
-          id="formFile"
-          onChange={onChange}
-        />
+        <input type="file" name="file[]" id="file" onChange={uploadFile} />
+        {response ? response : null}
+        {/* <input className="form-control" type="file" id="formFile" onChange={onChange} /> */}
         <label className="form-label" htmlFor="formFile">
-          {fileName ? fileName : "Selecione um arquivo"}
+          {/* {fileName ? fileName : "Selecione um arquivo"} */}
         </label>
         <input
           type="submit"
@@ -73,18 +95,18 @@ export default function FileDrop(props) {
       <div class="progress">
         <div
           class="progress-bar"
-          style={{ width: `${uploadPercentage}%` }}
+          // style={{ width: `${uploadPercentage}%` }}
           role="progressbar"
         ></div>
       </div>
-      {uploadedFile ? (
+      {/* {uploadedFile ? (
         <div className="row mt-5">
           <div className="col-md-6 m-auto ">
             <h3 className="text-center">{uploadedFile.fileName}</h3>
             <img style={{ width: "100%" }} src={uploadedFile.filePath} alt="" />
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 }

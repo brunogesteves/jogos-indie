@@ -7,7 +7,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { TiThMenu } from "react-icons/ti";
-import Menu from "../../../../../Services/Menu";
 
 import "./Drawer.css";
 
@@ -32,11 +31,11 @@ export default function SwipeableTemporaryDrawer() {
     right: false,
   });
 
-  useEffect(() => {
-    Menu.menu().then((res) => {
-      setMenu(res.map((res) => res.name));
-    });
-  }, []);
+  // useEffect(() => {
+  //   Menu.menu().then((res) => {
+  //     setMenu(res.map((res) => res.name));
+  //   });
+  // }, []);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {

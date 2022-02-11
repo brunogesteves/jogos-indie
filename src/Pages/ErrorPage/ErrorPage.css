@@ -10,7 +10,7 @@
 .errorPage-content {
   margin-top: 20px;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -42,11 +42,7 @@
   flex-direction: column;
 }
 
-.errorPage-sidebar {
-  display: block;
-  width: 400px;
-  height: 100vh;
-}
+
 
 @media (max-width: 767px) {
   .errorPage-content input {

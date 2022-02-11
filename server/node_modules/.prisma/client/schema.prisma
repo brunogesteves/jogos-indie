@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Post {
+  id         Int         @id @default(autoincrement()) @db.UnsignedInt
+  name       String   
+  content    String      @db.LongText
+  category   String
+  slug       String
+  scheduled  Boolean
+  schedule   String
+  slide      Boolean
+  middle     Boolean
+  gameplay   Boolean
+  public     Boolean
+  midSection Boolean
+  thumb      String
+
+  @@map("posts")
+}
+
+model Cats {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  @@map("cats")
+}
+
+model Images {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  @@map("images")
+
+
+}
+
+
+model Users {
+  id         Int         @id @default(autoincrement()) @db.UnsignedInt
+  email      String      @unique
+  name       String
+  password   String
+  
+  @@map("users")
+
+}

@@ -4,12 +4,12 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 import "./MenuInput.css";
 
-import { SearchContext } from "../../../../Pages/Contexts/Context";
+import { InfoContext } from "../../../../Contexts/Context";
 
 export default function MenuInput(props) {
   let history = useHistory();
 
-  const { setSearchWord } = useContext(SearchContext);
+  const { setSearchWord } = useContext(InfoContext);
   const [word, setWord] = useState("");
 
   function toPageSearch(e) {

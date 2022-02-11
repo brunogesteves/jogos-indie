@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import "./MenuBar.css";
 
-import Menu from "../../../../../Services/Menu";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_CATEGORIES } from "../../../../../Graphql/Queries";
 
 export default function MenuBar() {
-  const [menu, setMenu] = useState([""]);
-
-  useEffect(() => {
-    Menu.menu().then((res) => {
-      setMenu(res.map((res) => res.name));
-    });
-  }, []);
+  const { data } = useQuery(GET_ALL_CATEGORIES);
 
   return (
     <div className="menu">
@@ -22,11 +17,12 @@ export default function MenuBar() {
       <Link to="/procurar" className="menu-item">
         PROCURAR
       </Link>
-      {menu.map((res, i) => (
-        <Link to={`/categories/${res}`} key={i} className="menu-item">
-          {res.toUpperCase()}
-        </Link>
-      ))}
+      {data &&
+        data.getAllCategories.map((res, i) => (
+          <Link to={`/categories/${res.name}`} key={i} className="menu-item">
+            {res.name}
+          </Link>
+        ))}
     </div>
   );
 }

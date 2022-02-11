@@ -50,6 +50,10 @@
   display: flex;
 }
 
+.update-warning {
+  color: black;
+}
+
 @media (max-width: 767px) {
   .updateContent {
     margin-top: 20px;

@@ -28,7 +28,6 @@ export default function Frontpage(props) {
   return (
     <Container>
       {postInfo ? (
-        <div className="front-area">
           <div className="front-content">
             <div
               className="sun-editor-editable"
@@ -58,7 +57,6 @@ export default function Frontpage(props) {
               <SidebarFront />
             </div>
           </div>
-        </div>
       ) : (
         <Error />
       )}

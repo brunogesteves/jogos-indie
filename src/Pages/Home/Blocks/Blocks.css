@@ -1,302 +1,60 @@
 .home-blocks {
+  width: 80%;
   display: flex;
-  justify-content: space-between;
-  align-items: inherit;
-  margin: 10px;
-  width: 77%;
-  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.home-block {
-  width: 470px;
-  min-width: 470px;
-  position: relative;
-  margin-bottom: 0px;
+.left-posts {
+  width: 40%;
 }
 
-.others-post {
-  margin-top: 21px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 45%;
+.left-posts div,
+.right-posts div {
+  margin-bottom: 10px;
 }
 
-.home-block-post img {
-  width: 200px;
-}
-
-.first-post img {
-  width: 470px;
-  min-width: 470px;
-}
-
-.home-block-post-name {
-  font-size: 25px;
-  margin-left: 52px;
-  text-transform: capitalize;
-  color: black;
-  text-shadow: 5px 5px 10px black;
-}
-
-.first-post-name {
-  position: absolute;
-  padding-left: 31px;
-  color: white;
-  font-size: 25px;
-  text-shadow: 5px 5px 10px black;
-  color: black;
-}
-
-.home-blocks-content {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  color: black;
-}
-
-.home-blocks-sidebar {
-  height: 100%;
-}
-
-.home-blocks-block {
-  display: flex;
+.right-posts {
+  width: 40%;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
-.home-block1,
-.home-block2,
-.home-block3,
-.home-block4 {
-  height: 95%;
-  margin: 0 5px 10px 5px;
+.post img {
+  width: 19vw;
+  margin-right: 10px;
 }
 
-.reamining-image {
+.invisible {
+  display: none;
+}
+
+.post {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.reamining-image img {
-  width: 100px;
-  height: 100px;
-  margin-top: 10px;
-  margin-right: 50px;
-}
-
-.reamining-image-title {
+.post-name {
+  font-size: 25px;
+  text-shadow: 5px 5px 10px black;
   color: black;
-  font-size: 20px;
 }
 
-.adsense {
-  background-color: red;
-  width: 100%;
-}
-
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .home-blocks {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    width: 100vw;
-    flex-wrap: wrap;
-  }
-
-  .home-block {
-    width: 100vh;
-    min-width: 0px;
-    position: relative;
-    margin-bottom: 35px;
-  }
-
-  .others-post {
-    margin-top: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 45%;
-  }
-
-  .home-block-post img {
-    width: 200px;
-  }
-
-  .first-post img {
-    width: 100vw;
-    min-width: 100vw;
-  }
-
-  .home-block-post-name {
-    font-size: 25px;
-    margin-left: 52px;
-    text-transform: capitalize;
-    color: black;
-  }
-
-  .first-post-name {
-    position: absolute;
-    top: 281px;
-    padding-left: 31px;
-    color: white;
-    font-size: 19px;
-    text-shadow: 5px 5px 10px black;
-  }
-
-  .home-blocks-content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-
-  .home-blocks-sidebar {
-    height: 100%;
-    /* width: 25%; */
-  }
-
-  .home-blocks-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-  }
-
-  .home-block1,
-  .home-block2,
-  .home-block3,
-  .home-block4 {
-    height: 95%;
-    margin: 0 5px 10px 5px;
-  }
-
-  .reamining-image {
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
   }
 
-  .reamining-image img {
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-    margin-right: 50px;
-  }
-
-  .reamining-image-title {
-    color: black;
-    font-size: 20px;
-  }
-
-  .adsense {
-    background-color: red;
+  .left-posts,
+  .right-posts {
     width: 100%;
   }
-}
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .home-blocks {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    width: 100vw;
-    flex-wrap: wrap;
+  .post img {
+    width: 80vw;
+    margin-right: 10px;
   }
-
-  .home-block {
-    width: 100vh;
-    min-width: 0px;
-    position: relative;
-    margin-bottom: 35px;
-  }
-
-  .others-post {
-    margin-top: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .home-block-post img {
-    width: 200px;
-  }
-
-  .first-post img {
-    width: 100vw;
-    min-width: 100vw;
-  }
-
-  .home-block-post-name {
-    font-size: 25px;
-    margin-left: 52px;
-    text-transform: capitalize;
-    color: black;
-  }
-
-  .first-post-name {
-    position: absolute;
-    padding-left: 31px;
-    color: white;
-    font-size: 19px;
-    text-shadow: 5px 5px 10px black;
-  }
-
-  .home-blocks-content {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-
-  .home-blocks-sidebar {
+  .post-name {
     display: none;
-    height: 100%;
-  }
-
-  .home-blocks-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .home-block1,
-  .home-block2,
-  .home-block3,
-  .home-block4 {
-    height: 95%;
-    margin: 0 5px 10px 5px;
-  }
-
-  .reamining-image {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  .reamining-image img {
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-    margin-right: 50px;
-  }
-
-  .reamining-image-title {
-    color: black;
-    font-size: 20px;
-  }
-
-  .adsense {
-    background-color: red;
-    width: 100%;
   }
 }

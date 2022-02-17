@@ -1,17 +1,15 @@
-.topHome {
-  height: 220px;
+.middle-body {
   width: 309px;
 }
 
-.topHome img {
+.middle-body img {
   height: 238px;
   width: 309px;
   margin: 3px 0;
 }
 
 @media (max-width: 767px) {
-  .topHome {
-    height: 220px;
+  .middle-body {
     width: 309px;
     margin-bottom: 32px;
   }
@@ -23,17 +21,17 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .topHome {
-    margin: 60px 0;
+  .middle-body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 220px;
-    width: 309px;
+    justify-content: flex-start;
+    width: 100%;
+    text-align: center;
+    margin-top: 73px;
+    flex-direction: column;
   }
 
-  .topHome img {
-    height: 242px;
-    width: 309px;
+  .middle-body img {
+    height: auto;
+    width: 53%;
   }
 }

@@ -10,7 +10,7 @@ export default function Middle() {
   const { data } = useQuery(GET_ALL_POSTS_MIDDLE);
 
   return (
-    <div className="topHome">
+    <div className="middle-body">
       {data &&
         data.getAllPostsHome.map((res, i) => (
           <Link to={`${res.slug}`} key={i}>

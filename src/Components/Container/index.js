@@ -2,7 +2,7 @@ import React from "react";
 import "./Container.css";
 
 import TopBar from "./Header/Topbar/Topbar";
-import Menu from "./Header/Menu/Menu";
+import Menu from "./Header/Menu";
 import Footer from "../Footer/Footer";
 import LoggedBar from "./Header/LoggedBar";
 

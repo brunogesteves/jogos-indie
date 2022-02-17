@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Menu.css";
 
-import MenuBar from "./Menubar/MenuBar";
+import MenuBar from "./Menubar";
 import MenuInput from "./MenuInput";
 import Drawer from "./Drawer/Drawer";
 

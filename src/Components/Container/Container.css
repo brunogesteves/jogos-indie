@@ -2,11 +2,19 @@
   width: 100%;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .content {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 767px) {
   .container-body {
     width: 100vw;
   }
   .content {
-    width: 97vw;
+    width: 100vw;
   }
 }

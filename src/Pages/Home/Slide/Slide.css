@@ -55,7 +55,7 @@
 
   .newGame-item {
     height: 485px;
-    width: 768px;
+    width: 100vw;
   }
 
   .newGame img {

@@ -1,6 +1,5 @@
 .gameplay {
   margin-left: 10px;
-  height: 380px;
   width: 276px;
 }
 
@@ -15,12 +14,10 @@
   position: absolute;
   top: 35px;
   left: 133px;
-  text-decoration: non;
 }
 
 .gameplay img {
-  height: 84px;
-  width: 100px;
+  width: 45%;
   margin-right: 10px;
 }
 
@@ -43,37 +40,30 @@
 @media (max-width: 767px) {
   .gameplay {
     margin: 250px 0 80px 10px;
-    height: 380px;
     width: 300px;
+  }
+  .gameplay-title {
+    display: none;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .gameplay {
-    margin-left: 0px;
-    height: 120px;
     width: 100%;
+    text-align: center;
+    margin-top: 50px;
   }
 
   .gameplay img {
-    height: 95px;
-    width: 155px;
+    width: 82%;
+    margin-top: 57px;
   }
 
   .gameplay-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
   }
 
   .gameplay-title-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    color: black;
-    font-size: 20px;
-    margin-left: 20px;
+    display: none;
   }
 }

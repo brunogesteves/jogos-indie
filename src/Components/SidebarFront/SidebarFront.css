@@ -3,10 +3,16 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .sidebar-front-area img {
   width: 100%;
   margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-front-area {
+    display: none;
+  }
 }

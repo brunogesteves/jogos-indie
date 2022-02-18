@@ -77,3 +77,9 @@
     border-bottom: 2px solid white;
   }
 }
+
+@media (max-width: 1024px) {
+  .menu {
+    display: none;
+  }
+}

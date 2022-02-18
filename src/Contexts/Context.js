@@ -9,6 +9,7 @@ export const InfoProvider = ({ children }) => {
   const [idPost, setIdPost] = useState("");
   const [isCategoryAdded, setIsCategoryAdded] = useState(false);
   const [username, setUsername] = useState("");
+  const [openDrawer, setOpenDrawer] = useState("");
 
   setInterval(() => {
     const timeNow = moment().format("DD/MM/YYYY HH:mm:ss");
@@ -25,8 +26,9 @@ export const InfoProvider = ({ children }) => {
         isCategoryAdded,
         setIsCategoryAdded,
         time,
-        username,
-        setUsername,
+        openDrawer,
+        openDrawer,
+        setOpenDrawer,
       }}
     >
       {children}

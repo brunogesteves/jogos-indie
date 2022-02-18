@@ -4,7 +4,6 @@ import "./Menu.css";
 
 import MenuBar from "./Menubar";
 import MenuInput from "./MenuInput";
-import Drawer from "./Drawer/Drawer";
 
 
 export default function Menu(props) {
@@ -15,7 +14,6 @@ export default function Menu(props) {
       <div key={1} className="menu-input">
         <MenuInput />
       </div>
-      {/* <Drawer /> */}
     </div>
   );
 }

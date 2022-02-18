@@ -16,7 +16,7 @@
 @media (max-width: 767px) {
   .menu-area {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: red;
     /* height: 50px; */

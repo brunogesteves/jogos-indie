@@ -39,8 +39,12 @@
 
 @media (max-width: 767px) {
   .gameplay {
-    margin: 250px 0 80px 10px;
-    width: 300px;
+    margin: 0px 0 10px 0px;
+  }
+
+  .gameplay img {
+    width: 95%;
+    margin-top: 10px;
   }
   .gameplay-title {
     display: none;

@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/index.ts",
-    "dev": "nodemon ./src/index.ts",
+    "start": "nodemon ./src/index.ts",
     "build": "tsc -p ."
   },
   "dependencies": {

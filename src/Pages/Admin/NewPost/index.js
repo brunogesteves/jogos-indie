@@ -77,6 +77,7 @@ export default function UpdatePost(props) {
 
       history.push(`/admin/updatepost/${newPostId}`);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCreated]);
 
   return (

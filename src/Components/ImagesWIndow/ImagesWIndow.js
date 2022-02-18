@@ -68,10 +68,12 @@ export default function ImagesWindow(props) {
     if (responseDelete && responseDelete.deleteImage.successfull) {
       refetch();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [responseDelete]);
 
   useEffect(() => {
     deleteImage({ variables: { id: thumbId } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [thumbId]);
 
   return (

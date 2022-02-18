@@ -22,12 +22,14 @@ export default function Categories(props) {
       refetch();
       setIsCategoryAdded(false);
     }
-  }, [isCategoryAdded, setIsCategoryAdded]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCategoryAdded]);
 
   useEffect(() => {
     if (isdeleted && isdeleted.deleteCategory.successfull) {
       refetch();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isdeleted]);
 
   return (

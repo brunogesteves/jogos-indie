@@ -21,7 +21,8 @@ export default function Posts() {
     ) {
       refetch();
     }
-  }, [isErased, isUpdated]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isErased]);
 
   return (
     <>

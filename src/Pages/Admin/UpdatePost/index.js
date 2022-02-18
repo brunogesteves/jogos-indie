@@ -28,7 +28,7 @@ export default function UpdatePost(props) {
   const [midSection, setMidSection] = useState(false);
   const [publicPost, setPublicPost] = useState(false);
   const [thumb, setThumb] = useState("");
-  const [file, setFile] = useState("");
+  // const [file, setFile] = useState("");
   const [modalShow, setModalShow] = useState(false);
   const editor = useRef(null);
 
@@ -223,12 +223,12 @@ export default function UpdatePost(props) {
                 ],
               }}
               onChange={dataForm}
-              onImageUploadBefore={(files) => {
-                let nameImage = files[0].name;
-                setFile(files[0]);
-                editor.current.editor.insertHTML(`<img src="/${nameImage}">`);
-                return true;
-              }}
+              // onImageUploadBefore={(files) => {
+              //   let nameImage = files[0].name;
+              //   setFile(files[0]);
+              //   editor.current.editor.insertHTML(`<img src="/${nameImage}">`);
+              //   return true;
+              // }}
             />
           </div>
         </div>

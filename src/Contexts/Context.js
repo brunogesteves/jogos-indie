@@ -8,7 +8,6 @@ export const InfoProvider = ({ children }) => {
   const [searchWord, setSearchWord] = useState("");
   const [idPost, setIdPost] = useState("");
   const [isCategoryAdded, setIsCategoryAdded] = useState(false);
-  const [username, setUsername] = useState("");
   const [openDrawer, setOpenDrawer] = useState("");
 
   setInterval(() => {
@@ -26,7 +25,6 @@ export const InfoProvider = ({ children }) => {
         isCategoryAdded,
         setIsCategoryAdded,
         time,
-        openDrawer,
         openDrawer,
         setOpenDrawer,
       }}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // import "react-dropzone-uploader/dist/styles.css";
 import "./FileDrop.css";
-import { FILE_UPLOAD, MULTIPLE_FILE_UPLOAD } from "../../Graphql/Mutations";
+import { FILE_UPLOAD } from "../../Graphql/Mutations";
 import { useMutation } from "@apollo/client";
 
 export default function FileDrop(props) {
@@ -40,27 +40,23 @@ export default function FileDrop(props) {
   //   });
   // }
   const [response, setResponse] = useState("");
-  const [responseMultiple, setResponseMultiple] = useState("");
 
-  const [fileUpload, { data }] = useMutation(
-    FILE_UPLOAD,
-    {
-      onError: (err) => {
-        console.log(err);
-        setResponse(err.message);
-      },
-      onCompleted: (data) => {
-        console.log(data);
-        if (data.fileUpload?.success) {
-          alert(data.fileUpload?.message);
-          setResponse(data.fileUpload?.message);
-        }
-      },
+  const [fileUpload, { data }] = useMutation(FILE_UPLOAD, {
+    onError: (err) => {
+      console.log(err);
+      setResponse(err.message);
     },
-  );
+    onCompleted: (data) => {
+      console.log(data);
+      if (data.fileUpload?.success) {
+        alert(data.fileUpload?.message);
+        setResponse(data.fileUpload?.message);
+      }
+    },
+  });
 
   console.log(data);
-  
+
   const uploadFile = (e) => {
     if (!e.target.files) {
       return;
@@ -73,8 +69,6 @@ export default function FileDrop(props) {
       variables: data,
     });
   };
-
-  
 
   return (
     <>

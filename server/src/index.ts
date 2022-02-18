@@ -18,6 +18,10 @@ app.use(
   }),
 );
 
+app.get("/", (req, res) => {
+  res.send("pagina de servidor");
+});
+
 app.listen(3001, () => {
   console.log("SERVER RUNNING ON PORT 3001");
 });

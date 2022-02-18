@@ -1,4 +1,4 @@
-<h1>Projeto Lojas de Games</h1>
+<h1>Projeto Jogos Indie</h1>
 
 Projeto pessoal realizado a partir do site www.jogosindie.com.br onde divulgo jogos de desenvolvedores independentes. Decidi refazer o meu site para criação de uma plataforma própria utilizando no Frontend a tecnologia ReactJs e no backend NodeJS. Desenvolvi um sistema eu posso criar e atualizar pos de jogos.
 
@@ -26,10 +26,3 @@ Instalar dependências:
     Nome: Bruno Gomes Esteves
     Email: n3586@hotmail.com
     Linkedin: https://www.linkedin.com/in/brunogesteves/
-
-
-
-
-
-
-

@@ -1,7 +1,9 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
 
-const BASE_URL = "http://localhost:3001/graphql";
+import { base_url } from "../config";
+
+const BASE_URL = `${base_url}/graphql`;
 
 const link = createUploadLink({
   uri: BASE_URL,

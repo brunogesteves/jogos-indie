@@ -19,7 +19,6 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-datetime/css/react-datetime.css";
 
 export default function App() {
-  
   return (
     <BrowserRouter>
       <Switch>

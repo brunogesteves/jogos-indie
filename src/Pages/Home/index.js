@@ -13,16 +13,15 @@ export default function Home() {
   return (
     <Container>
       <div className="home-body">
-
-      <div className="topContent">
-        <Slide />
-        <Middle />
-        <GamePlays />
-      </div>
-      <div className="MidContent">
-        <Blocks />
-        <SideBar />
-      </div>
+        <div className="topContent">
+          <Slide />
+          <Middle />
+          <GamePlays />
+        </div>
+        <div className="MidContent">
+          <Blocks />
+          <SideBar />
+        </div>
       </div>
     </Container>
   );

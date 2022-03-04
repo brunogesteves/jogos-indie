@@ -1,0 +1,84 @@
+.adminBody {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sidebar {
+  background-color: red;
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  width: 400px;
+  padding-left: 50px;
+  padding-top: 21px;
+  height: 100vh;
+}
+
+.adminContent {
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  height: 642px;
+}
+
+@media (max-width: 767px) {
+  .adminBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .sidebar {
+    background-color: red;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: calc(100vh - 452px);
+  }
+
+  .adminContent {
+    padding-top: 0px;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .adminBody {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100vw;
+    padding-left: 50px;
+    padding-top: 21px;
+    height: 186px;
+  }
+
+  .adminContent {
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    height: 642px;
+  }
+}

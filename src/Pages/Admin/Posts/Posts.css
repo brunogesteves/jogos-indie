@@ -1,0 +1,50 @@
+.posts {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.posts-name {
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  width: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+
+.posts div {
+  margin: 0 10px;
+}
+
+.posts div input {
+  margin: 0 18px;
+}
+
+@media (max-width: 768px) {
+  .posts {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .posts-item {
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+  }
+  .posts-input span,
+  .posts-input {
+    margin-right: 20px;
+  }
+}

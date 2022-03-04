@@ -1,0 +1,28 @@
+.category-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.category p {
+  margin-bottom: 15px;
+}
+
+.category button,
+.category input {
+  margin: 20px;
+}
+
+.category input[type="text"] {
+  padding: 5px;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 200px;
+  text-transform: capitalize;
+}

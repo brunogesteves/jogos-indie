@@ -4,6 +4,8 @@ import { createUploadLink } from "apollo-upload-client";
 const link = createUploadLink({
   // uri: "http://localhost:4000/graphql",
   uri: process.env.API_URL,
+
+  // uri: "https://ji-server.onrender.com/graphql",
 });
 
 export const client = new ApolloClient({

@@ -19,7 +19,6 @@
     "bootstrap": "^5.0.1",
     "caniuse-lite": "^1.0.30001464",
     "dotenv-safe": "^8.2.0",
-    "html-element-to-react": "^0.4.4",
     "html-react-parser": "^1.2.6",
     "material-ui-dropzone": "^3.5.0",
     "rc-drawer": "^4.3.1",

@@ -29,8 +29,8 @@ var import_http = __toESM(require("http"));
 var import_body_parser = require("body-parser");
 var import_express = __toESM(require("express"));
 var import_server = require("@apollo/server");
+var import_express4 = require("@apollo/server/express4");
 var import_type_graphql3 = require("type-graphql");
-var import_express_graphql = require("express-graphql");
 var import_cors = __toESM(require("cors"));
 
 // server/Resvolvers/categories-resolvers.ts
@@ -117,21 +117,17 @@ var main = /* @__PURE__ */ __name(async () => {
     csrfPrevention: true
   });
   await server.start();
-  app.use("/graphql", (0, import_express_graphql.graphqlHTTP)({
-    schema,
-    graphiql: true
-  }));
   app.use("/graphql", (0, import_cors.default)({
     origin: [
       "https://ji-server.onrender.com:4000",
       "https://ji-server.onrender.com:4000/graphql"
     ]
-  }), (0, import_body_parser.json)());
+  }), (0, import_body_parser.json)(), (0, import_express4.expressMiddleware)(server));
   await new Promise((resolve) => {
     httpServer.listen({
       port: 4e3
     }, resolve);
   });
-  console.log(`\u{1F680} Server ready at port 4000`);
+  console.log(`\u{1F680} Server ready at port 40000`);
 }, "main");
 main();

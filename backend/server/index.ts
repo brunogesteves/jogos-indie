@@ -38,7 +38,10 @@ const main = async () => {
   app.use(
     "/graphql",
     cors<cors.CorsRequest>({
-      origin: ["http://localhost:4000", "http://localhost:4000/graphql"],
+      origin: [
+        "https://ji-server.onrender.com:4000",
+        "https://ji-server.onrender.com:4000/graphql",
+      ],
     }),
 
     json(),

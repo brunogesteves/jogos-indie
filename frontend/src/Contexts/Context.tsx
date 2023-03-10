@@ -27,7 +27,7 @@ export const InfoContext = createContext<InfoProps>({
     //
   },
   time: "",
-  openDrawer: "a",
+  openDrawer: "",
   setOpenDrawer: () => {
     //
   },

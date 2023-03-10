@@ -3,7 +3,7 @@ import http from "http";
 import { json } from "body-parser";
 import express from "express";
 import { ApolloServer } from "@apollo/server";
-import { expressMiddleware } from "@apollo/server/express4";
+// import { expressMiddleware } from "@apollo/server/express4";
 
 import { buildSchema } from "type-graphql";
 import { graphqlHTTP } from "express-graphql";
@@ -44,8 +44,8 @@ const main = async () => {
       ],
     }),
 
-    json(),
-    expressMiddleware(server)
+    json()
+    // expressMiddleware(server)
   );
 
   await new Promise<void>((resolve) => {

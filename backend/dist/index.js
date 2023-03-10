@@ -24,10 +24,14 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 
 // server/index.ts
-var import_express = __toESM(require("express"));
-var import_apollo_server = require("apollo-server");
 var import_reflect_metadata = require("reflect-metadata");
+var import_http = __toESM(require("http"));
+var import_body_parser = require("body-parser");
+var import_express = __toESM(require("express"));
+var import_server = require("@apollo/server");
 var import_type_graphql3 = require("type-graphql");
+var import_express_graphql = require("express-graphql");
+var import_cors = __toESM(require("cors"));
 
 // server/Resvolvers/categories-resolvers.ts
 var import_type_graphql2 = require("type-graphql");
@@ -99,21 +103,35 @@ CategoriesResolver = __decorate2([
 ], CategoriesResolver);
 
 // server/index.ts
-var router = (0, import_express.Router)();
-var app = (0, import_express.default)();
-async function server() {
+var main = /* @__PURE__ */ __name(async () => {
+  const app = (0, import_express.default)();
+  const httpServer = import_http.default.createServer(app);
   const schema = await (0, import_type_graphql3.buildSchema)({
     resolvers: [
       CategoriesResolver
     ]
   });
-  const server2 = new import_apollo_server.ApolloServer({
+  const server = new import_server.ApolloServer({
     schema,
     cache: "bounded",
-    persistedQueries: false
+    csrfPrevention: true
   });
-  const { url } = await server2.listen();
-}
-__name(server, "server");
-server();
-app.listen(3e3, () => console.log(`Server running on port "4000"...`));
+  await server.start();
+  app.use("/graphql", (0, import_express_graphql.graphqlHTTP)({
+    schema,
+    graphiql: true
+  }));
+  app.use("/graphql", (0, import_cors.default)({
+    origin: [
+      "https://ji-server.onrender.com:4000",
+      "https://ji-server.onrender.com:4000/graphql"
+    ]
+  }), (0, import_body_parser.json)());
+  await new Promise((resolve) => {
+    httpServer.listen({
+      port: 4e3
+    }, resolve);
+  });
+  console.log(`\u{1F680} Server ready at port 4000`);
+}, "main");
+main();

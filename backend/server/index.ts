@@ -51,7 +51,7 @@ const main = async () => {
   await new Promise<void>((resolve) => {
     httpServer.listen({ port: 4000 }, resolve);
   });
-  console.log(`🚀 Server ready at port 4000`);
+  console.log(`🚀 Server ready at port 40000`);
 };
 
 main();

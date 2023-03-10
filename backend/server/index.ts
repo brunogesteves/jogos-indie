@@ -62,13 +62,13 @@ const main = async () => {
     resolvers: [CategoriesResolver],
   });
 
-  const apolloServer = new ApolloServer({ schema });
+  const apolloServer = new ApolloServer({ schema, cache: "bounded" });
   const app = express();
   await apolloServer.start();
 
   apolloServer.applyMiddleware({ app });
   app.listen(4000, () => {
-    console.log(`🚀 Server ready at port 40000`);
+    console.log(`🚀 Server ready at port 4000`);
   });
 };
 main();

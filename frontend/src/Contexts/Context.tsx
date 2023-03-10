@@ -3,7 +3,7 @@ var moment = require("moment");
 
 export type InfoProps = {
   searchWord: string;
-  setSearchWord: (c: string) => void
+  setSearchWord: (c: string) => void;
   idPost: number;
   setIdPost: (c: number) => void;
   isCategoryAdded: boolean;
@@ -15,7 +15,7 @@ export type InfoProps = {
 
 export const InfoContext = createContext<InfoProps>({
   searchWord: "",
-  setSearchWord:  () => {
+  setSearchWord: () => {
     //
   },
   idPost: 0,
@@ -27,13 +27,13 @@ export const InfoContext = createContext<InfoProps>({
     //
   },
   time: "",
-  openDrawer: "",
+  openDrawer: "a",
   setOpenDrawer: () => {
     //
   },
 });
 
-const InfoProvider: React. FC = ({ children }) => {
+const InfoProvider: React.FC = ({ children }) => {
   const [time, setTime] = useState<string>("");
   const [searchWord, setSearchWord] = useState<string>("");
   const [idPost, setIdPost] = useState<number>(0);
@@ -64,7 +64,7 @@ const InfoProvider: React. FC = ({ children }) => {
   );
 };
 
-export default InfoProvider
+export default InfoProvider;
 
 export function useInfo() {
   const useInfo = useContext(InfoContext);

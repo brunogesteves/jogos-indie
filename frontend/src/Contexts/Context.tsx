@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
-var moment = require("moment");
+import moment from "moment";
 
-export type InfoProps = {
+type InfoProps = {
   searchWord: string;
   setSearchWord: (c: string) => void;
   idPost: number;
@@ -9,64 +9,49 @@ export type InfoProps = {
   isCategoryAdded: boolean;
   setIsCategoryAdded: (c: boolean) => void;
   time: string;
-  openDrawer: string;
-  setOpenDrawer: (c: string) => void;
+  openDrawer: boolean;
+  setOpenDrawer: (c: boolean) => void;
 };
 
 export const InfoContext = createContext<InfoProps>({
   searchWord: "",
-  setSearchWord: () => {
-    //
-  },
+  setSearchWord: () => {},
   idPost: 0,
-  setIdPost: () => {
-    //
-  },
+  setIdPost: () => {},
   isCategoryAdded: false,
-  setIsCategoryAdded: () => {
-    //
-  },
+  setIsCategoryAdded: () => {},
   time: "",
-  openDrawer: "",
-  setOpenDrawer: () => {
-    //
-  },
+  openDrawer: false,
+  setOpenDrawer: () => {},
 });
 
-const InfoProvider: React.FC = ({ children }) => {
+export const InfoProvider: React.FC = ({ children }) => {
   const [time, setTime] = useState<string>("");
   const [searchWord, setSearchWord] = useState<string>("");
   const [idPost, setIdPost] = useState<number>(0);
   const [isCategoryAdded, setIsCategoryAdded] = useState<boolean>(false);
-  const [openDrawer, setOpenDrawer] = useState<string>("");
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
   setInterval(() => {
     const timeNow = moment().format("DD/MM/YYYY HH:mm:ss");
     setTime(timeNow);
   }, 1000);
 
-  return (
-    <InfoContext.Provider
-      value={{
-        searchWord,
-        setSearchWord,
-        idPost,
-        setIdPost,
-        isCategoryAdded,
-        setIsCategoryAdded,
-        time,
-        openDrawer,
-        setOpenDrawer,
-      }}
-    >
-      {children}
-    </InfoContext.Provider>
-  );
+  const value = {
+    searchWord,
+    setSearchWord,
+    idPost,
+    setIdPost,
+    isCategoryAdded,
+    setIsCategoryAdded,
+    time,
+    openDrawer,
+    setOpenDrawer,
+  };
+
+  return <InfoContext.Provider value={value}>{children}</InfoContext.Provider>;
 };
 
-export default InfoProvider;
-
-export function useInfo() {
-  const useInfo = useContext(InfoContext);
-  return useInfo;
+export default function useInfo() {
+  return useContext(InfoContext);
 }

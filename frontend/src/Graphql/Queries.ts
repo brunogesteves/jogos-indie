@@ -10,30 +10,30 @@ export const GET_ALL_CATEGORIES = gql`
 
 export const GET_ALL_POSTS_SLIDE = gql`
   query {
-    getAllPostsHome(field: "slide", answer: true) {
+    getAllSlides {
       name
-      thumb
       slug
+      thumb
     }
   }
 `;
 
 export const GET_ALL_POSTS_MIDDLE = gql`
   query {
-    getAllPostsHome(field: "middle", answer: true) {
+    getAllMiddle {
       name
-      thumb
       slug
+      thumb
     }
   }
 `;
 
 export const GET_ALL_POSTS_GAMEPLAY = gql`
   query {
-    getAllPostsHome(field: "gameplay", answer: true) {
+    getAllGameplay {
       name
-      thumb
       slug
+      thumb
     }
   }
 `;

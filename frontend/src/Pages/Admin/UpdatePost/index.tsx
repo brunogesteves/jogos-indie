@@ -45,7 +45,7 @@ export default function UpdatePost(props) {
 
   // useEffect(() => {
   //   let image = file.name;
-  //   const url = `${process.env.API_URL}/upload/${image}`;
+  //   const url = `${process.env.PUBLIC_URL}/upload/${image}`;
   //   const data = new FormData();
   //   data.append("file", file);
   //   const options = {
@@ -202,9 +202,9 @@ export default function UpdatePost(props) {
                 katex: "window.katex",
                 imageWidth: "(auto)",
                 // imageHeight: "(auto)",
-                // imageUploadUrl: `${process.env.API_URL}/ckimage`,
+                // imageUploadUrl: `${process.env.PUBLIC_URL}/ckimage`,
                 imageAccept: "*",
-                // imageGalleryUrl: `${process.env.API_URL}/images`,
+                // imageGalleryUrl: `${process.env.PUBLIC_URL}/images`,
                 imageFileInput: true,
                 // videoFileInput: false,
                 tabDisable: false,

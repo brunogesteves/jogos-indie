@@ -14,7 +14,7 @@ export default function Ad2() {
 
   function submit(event) {
     event.preventDefault();
-    const url = `${process.env.API_URL}/upload/ad2.jpg`;
+    const url = `${process.env.PUBLIC_URL}/upload/ad2.jpg`;
     const data = new FormData();
     data.append("file", file);
     const options = {

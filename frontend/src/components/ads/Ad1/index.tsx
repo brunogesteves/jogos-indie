@@ -3,6 +3,8 @@ import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 
 import "./Ad1.css";
+// require("dotenv").config();
+// import { config} from "dotenv"
 
 export default function Ad1() {
   const [show, setShow] = useState(false);
@@ -14,7 +16,7 @@ export default function Ad1() {
 
   function submit(event) {
     event.preventDefault();
-    const url = `${process.env.API_URL}}/upload/ad1.jpg`;
+    const url = `${process.env.PUBLIC_URL}}/upload/ad1.jpg`;
     const data = new FormData();
     data.append("file", file);
     const options = {

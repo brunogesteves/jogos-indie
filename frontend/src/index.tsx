@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./styles.css";
 import { ApolloProvider } from "@apollo/client";
-import InfoProvider  from "./Contexts/Context";
+import { InfoProvider } from "./Contexts/Context";
 import { client } from "./Graphql/GraphqlSetup";
 
 import App from "./App";
@@ -14,5 +15,5 @@ ReactDOM.render(
       </InfoProvider>
     </ApolloProvider>
   </React.StrictMode>,
-  document.getElementById("root"),
+  document.getElementById("root")
 );

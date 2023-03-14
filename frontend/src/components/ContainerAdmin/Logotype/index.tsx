@@ -14,7 +14,7 @@ export default function Logotype() {
 
   function submit(event) {
     event.preventDefault();
-    const url = `${process.env.API_URL}/upload/1.jpg`;
+    const url = `${process.env.PUBLIC_URL}/upload/1.jpg`;
     const data = new FormData();
     data.append("file", file);
     const options = {

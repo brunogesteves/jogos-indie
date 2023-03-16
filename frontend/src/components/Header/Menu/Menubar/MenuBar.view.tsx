@@ -6,7 +6,7 @@ import { useLogic } from "./Menubar.logic";
 export default function MenuBar() {
   const { data, methods } = useLogic();
   return (
-    <div className="flex bg-red-500  py-4 justify-between items-center px-6 max-sm:hidden">
+    <div className="flex bg-red-500  py-4 justify-between items-center px-6 max-lg:hidden">
       <div className=" text-white ">
         <Link to="/" className="uppercase mr-2">
           HOME

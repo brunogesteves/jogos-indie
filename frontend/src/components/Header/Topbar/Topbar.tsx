@@ -13,7 +13,7 @@ export default function Topbar() {
       <FiMenu
         onClick={() => setOpenDrawer(!openDrawer)}
         color="#fff"
-        className="cursor-pointer hidden max-sm:block max-sm:absolute max-sm:left-3 max-sm:top-3"
+        className="cursor-pointer hidden max-lg:block max-lg:absolute max-lg:left-3 max-lg:top-3"
       />
       <Logotype />
       <AdHeader />

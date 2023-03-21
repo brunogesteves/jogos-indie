@@ -40,10 +40,10 @@ export const GET_ALL_POSTS_GAMEPLAY = gql`
 
 export const GET_ALL_POSTS_MIDSECTION = gql`
   query {
-    getAllPostsHome(field: "midSection", answer: true) {
+    getMidSection {
       name
-      thumb
       slug
+      thumb
     }
   }
 `;

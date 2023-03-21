@@ -4,10 +4,11 @@ import express from "express";
 
 import { buildSchema } from "type-graphql";
 
-import { CategoriesResolver } from "./Resvolvers/Queries/categories-resolvers";
-import { SlidesResolver } from "./Resvolvers/Queries/slides-resolvers";
-import { GameplayResolver } from "./Resvolvers/Queries/gameplay-resolvers";
-import { MiddleResolver } from "./Resvolvers/Queries/middle-resolvers";
+import { CategoriesResolver } from "./Revolvers/Queries/categories-resolvers";
+import { SlidesResolver } from "./Revolvers/Queries/slides-resolvers";
+import { GameplayResolver } from "./Revolvers/Queries/gameplay-resolvers";
+import { MiddleResolver } from "./Revolvers/Queries/middle-resolvers";
+import { MidSectionResolver } from "./Revolvers/Queries/midSection-resolvers";
 
 const main = async () => {
   const schema = await buildSchema({
@@ -16,6 +17,7 @@ const main = async () => {
       SlidesResolver,
       MiddleResolver,
       GameplayResolver,
+      MidSectionResolver,
     ],
   });
 

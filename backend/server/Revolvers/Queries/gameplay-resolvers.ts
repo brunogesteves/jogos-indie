@@ -10,7 +10,6 @@ export class GameplayResolver {
   @Query(() => [GameplayModel])
   async getAllGameplay() {
     try {
-      console.log(1111);
       let allGameplay = await prisma.post.findMany({
         where: {
           gameplay: true,

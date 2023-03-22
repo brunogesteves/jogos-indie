@@ -48,6 +48,12 @@ export const GET_ALL_POSTS_MIDSECTION = gql`
   }
 `;
 
+export const SIGN_IN = gql`
+  query Query($input: SignInInput!) {
+    signIn(input: $input)
+  }
+`;
+
 export const GET_INFO_POST = gql`
   query getInfoPost($slug: String!) {
     getInfoPost(slug: $slug) {

@@ -32,9 +32,6 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
-  "engines": {
-    "node": "18"
-  },
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --exit-child server/index.ts",
     "build": "tsup server",

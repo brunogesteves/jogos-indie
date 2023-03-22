@@ -3,7 +3,7 @@ import "./Admin.css";
 
 import ContainerAdmin from "../../components/ContainerAdmin";
 import SidebarAdmin from "../../components/SidebarAdmin";
-import Login from "./Login";
+import Login from "./Login/Login.view";
 
 const Admin: React.FC = (props) => {
   return (

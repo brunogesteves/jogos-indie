@@ -28,7 +28,7 @@ export default function MenuBar() {
         <input
           type="text"
           placeholder="Procurar"
-          className="h-8 rounded-lg px-2"
+          className="h-8 rounded-lg px-2 "
           onChange={(e) => methods.setWord(e.target.value)}
         />
 

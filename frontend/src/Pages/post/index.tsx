@@ -5,7 +5,6 @@ import "social-share-button";
 import { AiFillFacebook, AiOutlineTwitter } from "react-icons/ai";
 
 import Container from "../../components/Container";
-import SidebarFront from "../../components/SidebarFront";
 import ErrorPage from "../ErrorPage";
 
 // import { useInfo } from "../../Contexts/Context";
@@ -40,11 +39,7 @@ const Frontpage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  useEffect(() => {
-    
-  }, []);
-  
-
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -76,7 +71,6 @@ const Frontpage: React.FC = () => {
               >
                 <AiOutlineTwitter size="2.8em" />
               </Link>
-              <SidebarFront />
             </div>
           </div>
         </Container>

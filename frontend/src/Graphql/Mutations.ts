@@ -120,7 +120,6 @@ export const FILE_UPLOAD = gql`
   mutation fileUpload($file: Uploads!) {
     fileUpload(file: $file) {
       successfull
-
     }
   }
 `;

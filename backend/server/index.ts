@@ -9,6 +9,7 @@ import { SlidesResolver } from "./Revolvers/Queries/slides-resolvers";
 import { GameplayResolver } from "./Revolvers/Queries/gameplay-resolvers";
 import { MiddleResolver } from "./Revolvers/Queries/middle-resolvers";
 import { MidSectionResolver } from "./Revolvers/Queries/midSection-resolvers";
+import { SignInResolver } from "./Revolvers/Queries/signIn-resolvers";
 
 const main = async () => {
   const schema = await buildSchema({
@@ -18,6 +19,7 @@ const main = async () => {
       MiddleResolver,
       GameplayResolver,
       MidSectionResolver,
+      SignInResolver,
     ],
   });
 

@@ -2,33 +2,33 @@ import { useState, useEffect } from "react";
 
 import { useQuery } from "@apollo/client";
 import { SIGN_IN } from "../../../Graphql/Queries";
+import useInfo from "../../../Contexts/Context";
 
 export const useLogic = () => {
-  const [isLogged, setisLogged] = useState(false);
+  const { setUsername, setUserEmail, setIsLogged, isLogged } = useInfo();
 
   const [signInfo, setSignInfo] = useState({
-    email: "admin@mail.com",
-    password: "123",
+    email: "",
+    password: "",
   });
 
   const { data, refetch } = useQuery(SIGN_IN);
 
   useEffect(() => {
     if (data) {
-      localStorage.setItem("token", data.authentication.token);
-      localStorage.setItem("refresh", data.authentication.refresh);
-      localStorage.setItem("username", data.authentication.username);
-      setisLogged(data);
+      setUserEmail(data.signIn.email);
+      setUsername(data.signIn.name);
+      setIsLogged(true);
     }
   }, [data]);
 
   function signIn() {
-    console.log("refetch");
-
     refetch({
       input: {
-        email: signInfo.email,
-        password: signInfo.password.toLowerCase(),
+        // email: signInfo.email,
+        // password: signInfo.password.toLowerCase(),
+        email: "admin@mail.com",
+        password: "123",
       },
     });
   }

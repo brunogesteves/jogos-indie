@@ -11,6 +11,12 @@ type InfoProps = {
   time: string;
   openDrawer: boolean;
   setOpenDrawer: (c: boolean) => void;
+  isLogged: boolean;
+  setIsLogged: (c: boolean) => void;
+  userEmail: string;
+  setUserEmail: (c: string) => void;
+  username: string;
+  setUsername: (c: string) => void;
 };
 
 export const InfoContext = createContext<InfoProps>({
@@ -23,6 +29,12 @@ export const InfoContext = createContext<InfoProps>({
   time: "",
   openDrawer: false,
   setOpenDrawer: () => {},
+  isLogged: false,
+  setIsLogged: () => {},
+  userEmail: "",
+  setUserEmail: () => {},
+  username: "",
+  setUsername: () => {},
 });
 
 export const InfoProvider: React.FC = ({ children }) => {
@@ -31,6 +43,9 @@ export const InfoProvider: React.FC = ({ children }) => {
   const [idPost, setIdPost] = useState<number>(0);
   const [isCategoryAdded, setIsCategoryAdded] = useState<boolean>(false);
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
 
   setInterval(() => {
     const timeNow = moment().format("DD/MM/YYYY HH:mm:ss");
@@ -46,7 +61,13 @@ export const InfoProvider: React.FC = ({ children }) => {
     setIsCategoryAdded,
     time,
     openDrawer,
+    isLogged,
+    setIsLogged,
     setOpenDrawer,
+    userEmail,
+    setUserEmail,
+    username,
+    setUsername,
   };
 
   return <InfoContext.Provider value={value}>{children}</InfoContext.Provider>;

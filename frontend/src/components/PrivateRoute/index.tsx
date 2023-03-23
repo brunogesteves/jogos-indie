@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
+import useInfo from "../../Contexts/Context";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const [isValid, setIsValid] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { isLogged } = useInfo();
 
   useEffect(() => {
-    if (localStorage.token) {
+    if (isLogged) {
       setIsValid(true);
       setLoading(false);
     } else {
@@ -21,7 +23,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
       <Route
         {...rest}
-        render={(props) => (isValid ? <Component {...props} /> : <Redirect to="/admin" />)}
+        render={(props) =>
+          isValid ? <Component {...props} /> : <Redirect to="/admin/login" />
+        }
       />
     );
   }

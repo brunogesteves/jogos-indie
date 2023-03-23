@@ -49,8 +49,11 @@ export const GET_ALL_POSTS_MIDSECTION = gql`
 `;
 
 export const SIGN_IN = gql`
-  query Query($input: SignInInput!) {
-    signIn(input: $input)
+  query SignIn($input: SignInInput!) {
+    signIn(input: $input) {
+      email
+      name
+    }
   }
 `;
 
@@ -66,13 +69,14 @@ export const GET_INFO_POST = gql`
 
 export const GET_LIST_POSTS = gql`
   query {
-    getListPosts {
+    getAllPosts {
       id
-      name
-      slide
       middle
-      gameplay
+      name
       public
+      slide
+      slug
+      schedule
     }
   }
 `;

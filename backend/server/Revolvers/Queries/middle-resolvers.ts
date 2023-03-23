@@ -10,7 +10,6 @@ export class MiddleResolver {
   @Query(() => [MiddleModel])
   async getAllMiddle() {
     try {
-      console.log(1111);
       let allMiddle = await prisma.post.findMany({
         where: {
           middle: true,

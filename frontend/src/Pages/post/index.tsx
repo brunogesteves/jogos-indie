@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Frontpage.css";
-import "social-share-button";
+// import "social-share-button";
 import { AiFillFacebook, AiOutlineTwitter } from "react-icons/ai";
 
 import Container from "../../components/Container";
-import ErrorPage from "../ErrorPage";
+import ErrorPage from "../ErrorPage/ErrorPage.view";
 
 // import { useInfo } from "../../Contexts/Context";
 
@@ -13,7 +13,7 @@ import { useQuery } from "@apollo/client";
 import { GET_INFO_POST } from "../../Graphql/Queries";
 
 interface RouteParams {
-  frontpage: string;
+  post: string;
 }
 
 interface InfoProps {
@@ -22,9 +22,9 @@ interface InfoProps {
   content: string;
 }
 
-const Frontpage: React.FC = () => {
+export default function Post() {
   const nameParams = useParams<RouteParams>();
-  let namePage = nameParams.frontpage;
+  let namePage = nameParams.post;
 
   const [infoPost, setInfoPost] = useState<InfoProps>();
   // const { setIdPost } = useInfo();
@@ -53,7 +53,7 @@ const Frontpage: React.FC = () => {
             <div className="front-sidebar">
               Compartilhe nas redes Sociais!!
               <br />
-              <Link
+              {/* <Link
                 data-module="SocialShareButton"
                 data-module-text={`Divulgue ${namePage}`}
                 data-module-title={namePage}
@@ -70,7 +70,7 @@ const Frontpage: React.FC = () => {
                 data-module-net="twitter"
               >
                 <AiOutlineTwitter size="2.8em" />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </Container>
@@ -79,6 +79,4 @@ const Frontpage: React.FC = () => {
       )}
     </>
   );
-};
-
-export default Frontpage;
+}

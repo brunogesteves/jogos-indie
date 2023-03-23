@@ -2,11 +2,13 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
 import { PrismaClient } from "@prisma/client";
 import { SignInInput } from "../../dtos/inputs/SignIn-inputs";
+import { SigInModel } from "../../dtos/models/signIn-models";
+
 const prisma = new PrismaClient();
 
 @Resolver()
 export class SignInResolver {
-  @Query(() => Boolean)
+  @Query(() => SigInModel)
   async signIn(@Arg("input") data: SignInInput) {
     const { email, password } = data;
 
@@ -16,9 +18,8 @@ export class SignInResolver {
           email: email,
         },
       });
-      console.log(signInfo?.password == password);
 
-      return false;
+      if (signInfo?.password == password) return signInfo;
     } catch (error) {}
   }
 }

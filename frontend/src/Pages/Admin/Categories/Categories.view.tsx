@@ -1,5 +1,5 @@
 import React from "react";
-import Admin from "../../../components/Admin/Admin.view";
+import Admin from "../../../components/Admin/AdminLayout.view";
 
 import { AiTwotoneDelete } from "react-icons/ai";
 import { useLogic } from "./Categories.logic";

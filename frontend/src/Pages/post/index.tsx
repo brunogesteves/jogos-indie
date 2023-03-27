@@ -4,7 +4,7 @@ import "./Frontpage.css";
 // import "social-share-button";
 import { AiFillFacebook, AiOutlineTwitter } from "react-icons/ai";
 
-import Container from "../../components/Container";
+import Container from "../../components/Container/Container";
 import ErrorPage from "../ErrorPage/ErrorPage.view";
 
 // import { useInfo } from "../../Contexts/Context";

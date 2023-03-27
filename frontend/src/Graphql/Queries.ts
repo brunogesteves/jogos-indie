@@ -98,10 +98,9 @@ export const GET_ADMIN_POST_INFO = gql`
 `;
 
 export const SEARCH_POSTS = gql`
-  query searchPosts($search: String!) {
-    searchPosts(search: $search) {
+  query SearchQuery($input: SearchInput!) {
+    searchQuery(input: $input) {
       name
-      category
       slug
       thumb
     }
@@ -127,9 +126,8 @@ export const GET_POSTS_FROM_CATEGORY = gql`
 `;
 
 export const GET_ALL_IMAGES = gql`
-  query {
+  query GetAllImages {
     getAllImages {
-      id
       name
     }
   }

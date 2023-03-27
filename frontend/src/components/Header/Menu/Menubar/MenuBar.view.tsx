@@ -28,12 +28,12 @@ export default function MenuBar() {
         <input
           type="text"
           placeholder="Procurar"
-          className="h-8 rounded-lg px-2 "
-          onChange={(e) => methods.setWord(e.target.value)}
+          className="h-8 rounded-lg px-2 placeholder:outline-none focus:outline-none "
+          onChange={(e) => methods.setSearchWord(e.target.value)}
         />
 
         <AiOutlineSearch
-          className="ml-2"
+          className="ml-2 cursor-pointer"
           onClick={() => methods.toPageSearch()}
         />
       </div>

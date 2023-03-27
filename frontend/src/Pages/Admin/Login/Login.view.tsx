@@ -7,7 +7,7 @@ export default function Login(props) {
 
   return (
     <>
-      {data.isLogged ? <Redirect to="/admin/posts" /> : null}
+      {data.isLogged ? <Redirect to="/admin" /> : null}
       <div className="bg-red-500 flex justify-center flex-col items-center h-screen">
         <div>
           <img src={"/1.jpg"} alt="logotype" className="w-80" />

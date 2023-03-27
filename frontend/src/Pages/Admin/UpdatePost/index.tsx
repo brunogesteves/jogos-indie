@@ -7,7 +7,7 @@ import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
 import Modal from "@mui/material/Modal";
 
 import Admin from "../Admin";
-import ImagesWIndow from "../../../components/ImagesWIndow";
+import ImagesWIndow from "../../../components/Admin/ImagesAdmin/ImagesWIndow";
 import NewCategory from "../../../components/NewCategory";
 
 import "./UpdatePost.css";

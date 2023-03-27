@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
-// import "./Container.css";
+import React from "react";
 
 import TopBar from "../Header/Topbar/Topbar";
 import Menu from "../Header/Menu";
 import Footer from "../Footer/Footer";
-
-import { InfoContext } from "../../Contexts/Context";
+import LoggedBar from "../../components/Header/LoggedBar/LoggedBar.view";
+import useInfo from "../../Contexts/Context";
 
 export default function Container(props) {
+  const { isLogged } = useInfo();
   return (
     <>
-      {/* <LoggedBar /> */}
-
+      {isLogged && <LoggedBar />}
       <TopBar />
       <Menu />
       <div className="h-auto w-auto">{props.children}</div>

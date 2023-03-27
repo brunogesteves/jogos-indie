@@ -11,6 +11,8 @@ import { MiddleResolver } from "./Revolvers/Queries/middle-resolvers";
 import { MidSectionResolver } from "./Revolvers/Queries/midSection-resolvers";
 import { SignInResolver } from "./Revolvers/Queries/signIn-resolvers";
 import { PostsResolver } from "./Revolvers/Queries/posts-resolvers";
+import { searchResolver } from "./Revolvers/Queries/search-resolvers";
+import { ImagesResolver } from "./Revolvers/Queries/images-resolvers";
 
 const main = async () => {
   const schema = await buildSchema({
@@ -22,6 +24,8 @@ const main = async () => {
       MidSectionResolver,
       SignInResolver,
       PostsResolver,
+      searchResolver,
+      ImagesResolver,
     ],
   });
 

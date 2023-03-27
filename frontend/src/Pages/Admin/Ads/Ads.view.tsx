@@ -1,5 +1,5 @@
 import React from "react";
-import Admin from "../../../components/Admin/Admin.view";
+import Admin from "../../../components/Admin/AdminLayout.view";
 import { useLogic } from "./Ads.logic";
 
 export default function Ads() {

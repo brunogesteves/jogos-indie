@@ -1,7 +1,7 @@
 import { Field, ObjectType } from "type-graphql";
 
 @ObjectType()
-export class SigInModel {
+export class SignInModel {
   // @Field()
   // id: number;
 

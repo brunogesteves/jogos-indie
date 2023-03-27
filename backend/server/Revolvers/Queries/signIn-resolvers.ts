@@ -1,14 +1,14 @@
 import { Arg, Mutation, Query, Resolver } from "type-graphql";
 
 import { PrismaClient } from "@prisma/client";
-import { SignInInput } from "../../dtos/inputs/SignIn-inputs";
-import { SigInModel } from "../../dtos/models/signIn-models";
+import { SignInInput } from "../../dtos/inputs/signIn-inputs";
+import { SignInModel } from "../../dtos/models/signIn-models";
 
 const prisma = new PrismaClient();
 
 @Resolver()
 export class SignInResolver {
-  @Query(() => SigInModel)
+  @Query(() => SignInModel)
   async signIn(@Arg("input") data: SignInInput) {
     const { email, password } = data;
 

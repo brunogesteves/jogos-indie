@@ -10,6 +10,7 @@
     "apollo-upload-client": "^17.0.0",
     "axios": "^0.21.1",
     "dotenv": "^16.0.3",
+    "formik": "^2.2.9",
     "material-ui-dropzone": "^3.5.0",
     "moment": "^2.29.4",
     "react": "^17.0.2",
@@ -29,7 +30,10 @@
     "social-share": "^0.1.0",
     "social-share-button": "^2.2.0",
     "suneditor-react": "^2.16.5",
-    "typescript": "*"
+    "tw-elements": "^1.0.0-beta1",
+    "typescript": "*",
+    "use-debounce": "^9.0.3",
+    "yup": "^1.0.2"
   },
   "scripts": {
     "dev": "react-scripts start",

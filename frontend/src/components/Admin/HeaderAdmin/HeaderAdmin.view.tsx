@@ -1,15 +1,16 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import Logotype from "../Logotype/Logotype.view";
 
 import useInfo from "../../../Contexts/Context";
+import { useHistory } from "react-router-dom";
 
 export default function HeaderAdmin(props) {
-  const { time, username, setIsLogged, isLogged } = useInfo();
+  let history = useHistory();
+
+  const { time, username, setIsLogged } = useInfo();
 
   return (
     <div>
-      {isLogged ? null : <Redirect to="/admin/login" />}
       <div className="flex bg-black justify-around items-center text-white h-40 text-lg">
         <div>
           <Logotype />
@@ -23,7 +24,10 @@ export default function HeaderAdmin(props) {
               value="Sair"
               size={20}
               className="cursor-pointer text-xl bg-white text-black w-20 text-center mt-3 rounded-md"
-              onClick={() => setIsLogged(false)}
+              onClick={() => {
+                setIsLogged(false);
+                history.push(`/login`);
+              }}
             />
           </div>
         </div>

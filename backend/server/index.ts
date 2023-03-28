@@ -13,6 +13,9 @@ import { SignInResolver } from "./Revolvers/Queries/signIn-resolvers";
 import { PostsResolver } from "./Revolvers/Queries/posts-resolvers";
 import { searchResolver } from "./Revolvers/Queries/search-resolvers";
 import { ImagesResolver } from "./Revolvers/Queries/images-resolvers";
+import { PostResolver } from "./Revolvers/Queries/post-resolvers";
+import { FrontPostResolver } from "./Revolvers/Queries/name_post-resolvers";
+import { RandomPostsResolver } from "./Revolvers/Queries/random-resolvers";
 
 const main = async () => {
   const schema = await buildSchema({
@@ -26,6 +29,9 @@ const main = async () => {
       PostsResolver,
       searchResolver,
       ImagesResolver,
+      PostResolver,
+      FrontPostResolver,
+      RandomPostsResolver,
     ],
   });
 

@@ -81,18 +81,49 @@ export const GET_LIST_POSTS = gql`
   }
 `;
 
-export const GET_ADMIN_POST_INFO = gql`
-  query getAdminInfoPost($id: ID!) {
-    getAdminInfoPost(id: $id) {
-      name
-      content
+export const GET_POST_TO_UPDATE = gql`
+  query PostQuery($input: PostInput!) {
+    postQuery(input: $input) {
       category
-      slide
-      middle
+      content
       gameplay
-      public
+      id
       midSection
+      name
+      public
+      schedule
+      scheduled
+      slide
+      slug
       thumb
+    }
+  }
+`;
+
+export const GET_POST_TO_SHOW_OFF = gql`
+  query FrontPostQuery($input: NamePostInput!) {
+    frontPostQuery(input: $input) {
+      category
+      content
+      gameplay
+      id
+      midSection
+      name
+      public
+      schedule
+      scheduled
+      slide
+      slug
+      thumb
+    }
+  }
+`;
+
+export const GET_RANDOM_POSTS = gql`
+  query GetRandomPosts {
+    getRandomPosts {
+      thumb
+      slug
     }
   }
 `;

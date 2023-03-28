@@ -15,7 +15,7 @@ export class PostsModel {
   slide: boolean;
 
   @Field()
-  middle: boolean;
+  midSection: boolean;
 
   @Field()
   gameplay: boolean;
@@ -25,4 +25,16 @@ export class PostsModel {
 
   @Field()
   schedule: string;
+
+  @Field()
+  scheduled: string;
+
+  @Field()
+  content: string;
+
+  @Field()
+  category: string;
+
+  @Field()
+  thumb: string;
 }

@@ -7,6 +7,7 @@ import useInfo from "../../../Contexts/Context";
 
 export default function LoggedBar() {
   const { idPost } = useInfo();
+  console.log(idPost);
 
   return (
     <>
@@ -18,14 +19,14 @@ export default function LoggedBar() {
           </Link>
         </div>
         <div>
-          {/* {idPost ? (
-              <Link
-                to={`/admin/updatepost/${idPost}`}
-                className="logged-top-admin-item"
-              >
-                Editar Post
-              </Link>
-            ) : null} */}
+          {idPost ? (
+            <Link
+              to={`/admin/updatepost/${idPost}`}
+              className="logged-top-admin-item"
+            >
+              Editar Post
+            </Link>
+          ) : null}
         </div>
       </div>
     </>

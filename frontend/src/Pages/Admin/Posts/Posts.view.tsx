@@ -1,105 +1,129 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Admin from "../../../components/Admin/AdminLayout.view";
+import React, { CSSProperties } from 'react';
+import { Link } from 'react-router-dom';
+import Admin from '../../../components/Admin/AdminLayout.view';
 
-import { useLogic } from "./Posts.logic";
+import { useLogic } from './Posts.logic';
+import ClipLoader from 'react-spinners/ClipLoader';
+
+interface allPosts {
+  id: number;
+  name: string;
+  schedule: string;
+  slide: boolean;
+  middle: boolean;
+  gameplay: boolean;
+  publicPost: boolean;
+}
 
 export default function Posts() {
   const { data, methods } = useLogic();
 
+  const override: CSSProperties = {
+    display: 'block',
+    margin: '0 auto',
+    borderColor: 'red'
+  };
+
   return (
     <>
       <Admin>
-        <ul className="w-full px-10 ">
-          {data.data?.getAllPosts.map((res, i) => {
-            return (
-              <div key={i} className="pt-2 flex justify-between items-center  ">
-                <div className="w-3/12">
-                  <Link
-                    to={`/admin/updatepost/${res.id}`}
-                    key={i}
-                    style={{ textDecoration: "none" }}
-                  >
-                    {res.name}
-                  </Link>
-                </div>
-                <div>{res.schedule}</div>
-                <div>
-                  <span className="mr-1">Slide</span>
-                  <input
-                    type="checkbox"
-                    onClick={(e) =>
-                      methods.updateOption({
-                        variables: {
-                          id: res.id,
-                          input: "slide",
-                          info: (e.target as HTMLInputElement).checked,
-                        },
-                      })
-                    }
-                    defaultChecked={res.slide}
-                  />
-                </div>
-                <div>
-                  <span className="mr-1">Meio</span>
-                  <input
-                    type="checkbox"
-                    onClick={(e) =>
-                      methods.updateOption({
-                        variables: {
-                          id: res.id,
-                          input: "middle",
-                          info: (e.target as HTMLInputElement).checked,
-                        },
-                      })
-                    }
-                    defaultChecked={res.middle}
-                  />
-                </div>
-                <div>
-                  <span className="mr-1">Gameplay</span>
-                  <input
-                    type="checkbox"
-                    onClick={(e) =>
-                      methods.updateOption({
-                        variables: {
-                          id: res.id,
-                          input: "gameplay",
-                          info: (e.target as HTMLInputElement).checked,
-                        },
-                      })
-                    }
-                    defaultChecked={res.gameplay}
-                  />
-                </div>
+        <ul className="w-full px-10 h-screen  ">
+          {!data.data ? (
+            <ClipLoader
+              color="white"
+              loading={data.data ? false : true}
+              cssOverride={override}
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          ) : (
+            data.data?.getAllPosts.map((res: allPosts, i: number) => {
+              return (
+                <div key={i} className="flex justify-between items-center pt-5 ">
+                  <div className="w-3/12 mb-6">
+                    <Link
+                      to={`/admin/updatepost/${res.id}`}
+                      key={i}
+                      style={{ textDecoration: 'none' }}>
+                      {res.name}
+                    </Link>
+                  </div>
+                  <div>{res.schedule}</div>
+                  <div>
+                    <span className="mr-1">Slide</span>
+                    <input
+                      type="checkbox"
+                      onClick={(e) =>
+                        methods.updateOption({
+                          variables: {
+                            id: res.id,
+                            input: 'slide',
+                            info: (e.target as HTMLInputElement).checked
+                          }
+                        })
+                      }
+                      defaultChecked={res.slide}
+                    />
+                  </div>
+                  <div>
+                    <span className="mr-1">Meio</span>
+                    <input
+                      type="checkbox"
+                      onClick={(e) =>
+                        methods.updateOption({
+                          variables: {
+                            id: res.id,
+                            input: 'middle',
+                            info: (e.target as HTMLInputElement).checked
+                          }
+                        })
+                      }
+                      defaultChecked={res.middle}
+                    />
+                  </div>
+                  <div>
+                    <span className="mr-1">Gameplay</span>
+                    <input
+                      type="checkbox"
+                      onClick={(e) =>
+                        methods.updateOption({
+                          variables: {
+                            id: res.id,
+                            input: 'gameplay',
+                            info: (e.target as HTMLInputElement).checked
+                          }
+                        })
+                      }
+                      defaultChecked={res.gameplay}
+                    />
+                  </div>
 
-                <div>
-                  <span className="mr-1">Público</span>
-                  <input
-                    type="checkbox"
-                    onClick={(e) =>
-                      methods.updateOption({
-                        variables: {
-                          id: res.id,
-                          input: "publicpost",
-                          info: (e.target as HTMLInputElement).checked,
-                        },
-                      })
-                    }
-                    defaultChecked={res.publicPost}
-                  />
+                  <div>
+                    <span className="mr-1">Público</span>
+                    <input
+                      type="checkbox"
+                      onClick={(e) =>
+                        methods.updateOption({
+                          variables: {
+                            id: res.id,
+                            input: 'publicpost',
+                            info: (e.target as HTMLInputElement).checked
+                          }
+                        })
+                      }
+                      defaultChecked={res.publicPost}
+                    />
+                  </div>
+                  <button
+                    onClick={() => methods.deletePost({ variables: { id: res.id } })}
+                    className="bg-red-500 text-white p-2 rounded-lg text-sm">
+                    Apagar
+                  </button>
                 </div>
-                <button
-                  onClick={() =>
-                    methods.deletePost({ variables: { id: res.id } })
-                  }
-                  className="bg-red-500 text-white p-2 rounded-lg text-sm"
-                >
-                  Apagar
-                </button>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </ul>
       </Admin>
     </>

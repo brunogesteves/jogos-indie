@@ -8,8 +8,6 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-
-
 model Post {
   id         Int         @id @default(autoincrement()) @db.UnsignedInt
   name       String   
@@ -31,7 +29,7 @@ model Post {
 model Cats {
   id   Int    @id @default(autoincrement())
   name String
-
+  
   @@map("cats")
 }
 
@@ -40,10 +38,7 @@ model Images {
   name String
 
   @@map("images")
-
-
 }
-
 
 model Users {
   id         Int         @id @default(autoincrement()) @db.UnsignedInt

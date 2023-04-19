@@ -1,24 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { useQuery } from "@apollo/client";
-import { SIGN_IN } from "../../../Graphql/Queries";
-import useInfo from "../../../Contexts/Context";
+import { useQuery } from '@apollo/client';
+import { SIGN_IN } from '../../../Graphql/Queries';
 
 export const useLogic = () => {
-  const { setUsername, setUserEmail, setIsLogged, isLogged } = useInfo();
-
-  const [signInfo, setSignInfo] = useState({
-    email: "",
-    password: "",
+  const [signInInfo, setSignInfo] = useState({
+    email: '',
+    password: ''
   });
+
+  const [isLogged, setIsLogged] = useState(false);
 
   const { data, refetch } = useQuery(SIGN_IN);
 
   useEffect(() => {
     if (data) {
-      setUserEmail(data.signIn.email);
-      setUsername(data.signIn.name);
+      localStorage.setItem('token', data?.signIn.token);
       setIsLogged(true);
+    } else {
+      console.log(222);
+      setIsLogged(false);
     }
   }, [data]);
 
@@ -27,20 +28,20 @@ export const useLogic = () => {
       input: {
         // email: signInfo.email,
         // password: signInfo.password.toLowerCase(),
-        email: "admin@mail.com",
-        password: "123",
-      },
+        email: 'admin@mail.com',
+        password: '123'
+      }
     });
   }
 
   return {
     data: {
-      isLogged,
-      signInfo,
+      signInInfo,
+      isLogged
     },
     methods: {
       signIn,
-      setSignInfo,
-    },
+      setSignInfo
+    }
   };
 };

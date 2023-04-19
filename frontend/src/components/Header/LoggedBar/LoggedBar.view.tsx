@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./LoggedBar.css";
-
 import useInfo from "../../../Contexts/Context";
 
 export default function LoggedBar() {
@@ -11,19 +9,16 @@ export default function LoggedBar() {
 
   return (
     <>
-      <div className="logged-top-admin">
+      <div className="bg-red-500 h-9 capitalize text-white flex  items-center gap-x-10">
         <div>
           Conectado:{" "}
-          <Link to="/admin" className="logged-top-admin-item">
+          <Link to="/admin" className="text-white">
             entrar na administração{" "}
           </Link>
         </div>
         <div>
           {idPost ? (
-            <Link
-              to={`/admin/updatepost/${idPost}`}
-              className="logged-top-admin-item"
-            >
+            <Link to={`/admin/updatepost/${idPost}`} className="text-white">
               Editar Post
             </Link>
           ) : null}

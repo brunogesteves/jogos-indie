@@ -16,7 +16,7 @@ import { GET_ALL_CATEGORIES } from "../../../Graphql/Queries";
 
 export const useLogic = () => {
   // let history = useHistory();
-  const [thumb, setThumb] = useState<string>("");
+  const [thumbName, setThumbName] = useState<string>("");
   const editor = useRef<any>(null);
   // const file = useRef<any>(null);
 
@@ -106,12 +106,12 @@ export const useLogic = () => {
     data: {
       categories,
       values,
-      thumb,
+      thumbName,
       editor,
     },
     methods: {
       formField,
-      setThumb,
+      setThumbName,
     },
   };
 };

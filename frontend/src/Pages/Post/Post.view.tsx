@@ -6,10 +6,6 @@ import ErrorPage from "../ErrorPage/ErrorPage.view";
 
 import { useLogic } from "./Post.logic";
 
-interface RouteParams {
-  post: string;
-}
-
 export default function Post() {
   const { data } = useLogic();
 
@@ -26,7 +22,7 @@ export default function Post() {
             />
             <div className="w-3/12 my-2">
               <div className="flex flex-col gap-y-2">
-                {data.RandomPosts?.getRandomPosts.map((post, i) => {
+                {data.randomPosts?.getRandomPosts.map((post, i) => {
                   return (
                     <div>
                       <Link to={`/${post.thumb}`}>

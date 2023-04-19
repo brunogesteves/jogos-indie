@@ -1,21 +1,22 @@
-import "reflect-metadata";
-import { ApolloServer } from "apollo-server-express";
-import express from "express";
+import 'reflect-metadata';
+import { ApolloServer } from 'apollo-server-express';
+import express from 'express';
 
-import { buildSchema } from "type-graphql";
+import { buildSchema } from 'type-graphql';
 
-import { CategoriesResolver } from "./Revolvers/Queries/categories-resolvers";
-import { SlidesResolver } from "./Revolvers/Queries/slides-resolvers";
-import { GameplayResolver } from "./Revolvers/Queries/gameplay-resolvers";
-import { MiddleResolver } from "./Revolvers/Queries/middle-resolvers";
-import { MidSectionResolver } from "./Revolvers/Queries/midSection-resolvers";
-import { SignInResolver } from "./Revolvers/Queries/signIn-resolvers";
-import { PostsResolver } from "./Revolvers/Queries/posts-resolvers";
-import { searchResolver } from "./Revolvers/Queries/search-resolvers";
-import { ImagesResolver } from "./Revolvers/Queries/images-resolvers";
-import { PostResolver } from "./Revolvers/Queries/post-resolvers";
-import { FrontPostResolver } from "./Revolvers/Queries/name_post-resolvers";
-import { RandomPostsResolver } from "./Revolvers/Queries/random-resolvers";
+import { CategoriesResolver } from './Revolvers/Queries/categories-resolvers';
+import { SlidesResolver } from './Revolvers/Queries/slides-resolvers';
+import { GameplayResolver } from './Revolvers/Queries/gameplay-resolvers';
+import { MiddleResolver } from './Revolvers/Queries/middle-resolvers';
+import { MidSectionResolver } from './Revolvers/Queries/midSection-resolvers';
+import { SignInResolver } from './Revolvers/Queries/signIn-resolvers';
+import { PostsResolver } from './Revolvers/Queries/posts-resolvers';
+import { searchResolver } from './Revolvers/Queries/search-resolvers';
+import { ImagesResolver } from './Revolvers/Queries/images-resolvers';
+import { PostResolver } from './Revolvers/Queries/post-resolvers';
+import { FrontPostResolver } from './Revolvers/Queries/name_post-resolvers';
+import { RandomPostsResolver } from './Revolvers/Queries/random-resolvers';
+import { UserInfoResolver } from './Revolvers/Queries/UserInfo';
 
 const main = async () => {
   const schema = await buildSchema({
@@ -32,10 +33,11 @@ const main = async () => {
       PostResolver,
       FrontPostResolver,
       RandomPostsResolver,
+      UserInfoResolver,
     ],
   });
 
-  const apolloServer = new ApolloServer({ schema, cache: "bounded" });
+  const apolloServer = new ApolloServer({ schema, cache: 'bounded' });
   const app = express();
   await apolloServer.start();
 

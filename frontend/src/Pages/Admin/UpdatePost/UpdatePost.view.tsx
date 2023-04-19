@@ -304,7 +304,7 @@ import { Field, Form, Formik } from "formik";
 
 import Admin from "../../../components/Admin/AdminLayout.view";
 
-import { te } from "tw-elements";
+import { Button } from "tw-elements";
 
 import { PostContentSchema } from "../../../libs/yup";
 import ImagesAdmin from "../../../components/Admin/ImagesAdmin/ImagesAdmin";
@@ -317,7 +317,7 @@ export default function UpdatePost(props) {
 
   return (
     <Admin>
-      {te}
+      {/* {te} */}
       <Formik
         initialValues={data.values}
         validationSchema={PostContentSchema}
@@ -328,12 +328,12 @@ export default function UpdatePost(props) {
         {({ errors, touched, setFieldValue }) => (
           <Form className=" flex justify-center rever px-3 gap-x-3">
             <div>
-              <button
+              <Button
                 type="submit"
                 className="  inline-block rounded mb-5  mx-10 cursor-pointer bg-red-500 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-red-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] "
               >
                 Publicar Post
-              </button>
+              </Button>
               {/* <Field name="content" />
                 {errors.content && touched.content ? (
                   <div className="text-red-500 ">{errors.content}</div>

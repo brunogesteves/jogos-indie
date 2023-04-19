@@ -1,4 +1,4 @@
-import { Field, ObjectType } from "type-graphql";
+import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class SignInModel {
@@ -6,10 +6,10 @@ export class SignInModel {
   // id: number;
 
   @Field()
-  email: string;
+  token: string;
 
   @Field()
-  name: string;
+  auth: boolean;
 
   // @Field()
   // password: string;

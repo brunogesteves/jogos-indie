@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "./FileDrop.css";
 import { FILE_UPLOAD } from "../../../../Graphql/Mutations";
 import { useMutation } from "@apollo/client";
-import { te } from "tw-elements";
+
 export default function UploadImage({ fileName }) {
   // const [file, setFile] = useState<any>();
 
@@ -81,8 +81,7 @@ export default function UploadImage({ fileName }) {
   };
 
   return (
-    <>
-      {te}
+    <>      
       <div className=" flex justify-center items-start">
         <input
           type="file"

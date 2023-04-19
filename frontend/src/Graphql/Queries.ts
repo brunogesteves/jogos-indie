@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_ALL_CATEGORIES = gql`
   query {
@@ -51,8 +51,8 @@ export const GET_ALL_POSTS_MIDSECTION = gql`
 export const SIGN_IN = gql`
   query SignIn($input: SignInInput!) {
     signIn(input: $input) {
-      email
-      name
+      auth
+      token
     }
   }
 `;
@@ -71,7 +71,7 @@ export const GET_LIST_POSTS = gql`
   query {
     getAllPosts {
       id
-      middle
+      midSection
       name
       public
       slide

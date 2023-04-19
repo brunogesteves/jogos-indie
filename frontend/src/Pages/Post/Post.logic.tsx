@@ -18,7 +18,7 @@ export const useLogic = () => {
     variables: { input: { name: post } },
   });
 
-  const { data: RandomPosts } = useQuery(GET_RANDOM_POSTS, {
+  const { data: randomPosts } = useQuery(GET_RANDOM_POSTS, {
     variables: { input: { name: post } },
   });
 
@@ -28,7 +28,7 @@ export const useLogic = () => {
 
   return {
     data: {
-      RandomPosts,
+      randomPosts,
       data,
     },
   };

@@ -1,6 +1,6 @@
 import React from "react";
 import "./NewCategory.css";
-import { te } from "tw-elements";
+// import { te } from "tw-elements";
 // import { useMutation } from "@apollo/client";
 // import { NEW_CATEGORY } from "../../Graphql/Mutations";
 

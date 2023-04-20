@@ -5,16 +5,6 @@ import Admin from '../../../components/Admin/AdminLayout.view';
 import { useLogic } from './Posts.logic';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-interface allPosts {
-  id: number;
-  name: string;
-  schedule: string;
-  slide: boolean;
-  middle: boolean;
-  gameplay: boolean;
-  publicPost: boolean;
-}
-
 export default function Posts() {
   const { data, methods } = useLogic();
 
@@ -38,7 +28,7 @@ export default function Posts() {
               data-testid="loader"
             />
           ) : (
-            data.data?.getAllPosts.map((res: allPosts, i: number) => {
+            data.data?.getAllPosts.map((res: AllPosts, i: number) => {
               return (
                 <div key={i} className="flex justify-between items-center pt-5 ">
                   <div className="w-3/12 mb-6">

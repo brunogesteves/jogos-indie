@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
-import { useLogic } from "./Menubar.logic";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { useLogic } from './Menubar.logic';
 
 export default function MenuBar() {
   const { data, methods } = useLogic();
@@ -15,11 +15,7 @@ export default function MenuBar() {
           PROCURAR
         </Link>
         {data.data?.getAllCategories.map((res, i) => (
-          <Link
-            to={`/categories/${res.name}`}
-            key={i}
-            className="uppercase mr-2"
-          >
+          <Link to={`/categories/${res.name}`} key={i} className="uppercase mr-2">
             {res.name}
           </Link>
         ))}
@@ -30,12 +26,10 @@ export default function MenuBar() {
           placeholder="Procurar"
           className="h-8 rounded-lg px-2 placeholder:outline-none focus:outline-none "
           onChange={(e) => methods.setSearchWord(e.target.value)}
+          onKeyDown={(e) => methods.toPageSearchOnKeyDown(e)}
         />
 
-        <AiOutlineSearch
-          className="ml-2 cursor-pointer"
-          onClick={() => methods.toPageSearch()}
-        />
+        <AiOutlineSearch className="ml-2 cursor-pointer" onClick={() => methods.toPageSearch()} />
       </div>
     </div>
   );

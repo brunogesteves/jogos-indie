@@ -11,13 +11,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       setLoading(false);
     } else {
       setIsValid(false);
-      setLoading(true);
+      setLoading(false);
     }
   }, [localStorage]);
 
   if (loading) {
-    return <div></div>;
+    return <div>carregabdo</div>;
   } else {
+    console.log(444);
+
     return (
       <Route
         {...rest}

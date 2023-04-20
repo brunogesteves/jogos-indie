@@ -1,8 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useLogic } from "./Main.logic";
-
-// import "./Blocks.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useLogic } from './Main.logic';
 
 const Blocks: React.FC = () => {
   const { data } = useLogic();
@@ -10,28 +8,19 @@ const Blocks: React.FC = () => {
   return (
     <>
       <div className="flex px-2 pt-4 justify-between max-sm:flex-col">
-        <div>
-          {data.data?.getMidSection.map((post, i) => {
+        <div className="w-1/3 max-sm:w-full">
+          {data.data?.getMidSection.map((post, i: number) => {
             return (
               <>
-                <div
-                  key={i}
-                  className={
-                    i < 4 ? "hidden" : "flex justify-start items-center mb-4"
-                  }
-                >
+                <div key={i} className={i < 4 ? 'hidden' : 'flex justify-start items-center mb-4'}>
                   <div>
                     <Link to={`/${post.slug}`}>
                       <div>
-                        <img
-                          src={`/${post.thumb}`}
-                          alt={post.name}
-                          className="max-sm:w-40"
-                        />
+                        <img src={`/${post.thumb}`} alt={post.name} className="w-40" />
                       </div>
                     </Link>
                   </div>
-                  <Link to={`/${post.slug}`} style={{ textDecoration: "none" }}>
+                  <Link to={`/${post.slug}`} style={{ textDecoration: 'none' }}>
                     <div className="text-xl text-black font-bold ml-5 max-sm:text-xs">
                       {post.name}
                     </div>
@@ -41,28 +30,19 @@ const Blocks: React.FC = () => {
             );
           })}
         </div>
-        <div className="">
-          {data.data?.getMidSection.map((post, i) => {
+        <div className="w-1/3  max-sm:w-full ">
+          {data.data?.getMidSection.map((post, i: number) => {
             return (
               <>
-                <div
-                  key={i}
-                  className={
-                    i > 4 ? "hidden" : "flex justify-start items-center mb-4"
-                  }
-                >
+                <div key={i} className={i > 4 ? 'hidden' : 'flex justify-start items-center mb-4'}>
                   <div>
                     <Link to={`/${post.slug}`}>
                       <div>
-                        <img
-                          src={`/${post.thumb}`}
-                          alt={post.name}
-                          className="max-sm:w-40"
-                        />
+                        <img src={`/${post.thumb}`} alt={post.name} className="w-40" />
                       </div>
                     </Link>
                   </div>
-                  <Link to={`/${post.slug}`} style={{ textDecoration: "none" }}>
+                  <Link to={`/${post.slug}`} style={{ textDecoration: 'none' }}>
                     <div className="text-xl text-black font-bold ml-5 max-sm:text-xs">
                       {post.name}
                     </div>
@@ -72,9 +52,9 @@ const Blocks: React.FC = () => {
             );
           })}
         </div>
-        <div className="bg-blue-500 max-sm:my-4 text-xs">
-          <Link to={"https://apoia.se/jogosindiebrasil"} target="_blank">
-            <img src={"/apoie.jpg"} alt="crowdfunding" />{" "}
+        <div className=" max-sm:my-4 text-xs w-1/3 max-sm:w-full max-sm:flex max-sm:justify-center">
+          <Link to={'https://apoia.se/jogosindiebrasil'} target="_blank">
+            <img src={'/apoie.jpg'} alt="crowdfunding" />{' '}
           </Link>
           {/* {data?.getPostsSideBar.map((res, i) => (
             <div key={i}>

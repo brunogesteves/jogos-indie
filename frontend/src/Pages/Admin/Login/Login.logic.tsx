@@ -18,7 +18,6 @@ export const useLogic = () => {
       localStorage.setItem('token', data?.signIn.token);
       setIsLogged(true);
     } else {
-      console.log(222);
       setIsLogged(false);
     }
   }, [data]);

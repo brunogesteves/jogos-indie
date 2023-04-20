@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from 'react';
+import React, { CSSProperties } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { GET_ALL_IMAGES } from '../../../../Graphql/Queries';
@@ -10,7 +10,7 @@ export default function AllImages({ thumbName }) {
 
   const override: CSSProperties = {
     display: 'block',
-    margin: '0 auto',
+    margin: 'auto',
     borderColor: 'red'
   };
 

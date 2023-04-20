@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { useQuery } from "@apollo/client";
-import { GET_ALL_POSTS_SLIDE } from "../../../Graphql/Queries";
+import { useQuery } from '@apollo/client';
+import { GET_ALL_POSTS_SLIDE } from '../../../Graphql/Queries';
 
 interface SlidesInfo {
   name: string;
@@ -23,11 +23,11 @@ export const useLogic = () => {
         className={className}
         style={{
           ...style,
-          display: "block",
-          right: "34px",
-          top: "-12px",
-          background: "black",
-          borderRadius: "13px",
+          display: 'block',
+          right: '5px',
+          top: '-12px',
+          background: 'black',
+          borderRadius: '13px'
         }}
         onClick={onClick}
       />
@@ -41,11 +41,11 @@ export const useLogic = () => {
         className={className}
         style={{
           ...style,
-          display: "block",
-          left: "631px",
-          top: "-12px",
-          background: "black",
-          borderRadius: "13px",
+          display: 'block',
+          left: '465px',
+          top: '-12px',
+          background: 'black',
+          borderRadius: '13px'
         }}
         onClick={onClick}
       />
@@ -62,7 +62,7 @@ export const useLogic = () => {
     autoplaySpeed: 3000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    cssEase: "linear",
+    cssEase: 'linear',
     responsive: [
       {
         breakpoint: 1024,
@@ -71,16 +71,16 @@ export const useLogic = () => {
           slidesToScroll: 1,
           infinite: true,
           dots: true,
-          arrows: false,
-        },
-      },
-    ],
+          arrows: false
+        }
+      }
+    ]
   };
 
   return {
     data: {
       settings,
-      data,
-    },
+      data
+    }
   };
 };

@@ -8,7 +8,7 @@ import NewPost from './Pages/Admin/NewPost/NewPost.view';
 import Login from './Pages/Admin/Login/Login.view';
 import Home from './Pages/Home/Home.view';
 import Post from './Pages/Post/Post.view';
-import CategoryPage from './Pages/CategoryPage';
+import CategoryPage from './Pages/CategoryPage/CategoryPage.view';
 import NotFoundPage from './Pages/ErrorPage/ErrorPage.view';
 import Search from './Pages/Search/Search.view';
 import PrivateRoute from './components/PrivateRoute';
@@ -30,7 +30,7 @@ export default function App() {
           <PrivateRoute path="/admin" component={Posts} />
           <Route path="/login" component={Login} />
           <Route path="/procurar" component={Search} />
-          {/* <Route path="/categories/:category" component={CategoryPage} /> */}
+          <Route path="/categories/:category" component={CategoryPage} />
           <Route path="/:post" component={Post} />
           <Route path="/" component={Home} />
         </Switch>

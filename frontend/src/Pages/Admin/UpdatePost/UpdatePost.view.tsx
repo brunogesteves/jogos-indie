@@ -294,22 +294,22 @@
 //   );
 // }
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // import slugify from "react-slugify";
-import SunEditor from "suneditor-react";
+import SunEditor from 'suneditor-react';
 
-import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
+import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 // import Modal from "@mui/material/Modal";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from 'formik';
 
-import Admin from "../../../components/Admin/AdminLayout.view";
+import Admin from '../../../components/Admin/AdminLayout.view';
 
-import { Button } from "tw-elements";
+import { Button } from 'tw-elements';
 
-import { PostContentSchema } from "../../../libs/yup";
-import ImagesAdmin from "../../../components/Admin/ImagesAdmin/ImagesAdmin";
-import { useLogic } from "./UpdatePost.logic";
-import NewCategory from "../../../components/Admin/NewCategory";
+import { PostContentSchema } from '../../../libs/yup';
+import ImagesAdmin from '../../../components/Admin/ImagesAdmin/ImagesAdmin';
+import { useLogic } from './UpdatePost.logic';
+import NewCategory from '../../../components/Admin/AdminLayout.view';
 
 export default function UpdatePost(props) {
   const { data, methods } = useLogic();
@@ -323,80 +323,55 @@ export default function UpdatePost(props) {
         validationSchema={PostContentSchema}
         onSubmit={(values, actions) => {
           console.log(values);
-        }}
-      >
+        }}>
         {({ errors, touched, setFieldValue }) => (
           <Form className=" flex justify-center rever px-3 gap-x-3">
             <div>
               <Button
                 type="submit"
-                className="  inline-block rounded mb-5  mx-10 cursor-pointer bg-red-500 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-red-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] "
-              >
+                className="  inline-block rounded mb-5  mx-10 cursor-pointer bg-red-500 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-red-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] ">
                 Publicar Post
               </Button>
               {/* <Field name="content" />
                 {errors.content && touched.content ? (
                   <div className="text-red-500 ">{errors.content}</div>
                 ) : null} */}
-              {methods.formField("name", "", "text", errors, touched)}
-              {methods.formField(
-                "isScheduled",
-                "Agendado",
-                "checkbox",
-                errors,
-                touched
-              )}
-              {methods.formField("slide", "Slide", "checkbox", errors, touched)}
-              {methods.formField("middle", "Meio", "checkbox", errors, touched)}
-              {methods.formField(
-                "gameplay",
-                "Gameplay",
-                "checkbox",
-                errors,
-                touched
-              )}
-              {methods.formField(
-                "main",
-                "Corpo da Página",
-                "checkbox",
-                errors,
-                touched
-              )}
+              {methods.formField('name', '', 'text', errors, touched)}
+              {methods.formField('isScheduled', 'Agendado', 'checkbox', errors, touched)}
+              {methods.formField('slide', 'Slide', 'checkbox', errors, touched)}
+              {methods.formField('middle', 'Meio', 'checkbox', errors, touched)}
+              {methods.formField('gameplay', 'Gameplay', 'checkbox', errors, touched)}
+              {methods.formField('main', 'Corpo da Página', 'checkbox', errors, touched)}
               <select
                 className="p-1 rounded-lg text-red-500 text-sm w-full focus:outline-none"
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                  setFieldValue("category", e.target.value);
-                  if (e.target.value === "Adicionar uma categoria") {
+                  setFieldValue('category', e.target.value);
+                  if (e.target.value === 'Adicionar uma categoria') {
                     setOpenModal(true);
-                    setFieldValue("category", "");
+                    setFieldValue('category', '');
                   }
                 }}
-                value={data.values.category}
-              >
+                value={data.values.category}>
                 <option
                   className="text-xs bg-red-500 text-white uppercase py-5"
                   value="0"
                   selected
-                  disabled
-                >
+                  disabled>
                   Selecione uma categoria
                 </option>
                 <option className="text-xs bg-red-500 text-white uppercase py-5">
                   Adicionar uma categoria
                 </option>
-                {data.categories?.getAllCategories.map(
-                  (cat: { name: string }, i: number) => {
-                    return (
-                      <option
-                        key={i}
-                        value={cat.name.toUpperCase()}
-                        className="bg-red-500 text-xs  text-white"
-                      >
-                        {cat.name.toUpperCase()}
-                      </option>
-                    );
-                  }
-                )}
+                {data.categories?.getAllCategories.map((cat: { name: string }, i: number) => {
+                  return (
+                    <option
+                      key={i}
+                      value={cat.name.toUpperCase()}
+                      className="bg-red-500 text-xs  text-white">
+                      {cat.name.toUpperCase()}
+                    </option>
+                  );
+                })}
               </select>
               {openModal && <NewCategory />}
               {errors.category && touched.category ? (
@@ -405,7 +380,7 @@ export default function UpdatePost(props) {
               <div className="mt-4">
                 <ImagesAdmin
                   thumb={(thumbName) => {
-                    setFieldValue("thumb", thumbName);
+                    setFieldValue('thumb', thumbName);
                     methods.setThumb(thumbName);
                   }}
                 />
@@ -429,80 +404,76 @@ export default function UpdatePost(props) {
                         height="500"
                         name="my-editor"
                         setOptions={{
-                          mode: "classNameNameic",
-                          katex: "window.katex",
-                          imageWidth: "(auto)",
+                          mode: 'classNameNameic',
+                          katex: 'window.katex',
+                          imageWidth: '(auto)',
                           // imageHeight: "(auto)",
                           // imageUploadUrl: `${process.env.PUBLIC_URL}/ckimage`,
-                          imageAccept: "*",
+                          imageAccept: '*',
                           // imageGalleryUrl: `${process.env.PUBLIC_URL}/images`,
                           imageFileInput: true,
                           // videoFileInput: false,
                           tabDisable: false,
                           buttonList: [
                             [
-                              "undo",
-                              "redo",
-                              "font",
-                              "fontSize",
-                              "formatBlock",
-                              "paragraphStyle",
-                              "blockquote",
-                              "bold",
-                              "underline",
-                              "italic",
-                              "strike",
-                              "subscript",
-                              "superscript",
-                              "fontColor",
-                              "hiliteColor",
-                              "textStyle",
-                              "removeFormat",
-                              "outdent",
-                              "indent",
-                              "align",
-                              "horizontalRule",
-                              "list",
-                              "lineHeight",
-                              "table",
-                              "link",
-                              "image",
-                              "video",
-                              "audio",
-                              "math",
-                              "imageGallery",
-                              "fullScreen",
-                              "showBlocks",
-                              "codeView",
-                              "preview",
-                              "print",
-                              "save",
-                              "template",
-                            ],
-                          ],
+                              'undo',
+                              'redo',
+                              'font',
+                              'fontSize',
+                              'formatBlock',
+                              'paragraphStyle',
+                              'blockquote',
+                              'bold',
+                              'underline',
+                              'italic',
+                              'strike',
+                              'subscript',
+                              'superscript',
+                              'fontColor',
+                              'hiliteColor',
+                              'textStyle',
+                              'removeFormat',
+                              'outdent',
+                              'indent',
+                              'align',
+                              'horizontalRule',
+                              'list',
+                              'lineHeight',
+                              'table',
+                              'link',
+                              'image',
+                              'video',
+                              'audio',
+                              'math',
+                              'imageGallery',
+                              'fullScreen',
+                              'showBlocks',
+                              'codeView',
+                              'preview',
+                              'print',
+                              'save',
+                              'template'
+                            ]
+                          ]
                         }}
                         onChange={(data) => {
                           // setCotent(data);
-                          if (data === "<p><br></p>") {
-                            setFieldValue("content", "");
+                          if (data === '<p><br></p>') {
+                            setFieldValue('content', '');
                           } else {
-                            setFieldValue("content", data);
+                            setFieldValue('content', data);
                           }
                         }}
                         onImageUploadBefore={(files) => {
                           let nameImage = files[0].name;
                           // setFile(files[0]);
-                          data.editor.current.editor.insertHTML(
-                            `<img src="/${nameImage}">`
-                          );
+                          data.editor.current.editor.insertHTML(`<img src="/${nameImage}">`);
                           return true;
                         }}
                       />
                     </div>
 
-                    {meta.touched && meta.error && (
-                      <div className="error">{meta.error}</div>
-                    )}
+                    {meta.touched && meta.error && <div className="error">{meta.error}</div>}
                   </div>
                 )}
               </Field>

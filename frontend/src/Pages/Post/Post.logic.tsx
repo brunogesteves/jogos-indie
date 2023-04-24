@@ -5,12 +5,8 @@ import { useQuery } from '@apollo/client';
 import { GET_POST_TO_SHOW_OFF, GET_RANDOM_POSTS } from '../../Graphql/Queries';
 import useInfo from '../../Contexts/Context';
 
-interface RouteParams {
-  post: string;
-}
-
 export const useLogic = () => {
-  const { post } = useParams<RouteParams>();
+  const { post } = useParams<PostRouteParams>();
 
   const { setIdPost } = useInfo();
 

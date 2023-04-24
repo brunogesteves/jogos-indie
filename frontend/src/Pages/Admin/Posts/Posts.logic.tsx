@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { GET_LIST_POSTS } from "../../../Graphql/Queries";
-import { useMutation, useQuery } from "@apollo/client";
-import { DELETE_POST, UPDATE_INPUT } from "../../../Graphql/Mutations";
+import { GET_LIST_POSTS } from '../../../Graphql/Queries';
+import { useMutation, useQuery } from '@apollo/client';
+import { DELETE_POST, UPDATE_INPUT } from '../../../Graphql/Mutations';
 
 export const useLogic = () => {
   const { data, refetch } = useQuery(GET_LIST_POSTS);
@@ -11,25 +11,25 @@ export const useLogic = () => {
   const [updateOption, { data: isUpdated }] = useMutation(UPDATE_INPUT);
 
   useEffect(() => {
-    if (
-      (isErased && isErased.deletePost.successfull) ||
-      (isUpdated && isUpdated.deletePost.successfull)
-    ) {
+    console.log(isUpdated);
+
+    if (isUpdated?.optionUpdatePost) {
+      console.log(1111);
       refetch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isErased]);
+  }, [isUpdated]);
 
   return {
     data: {
       isErased,
       isUpdated,
-      data,
+      data
     },
     methods: {
       updateOption,
       deletePost,
-      refetch,
-    },
+      refetch
+    }
   };
 };

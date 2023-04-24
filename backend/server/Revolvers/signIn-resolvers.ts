@@ -1,8 +1,8 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 
 import { PrismaClient } from '@prisma/client';
-import { SignInInput } from '../../dtos/inputs/signIn-inputs';
-import { SignInModel } from '../../dtos/models/signIn-models';
+import { SignInInput } from '../dtos/inputs/signIn-inputs';
+import { SignInModel } from '../dtos/models/signIn-models';
 
 require('dotenv').config({ path: __dirname + '/.env' });
 import jwt from 'jsonwebtoken';

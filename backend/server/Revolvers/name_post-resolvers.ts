@@ -1,15 +1,15 @@
-import { Arg, Query, Resolver } from "type-graphql";
+import { Arg, Query, Resolver } from 'type-graphql';
 
-import { PostsModel } from "../../dtos/models/posts-models";
-import { NamePostInput } from "../../dtos/inputs/name_post-inputs";
+import { PostsModel } from '../dtos/models/posts-models';
+import { NamePostInput } from '../dtos/inputs/name_post-inputs';
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 @Resolver()
 export class FrontPostResolver {
   @Query(() => PostsModel)
-  async frontPostQuery(@Arg("input") data: NamePostInput) {
+  async frontPostQuery(@Arg('input') data: NamePostInput) {
     const { name } = data;
 
     try {

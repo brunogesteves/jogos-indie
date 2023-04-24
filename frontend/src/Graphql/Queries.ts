@@ -4,6 +4,7 @@ export const GET_ALL_CATEGORIES = gql`
   query {
     getAllCategories {
       name
+      id
     }
   }
 `;
@@ -77,6 +78,7 @@ export const GET_LIST_POSTS = gql`
       slide
       slug
       schedule
+      gameplay
     }
   }
 `;
@@ -134,6 +136,7 @@ export const SEARCH_POSTS = gql`
       name
       slug
       thumb
+      category
     }
   }
 `;
@@ -148,8 +151,8 @@ export const GET_SIDEBAR = gql`
 `;
 
 export const GET_POSTS_FROM_CATEGORY = gql`
-  query getPostsfromCategory($nameCategory: String!) {
-    getPostsfromCategory(nameCategory: $nameCategory) {
+  query ($input: CategoryNameInput!) {
+    categoryName(input: $input) {
       slug
       thumb
     }

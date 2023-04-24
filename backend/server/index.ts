@@ -4,18 +4,20 @@ import express from 'express';
 
 import { buildSchema } from 'type-graphql';
 
-import { CategoriesResolver } from './Revolvers/Queries/categories-resolvers';
-import { SlidesResolver } from './Revolvers/Queries/slides-resolvers';
-import { GameplayResolver } from './Revolvers/Queries/gameplay-resolvers';
-import { MiddleResolver } from './Revolvers/Queries/middle-resolvers';
-import { MidSectionResolver } from './Revolvers/Queries/midSection-resolvers';
-import { SignInResolver } from './Revolvers/Queries/signIn-resolvers';
-import { PostsResolver } from './Revolvers/Queries/posts-resolvers';
-import { searchResolver } from './Revolvers/Queries/search-resolvers';
-import { ImagesResolver } from './Revolvers/Queries/images-resolvers';
-import { PostResolver } from './Revolvers/Queries/post-resolvers';
-import { FrontPostResolver } from './Revolvers/Queries/name_post-resolvers';
-import { RandomPostsResolver } from './Revolvers/Queries/random-resolvers';
+import { CategoriesResolver } from './Revolvers/categories-resolvers';
+import { SlidesResolver } from './Revolvers/slides-resolvers';
+import { GameplayResolver } from './Revolvers/gameplay-resolvers';
+import { MiddleResolver } from './Revolvers/middle-resolvers';
+import { MidSectionResolver } from './Revolvers/midSection-resolvers';
+import { SignInResolver } from './Revolvers/signIn-resolvers';
+import { PostsResolver } from './Revolvers/posts-resolvers';
+import { searchResolver } from './Revolvers/search-resolvers';
+import { ImagesResolver } from './Revolvers/images-resolvers';
+import { PostResolver } from './Revolvers/post-resolvers';
+import { FrontPostResolver } from './Revolvers/name_post-resolvers';
+import { RandomPostsResolver } from './Revolvers/random-resolvers';
+import { CategoryNameResolver } from './Revolvers/categoryName-resolvers';
+import { OptionPostResolver } from './Revolvers/postOptions-resolvers';
 
 const main = async () => {
   const schema = await buildSchema({
@@ -32,6 +34,8 @@ const main = async () => {
       PostResolver,
       FrontPostResolver,
       RandomPostsResolver,
+      CategoryNameResolver,
+      OptionPostResolver,
     ],
   });
 

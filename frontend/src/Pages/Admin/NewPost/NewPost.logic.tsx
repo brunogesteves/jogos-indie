@@ -1,35 +1,35 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 // import slugify from "react-slugify";
 
-import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
+import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 // import Modal from "@mui/material/Modal";
-import { Field } from "formik";
+import { Field } from 'formik';
 
 // import NewCategory from "../../../components/Admin/NewCategory";
 
 // import "./NewPost.css";
 
 // import { useHistory } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_ALL_CATEGORIES } from "../../../Graphql/Queries";
+// import { useQuery } from '@apollo/client';
+// import { GET_ALL_CATEGORIES } from "../../../Graphql/Queries";
 // import { CREATE_POST } from "../../../Graphql/Mutations";
 
 export const useLogic = () => {
   // let history = useHistory();
-  const [thumbName, setThumbName] = useState<string>("");
+  const [thumbName, setThumbName] = useState<string>('');
   const editor = useRef<any>(null);
   // const file = useRef<any>(null);
 
   let values = {
-    name: "",
+    name: '',
     isScheduled: false,
-    category: "",
+    category: '',
     slide: false,
     middle: false,
     gameplay: false,
     midSection: false,
-    thumb: "",
-    content: "",
+    thumb: '',
+    content: ''
   };
 
   // useEffect(() => {
@@ -45,7 +45,7 @@ export const useLogic = () => {
   //   axios.post(url, data, options);
   // }, [file]);
 
-  const { data: categories } = useQuery(GET_ALL_CATEGORIES);
+  // const { data: categories } = useQuery(GET_ALL_CATEGORIES);
 
   // const [createPost, { data: isCreated }] = useMutation(CREATE_POST);
 
@@ -104,14 +104,14 @@ export const useLogic = () => {
 
   return {
     data: {
-      categories,
+      // categories,
       values,
       thumbName,
-      editor,
+      editor
     },
     methods: {
       formField,
-      setThumbName,
-    },
+      setThumbName
+    }
   };
 };

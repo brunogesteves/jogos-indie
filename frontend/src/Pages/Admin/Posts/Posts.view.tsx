@@ -8,6 +8,8 @@ import ClipLoader from 'react-spinners/ClipLoader';
 export default function Posts() {
   const { data, methods } = useLogic();
 
+  console.log(data.data?.getAllPosts);
+
   const override: CSSProperties = {
     display: 'block',
     margin: '0 auto',
@@ -47,9 +49,11 @@ export default function Posts() {
                       onClick={(e) =>
                         methods.updateOption({
                           variables: {
-                            id: res.id,
-                            input: 'slide',
-                            info: (e.target as HTMLInputElement).checked
+                            data: {
+                              id: res.id.toString(),
+                              option: 'slide',
+                              info: (e.target as HTMLInputElement).checked
+                            }
                           }
                         })
                       }
@@ -63,13 +67,15 @@ export default function Posts() {
                       onClick={(e) =>
                         methods.updateOption({
                           variables: {
-                            id: res.id,
-                            input: 'middle',
-                            info: (e.target as HTMLInputElement).checked
+                            data: {
+                              id: res.id.toString(),
+                              info: (e.target as HTMLInputElement).checked,
+                              option: 'midSection'
+                            }
                           }
                         })
                       }
-                      defaultChecked={res.middle}
+                      defaultChecked={res.midSection}
                     />
                   </div>
                   <div>
@@ -79,9 +85,11 @@ export default function Posts() {
                       onClick={(e) =>
                         methods.updateOption({
                           variables: {
-                            id: res.id,
-                            input: 'gameplay',
-                            info: (e.target as HTMLInputElement).checked
+                            data: {
+                              id: res.id.toString(),
+                              option: 'gameplay',
+                              info: (e.target as HTMLInputElement).checked
+                            }
                           }
                         })
                       }
@@ -96,13 +104,15 @@ export default function Posts() {
                       onClick={(e) =>
                         methods.updateOption({
                           variables: {
-                            id: res.id,
-                            input: 'publicpost',
-                            info: (e.target as HTMLInputElement).checked
+                            data: {
+                              id: res.id.toString(),
+                              option: 'public',
+                              info: (e.target as HTMLInputElement).checked
+                            }
                           }
                         })
                       }
-                      defaultChecked={res.publicPost}
+                      defaultChecked={res.public}
                     />
                   </div>
                   <button

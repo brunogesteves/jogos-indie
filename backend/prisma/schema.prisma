@@ -28,7 +28,7 @@ model Post {
 
 model Cats {
   id   Int    @id @default(autoincrement())
-  name String
+  name String @unique
   
   @@map("cats")
 }

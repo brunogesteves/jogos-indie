@@ -11,10 +11,8 @@ export default function MenuBar() {
         <Link to="/" className="uppercase mr-2">
           HOME
         </Link>
-        <Link to="/procurar" className="uppercase mr-2">
-          PROCURAR
-        </Link>
-        {data.data?.getAllCategories.map((res, i) => (
+
+        {data.data?.getAllCategories.map((res: { name: string }, i: number) => (
           <Link to={`/categories/${res.name}`} key={i} className="uppercase mr-2">
             {res.name}
           </Link>

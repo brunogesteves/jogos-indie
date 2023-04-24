@@ -1,20 +1,9 @@
-import { useEffect } from "react";
-import { useDebounce } from "use-debounce";
+import { useEffect } from 'react';
+import { useDebounce } from 'use-debounce';
 
-import { useQuery } from "@apollo/client";
-import { SEARCH_POSTS } from "../../Graphql/Queries";
-import useInfo from "../../Contexts/Context";
-
-interface SearchInfo {
-  name: string;
-  category: string;
-  slug: string;
-  thumb: string;
-}
-
-interface SearchProps {
-  searchQuery: SearchInfo[];
-}
+import { useQuery } from '@apollo/client';
+import { SEARCH_POSTS } from '../../Graphql/Queries';
+import useInfo from '../../Contexts/Context';
 
 export const useLogic = () => {
   const { searchWord, setSearchWord } = useInfo();
@@ -25,13 +14,13 @@ export const useLogic = () => {
   useEffect(() => {
     refetch({
       input: {
-        term: value,
-      },
+        term: value
+      }
     });
   }, [value]);
 
   return {
     data: { data, value, searchWord },
-    methods: { setSearchWord },
+    methods: { setSearchWord }
   };
 };

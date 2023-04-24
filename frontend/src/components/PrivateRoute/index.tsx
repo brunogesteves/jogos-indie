@@ -18,8 +18,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   if (loading) {
     return <div>carregabdo</div>;
   } else {
-    console.log(444);
-
     return (
       <Route
         {...rest}

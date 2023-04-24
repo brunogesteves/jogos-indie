@@ -1,4 +1,4 @@
-import { Field, ObjectType } from "type-graphql";
+import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class SearchModel {
@@ -10,4 +10,7 @@ export class SearchModel {
 
   @Field()
   name: string;
+
+  @Field()
+  category: string;
 }

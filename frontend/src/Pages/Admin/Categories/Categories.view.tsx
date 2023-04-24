@@ -4,12 +4,12 @@ import Admin from '../../../components/Admin/AdminLayout.view';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { useLogic } from './Categories.logic';
 
-export default function Categories(props) {
+export default function Categories() {
   const { data, methods } = useLogic();
 
   return (
     <Admin>
-      <div className="h-screen pt-2 text-center ">
+      <div className="h-auto py-2 text-center ">
         Digite a nova categoria:
         <div className="flex justify-center gap-x-2 items-start">
           <div>
@@ -18,25 +18,20 @@ export default function Categories(props) {
               name="name"
               value={data.wordInput}
               className="placeholder:bg-gray-500 rounded border-0 bg-red-500 focus:outline-none px-2 text-white"
-              onChange={(e) => (e ? methods.setWordInput(e.target.value) : null)}
+              onChange={(e) => methods.setWordInput(e.target.value)}
             />
           </div>
           <div>
             <button
-              // onClick={
-              //   wordInput
-              //     ? () => {
-              //         createCategory({ variables: { name: wordInput } });
-              //         setWordInput("");
-              //       }
-              //     : null
-              // }
+              onClick={() =>
+                methods.createCategory({ variables: { newCategoryName: data.wordInput } })
+              }
               className="bg-red-500 w-auto px-2 rounded text-white">
               Adicionar
             </button>
           </div>
         </div>
-        {data.data?.getAllCategories.map((res, index) => {
+        {data.data?.getAllCategories.map((res: { id: number; name: string }, index: number) => {
           return (
             <div
               key={index}
@@ -44,7 +39,7 @@ export default function Categories(props) {
               {res.name.toUpperCase()}
               <button
                 onClick={() => {
-                  methods.deleteCategory({ variables: { id: res.id } });
+                  methods.deleteCategory({ variables: { deleteCategoryId: res.id } });
                 }}>
                 <AiTwotoneDelete color="red" />
               </button>

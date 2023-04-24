@@ -1,8 +1,8 @@
-import { Query, Resolver } from "type-graphql";
+import { Query, Resolver } from 'type-graphql';
 
-import { SlidesModel } from "../../dtos/models/slides-models";
+import { SlidesModel } from '../dtos/models/slides-models';
 
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 @Resolver()

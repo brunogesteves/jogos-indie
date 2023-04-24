@@ -1,10 +1,10 @@
 import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
-export class UserInfoModel {
+export class CategoryNameModel {
   @Field()
-  name: string;
+  slug: string;
 
   @Field()
-  email: string;
+  thumb: string;
 }

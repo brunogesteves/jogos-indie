@@ -1,4 +1,4 @@
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
@@ -16,7 +16,7 @@ export const useLogic = () => {
     history.push(`/procurar`);
   }
 
-  function toPageSearchOnKeyDown(e: KeyboardEvent<HTMLImageElement>) {
+  function toPageSearchOnKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter' && searchWord !== '') {
       history.push(`/procurar`);
     }

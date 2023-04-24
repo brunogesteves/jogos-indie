@@ -1,18 +1,14 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const NEW_CATEGORY = gql`
-  mutation createCategory($name: String!) {
-    createCategory(name: $name) {
-      successfull
-    }
+  mutation CreateCategory($newCategoryName: String!) {
+    createCategory(newCategoryName: $newCategoryName)
   }
 `;
 
 export const DELETE_CATEGORY = gql`
-  mutation deleteCategory($id: ID!) {
-    deleteCategory(id: $id) {
-      successfull
-    }
+  mutation DeleteCategory($deleteCategoryId: Float!) {
+    deleteCategory(deleteCategoryId: $deleteCategoryId)
   }
 `;
 
@@ -25,10 +21,8 @@ export const DELETE_POST = gql`
 `;
 
 export const UPDATE_INPUT = gql`
-  mutation updateInput($id: ID!, $input: String!, $info: Boolean) {
-    updateInput(id: $id, input: $input, info: $info) {
-      successfull
-    }
+  mutation Mutation($data: OptionPostInput!) {
+    optionUpdatePost(data: $data)
   }
 `;
 

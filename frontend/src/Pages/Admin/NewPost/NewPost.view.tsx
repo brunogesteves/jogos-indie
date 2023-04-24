@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import slugify from "react-slugify";
 import SunEditor from 'suneditor-react';
 
 import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
-// import Modal from "@mui/material/Modal";
 import { Field, Form, Formik } from 'formik';
-
 import Admin from '../../../components/Admin/AdminLayout.view';
 
 // import { useHistory } from "react-router-dom";
 import { PostContentSchema } from '../../../libs/yup';
 import ImagesAdmin from '../../../components/Admin/ImagesAdmin/ImagesAdmin';
 import { useLogic } from './NewPost.logic';
-import NewCategory from '../../../components/Admin/NewCategory';
+import NewCategory from '../../../components/Admin/NewCategory/NewCategory.view';
 
-export default function UpdatePost(props) {
+export default function UpdatePost() {
   const { data, methods } = useLogic();
-  const [openModal, setOpenModal] = useState(false);
+  // const [openInputCategory, setOpenInputCategory] = useState(false);
 
   return (
     <Admin>
@@ -40,15 +38,15 @@ export default function UpdatePost(props) {
               {methods.formField('middle', 'Meio', 'checkbox', errors, touched)}
               {methods.formField('gameplay', 'Gameplay', 'checkbox', errors, touched)}
               {methods.formField('main', 'Corpo da Página', 'checkbox', errors, touched)}
-              <select
+              {/* <select
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                   console.log(e.target.value);
                   setFieldValue('category', e.target.value);
                   if (e.target.value === 'Adicionar uma categoria') {
-                    setOpenModal(true);
+                    setOpenInputCategory(true);
                     setFieldValue('category', '');
                   } else {
-                    setOpenModal(false);
+                    setOpenInputCategory(false);
                   }
                 }}>
                 <option className="text-sm bg-red-500 text-black" value="0" selected disabled>
@@ -62,8 +60,10 @@ export default function UpdatePost(props) {
                     </option>
                   );
                 })}
-              </select>
-              {openModal && <NewCategory />}
+              </select> */}
+
+              <NewCategory setFieldValue={(cat: string) => setFieldValue('category', cat)} />
+
               {errors.category && touched.category ? (
                 <div className="text-red-500 mb-3">{errors.category}</div>
               ) : null}

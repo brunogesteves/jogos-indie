@@ -50,7 +50,6 @@ export const InfoProvider: React.FC = ({ children }) => {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       const tokenDecoded: UserInfo = jwt_decode(localStorage.getItem('token') as string);
-      console.log(111);
 
       setUsername(tokenDecoded?.name);
       setIsLogged(true);

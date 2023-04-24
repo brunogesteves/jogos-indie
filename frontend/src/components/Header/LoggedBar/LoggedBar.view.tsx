@@ -8,10 +8,10 @@ export default function LoggedBar() {
 
   return (
     <>
-      <div className="bg-red-500 h-9 capitalize text-white flex  items-center gap-x-10">
+      <div className="bg-red-500 h-9 capitalize text-white flex  items-center gap-x-10 ps-4">
         <div>
           Conectado:{' '}
-          <Link to="/admin" className="text-white">
+          <Link to="/admin" className="text-white ">
             entrar na administração{' '}
           </Link>
         </div>

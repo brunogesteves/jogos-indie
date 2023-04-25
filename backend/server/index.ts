@@ -1,6 +1,7 @@
 import 'reflect-metadata';
-import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+import { graphqlUploadExpress } from 'graphql-upload';
 
 import { buildSchema } from 'type-graphql';
 
@@ -18,6 +19,7 @@ import { FrontPostResolver } from './Revolvers/name_post-resolvers';
 import { RandomPostsResolver } from './Revolvers/random-resolvers';
 import { CategoryNameResolver } from './Revolvers/categoryName-resolvers';
 import { OptionPostResolver } from './Revolvers/postOptions-resolvers';
+import { UploadFileResolver } from './Revolvers/uploadFile-resolvers';
 
 const main = async () => {
   const schema = await buildSchema({
@@ -36,11 +38,13 @@ const main = async () => {
       RandomPostsResolver,
       CategoryNameResolver,
       OptionPostResolver,
+      UploadFileResolver,
     ],
   });
 
   const apolloServer = new ApolloServer({ schema, cache: 'bounded' });
   const app = express();
+  app.use(graphqlUploadExpress());
   await apolloServer.start();
 
   apolloServer.applyMiddleware({ app });

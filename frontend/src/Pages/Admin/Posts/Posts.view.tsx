@@ -8,8 +8,6 @@ import ClipLoader from 'react-spinners/ClipLoader';
 export default function Posts() {
   const { data, methods } = useLogic();
 
-  console.log(data.data?.getAllPosts);
-
   const override: CSSProperties = {
     display: 'block',
     margin: '0 auto',

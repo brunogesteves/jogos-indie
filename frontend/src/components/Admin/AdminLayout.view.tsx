@@ -26,7 +26,7 @@ const Admin: React.FC = (props) => {
             <Link to="/admin/categories">Categories</Link>
           </div>
         </div>
-        <div className="flex justify-center items-start  w-full h-auto bg-red-100">
+        <div className="flex justify-center items-start  w-full h-screen bg-red-100">
           {props.children}
         </div>
       </div>

@@ -11,13 +11,13 @@ export default function Categories() {
     <Admin>
       <div className="h-auto py-2 text-center ">
         Digite a nova categoria:
-        <div className="flex justify-center gap-x-2 items-start">
+        <div className="flex justify-center gap-x-2 items-start mt-2">
           <div>
             <input
               type="text"
               name="name"
               value={data.wordInput}
-              className="placeholder:bg-gray-500 rounded border-0 bg-red-500 focus:outline-none px-2 text-white"
+              className="placeholder:bg-gray-500 text-red-500 rounded border-0  focus:outline-none px-2"
               onChange={(e) => methods.setWordInput(e.target.value)}
             />
           </div>

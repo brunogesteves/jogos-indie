@@ -4,8 +4,22 @@ import axios from 'axios';
 import * as dotenv from 'dotenv';
 
 export const useLogic = () => {
-  const [visible, setVisible] = useState(false);
+  const [fileName, setFileName] = useState<string>('');
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [file, setFile] = useState<string | Blob>('');
+  const [customStyles, setCustomStyles] = useState<any>({
+    content: {
+      top: '50%',
+      left: '10%',
+      right: '10%',
+      bottom: '50%',
+      width: 'auto',
+      borderRadius: '10px',
+      opacity: '0%',
+      translate: '0% 0%',
+      transiton: 'all .35s ease-in-out'
+    }
+  });
 
   function fileUpload(event) {
     setFile(event.target.files[0]);
@@ -23,48 +37,68 @@ export const useLogic = () => {
     };
     axios.post(url, data, options);
   }
-  const adInformation = (name) => {
+
+  function afterModalOpened() {
+    setCustomStyles({
+      content: {
+        top: '25%',
+        left: '10%',
+        right: '10%',
+        bottom: '25%',
+        width: 'auto',
+        borderRadius: '10px',
+        opacity: '100%',
+        translate: '0% 0%',
+        overflowY: 'hidden',
+        transition: 'all .35s ease-in-out'
+      }
+    });
+  }
+
+  function closeModal(name: string) {
+    setFileName(name);
+    setShowModal(false);
+    setCustomStyles({
+      content: {
+        top: '50%',
+        left: '10%',
+        right: '10%',
+        bottom: '50%',
+        width: 'auto',
+        borderRadius: '10px',
+        opacity: '0%',
+        translate: '0% 0%',
+        transiton: 'all .35 ease-in-out'
+      }
+    });
+  }
+
+  const adInformation = (name: string) => {
     return (
       <>
         <div className="flex justify-evenly mb-2  px-2 w-fill ">
           <img src={`/${name}.jpg`} alt="Logo" className="w-4/6" />
           <button
             className=" bg-red-500 rounded p-2 cursor-pointer text-white w-1/6"
-            onClick={() => setVisible(true)}>
+            onClick={() => setShowModal(true)}>
             Mude a Propaganda {name}
           </button>
         </div>
-
-        {/* {visible ? (
-          <>
-            <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-md flex justify-center items-center">
-              <form
-                method="post"
-                encType="multipart/form-data"
-                className="flex flex-col items-center justify-center">
-                <input type="file" name="imagem" accept="image/*" onChange={fileUpload} />
-                <input
-                  type="button"
-                  name="submit"
-                  value="Enviar"
-                  className=" bg-red-500 rounded p-2 cursor-pointer my-3 w-20"
-                  onClick={submit}
-                />
-                <button
-                  className=" bg-red-500 rounded p-2 cursor-pointer w-20"
-                  onClick={() => setVisible(false)}>
-                  Fechar
-                </button>
-              </form>
-            </div>
-          </>
-        ) : null} */}
       </>
     );
   };
   return {
+    data: {
+      showModal,
+      customStyles,
+      fileName
+    },
     methods: {
-      adInformation
+      adInformation,
+      afterModalOpened,
+      closeModal,
+      setShowModal,
+      setFileName
     }
   };
 };

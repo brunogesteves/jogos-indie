@@ -1,9 +1,12 @@
 import React from 'react';
 import Admin from '../../../components/Admin/AdminLayout.view';
 import { useLogic } from './Ads.logic';
+import Modal from 'react-modal';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
+import UploadImage from '../../../components/Admin/ImagesAdmin/UploadImages/UploadImages';
 
 export default function Ads() {
-  const { methods } = useLogic();
+  const { data, methods } = useLogic();
   return (
     <>
       <Admin>
@@ -14,6 +17,27 @@ export default function Ads() {
           <div>{methods.adInformation('ad3')}</div>
           <div>{methods.adInformation('apoie')}</div>
         </div>
+        <Modal
+          isOpen={data.showModal}
+          onAfterOpen={methods.afterModalOpened}
+          onRequestClose={methods.closeModal}
+          style={data.customStyles}
+          contentLabel="Upload Ad">
+          <button
+            type="button"
+            className="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+            data-te-modal-dismiss
+            aria-label="Close">
+            <IoIosCloseCircleOutline
+              color="red"
+              size={20}
+              onClick={() => methods.closeModal(data.fileName)}
+            />
+          </button>
+
+          <UploadImage fileName={undefined} />
+          {/* <UploadImage fileName={(name: string) => methods.setFileName(name)} /> */}
+        </Modal>
       </Admin>
     </>
   );

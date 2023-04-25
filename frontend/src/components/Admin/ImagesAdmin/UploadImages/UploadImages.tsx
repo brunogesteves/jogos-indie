@@ -1,97 +1,86 @@
-import React, { useState } from "react";
+import React, { SetStateAction, useCallback, useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useDropzone, FileRejection, FileError } from 'react-dropzone';
+import { FILE_UPLOAD } from '../../../../Graphql/Mutations';
 
-// import "react-dropzone-uploader/dist/styles.css";
-import "./FileDrop.css";
-import { FILE_UPLOAD } from "../../../../Graphql/Mutations";
-import { useMutation } from "@apollo/client";
+interface UploadableFile {
+  file: File[];
+  errors: FileError[];
+}
 
 export default function UploadImage({ fileName }) {
-  // const [file, setFile] = useState<any>();
+  const [files, setFiles] = useState<SetStateAction<UploadableFile[]>>([]);
+  const [imageSent, setImageSent] = useState<any>([]);
+  const [uploadFile, { data }] = useMutation(FILE_UPLOAD);
 
-  // const [fileName, setFileName] = useState<string>("");
-  // const [uploadedFile, setUploadedFile] = useState<string>("");
-  const [preview, setPreview] = useState<string | ArrayBuffer | null>();
-  // const [response, setResponse] = useState("");
-  // const [uploadPercentage, setUploadPercentage] = useState();
-
-  // function onChange(e) {
-  //   setFile(e.target.files[0]);
-  //   setFileName(e.target.files[0].name);
-  // }
-
-  // const [uploadImage, { data: fileUploadData }] = useMutation(UPLOAD_IMAGE, {
-  //   onCompleted: (data) => {
-  //     console.log(data);
-  //     if (data.fileUpload?.success) {
-  //       alert(data.fileUpload?.message);
-  //       setResponse(data.fileUpload?.message);
-  //     }
-  //   },
-  // });
-
-  // async function uploadFile() {
-  //   if (!file) {
-  //     return;
-  //   }
-
-  //   // let data = {
-  //   //   file:e.target.files[0],
-  //   // }
-  //   uploadImage({
-  //     variables: file,
-  //   });
-  // }
-  // const [response, setResponse] = useState("");
-
-  // const [fileUpload, { data }] = useMutation(FILE_UPLOAD, {
-  //   onError: (err) => {
-  //     console.log(err);
-  //     setResponse(err.message);
-  //   },
-  //   onCompleted: (data) => {
-  //     console.log(data);
-  //     if (data.fileUpload?.success) {
-  //       alert(data.fileUpload?.message);
-  //       setResponse(data.fileUpload?.message);
-  //     }
-  //   },
-  // });
-
-  // console.log(data);
-
-  const uploadFile = (e) => {
-    if (!e.target.files) {
-      return;
+  const { getRootProps, getInputProps, open } = useDropzone({
+    maxFiles: 1,
+    accept: {
+      'image/*': ['.png']
+    },
+    noClick: true,
+    noKeyboard: true,
+    onDrop: (accFiles: File[], rejFiles: FileRejection[]) => {
+      const mappedAcc = accFiles.map((file) => ({ file, errors: [] }));
+      setFiles((curr) => [...curr, ...mappedAcc, ...rejFiles]);
     }
-    const file = e.target.files?.[0];
-    fileName(e.target.files?.[0].name);
+  });
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setPreview(reader.result);
-      // setFileName(file.name);
-    };
-    // let data = {
-    //   file: e.target.files[0],
-    // };
-    // fileUpload({
-    //   variables: data,
-    // });
-  };
+  // const thumbs = files.map((file, i) => (
+  //   <div className="rounde-lg border-black m-0 w-[100px] h-100 p-4" key={i}>
+  //     <div className="flex min-w-0 overflow-hidden">
+  //       <img
+  //         src={file.preview}
+  //         className="block w-auto h-full"
+  //         // Revoke data uri after image is loaded
+  //         onLoad={() => {
+  //           URL.revokeObjectURL(file.preview);
+  //         }}
+  //       />
+  //     </div>
+  //   </div>
+  // ));
+
+  // useEffect(() => {
+  //   // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+  //   return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+  // }, []);
+
+  // const handleFile = (e: any) => {
+  //   setFiles(e.target.files[0]);
+  // };
+
+  // console.log(imageSent);
 
   return (
-    <>      
-      <div className=" flex justify-center items-start">
+    <section className="flex justify-center items-center flex-col text-center">
+      <div {...getRootProps({ className: 'dropzone' })}>
         <input
-          type="file"
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            // setUploadedFile(event.target.files?.[0].name);
-            uploadFile(event);
-          }}
+          {...getInputProps({
+            // onChange: handleFile
+          })}
         />
-        <img src={`${preview}`} alt="preview" className="w-40" />
+        <p className="mb-4">Arraste o arquivos desejado ou</p>
+        <button
+          type="button"
+          onClick={open}
+          className="bg-gray-500 w-auto py-1 px-6 text-white rounded-lg">
+          Abrir Foto
+        </button>
       </div>
-    </>
+      {files.map((fileWrapper) => {})}
+      <aside className="flex flex-row flex-wrap mt-4">{'thumbs'}</aside>
+      {files.length ? (
+        <button
+          className="bg-red-500 w-auto py-1 px-6 text-white rounded-lg"
+          onClick={() => {
+            uploadFile({ variables: { file: files } });
+          }}>
+          Enviar
+        </button>
+      ) : (
+        ''
+      )}
+    </section>
   );
 }

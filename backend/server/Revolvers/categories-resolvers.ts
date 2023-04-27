@@ -17,7 +17,9 @@ export class CategoriesResolver {
       let categoryResults = await prisma.cats.findMany({});
 
       return categoryResults;
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   @Mutation(() => Boolean)

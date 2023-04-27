@@ -4,8 +4,8 @@ import { createUploadLink } from 'apollo-upload-client';
 
 const link = createUploadLink({
   // uri: `${process.env.REACT_APP_API_URL}`,
-  // uri: process.env.REACT_APP_API_URL,
-  uri: `http://localhost:4000/graphql`
+  uri: process.env.REACT_APP_API_URL
+  // uri: `http://localhost:4000/graphql`
 });
 
 export const client = new ApolloClient({

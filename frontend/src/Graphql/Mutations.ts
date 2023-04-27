@@ -57,37 +57,9 @@ export const UPDATE_ADMIN_POST_INFO = gql`
     }
   }
 `;
-export const CREATE_POST = gql`
-  mutation createPost(
-    $name: String!
-    $content: String!
-    $category: String!
-    $slug: String!
-    $scheduled: Boolean!
-    $schedule: String!
-    $slide: Boolean!
-    $middle: Boolean!
-    $gameplay: Boolean!
-    $publicPost: Boolean!
-    $midSection: Boolean!
-    $thumb: String!
-  ) {
-    createPost(
-      name: $name
-      content: $content
-      category: $category
-      slug: $slug
-      scheduled: $scheduled
-      schedule: $schedule
-      slide: $slide
-      middle: $middle
-      gameplay: $gameplay
-      publicPost: $publicPost
-      midSection: $midSection
-      thumb: $thumb
-    ) {
-      id
-    }
+export const CREATE_SAVe_POST = gql`
+  mutation CreateSavePost($input: PostUpdateCreateInput!) {
+    createSavePost(input: $input)
   }
 `;
 
@@ -111,9 +83,7 @@ export const DELETE_IMAGE = gql`
 `;
 
 export const FILE_UPLOAD = gql`
-  mutation fileUpload($file: Uploads!) {
-    fileUpload(file: $file) {
-      successfull
-    }
+  mutation UploadFile($input: Upload!) {
+    uploadFile(input: $input)
   }
 `;

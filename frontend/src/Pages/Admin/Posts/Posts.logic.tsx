@@ -11,10 +11,7 @@ export const useLogic = () => {
   const [updateOption, { data: isUpdated }] = useMutation(UPDATE_INPUT);
 
   useEffect(() => {
-    console.log(isUpdated);
-
     if (isUpdated?.optionUpdatePost) {
-      console.log(1111);
       refetch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

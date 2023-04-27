@@ -5,7 +5,7 @@ export default function NewCategory({ setFieldValue }) {
   const { data, methods } = useLogic();
 
   return (
-    <div className="my-3  text-center">
+    <div className="my-3 text-md  text-center text-red-500 focus:outline-none selection:outline-none">
       <div className="mb-2">
         <select
           defaultValue={data.categoryChoosed}
@@ -20,14 +20,23 @@ export default function NewCategory({ setFieldValue }) {
               methods.setInputArea(false);
             }
           }}>
-          <option className="text-sm bg-red-500 text-black" value="0" selected disabled>
+          <option
+            className="text-xs uppercase py-5 text-white bg-red-500"
+            value="0"
+            selected
+            disabled>
             Selecione uma categoria
           </option>
-          <option className="text-sm bg-red-500 ">Adicionar uma categoria</option>
+          <option className="text-xs bg-red-500  uppercase py-5 text-white">
+            Adicionar uma categoria
+          </option>
           {data.data?.getAllCategories.map((cat: { name: string }, i: number) => {
             return (
-              <option key={i} value={cat.name} className="bg-red-500 text-lg">
-                {cat.name}
+              <option
+                key={i}
+                value={cat.name.toUpperCase()}
+                className=" text-xs bg-red-500 text-white">
+                {cat.name.toUpperCase()}
               </option>
             );
           })}

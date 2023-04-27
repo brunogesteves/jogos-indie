@@ -69,16 +69,16 @@ export const GET_INFO_POST = gql`
 `;
 
 export const GET_LIST_POSTS = gql`
-  query {
+  query GetAllPosts {
     getAllPosts {
-      id
-      midSection
       name
-      public
-      slide
       slug
-      schedule
+      slide
+      midSection
       gameplay
+      schedule
+      scheduled
+      id
     }
   }
 `;
@@ -92,7 +92,7 @@ export const GET_POST_TO_UPDATE = gql`
       id
       midSection
       name
-      public
+      publicPost
       schedule
       scheduled
       slide
@@ -111,7 +111,7 @@ export const GET_POST_TO_SHOW_OFF = gql`
       id
       midSection
       name
-      public
+      publicPost
       schedule
       scheduled
       slide

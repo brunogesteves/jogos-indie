@@ -14,3 +14,12 @@ export class CreateCategoryModel {
   @Field()
   status: boolean;
 }
+
+@ObjectType()
+export class CategoryNameModel {
+  @Field()
+  slug: string;
+
+  @Field()
+  thumb: string;
+}

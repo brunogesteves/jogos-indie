@@ -1,4 +1,4 @@
-import { Field, ObjectType } from "type-graphql";
+import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class PostsModel {
@@ -19,9 +19,6 @@ export class PostsModel {
 
   @Field()
   gameplay: boolean;
-
-  @Field()
-  public: boolean;
 
   @Field()
   schedule: string;

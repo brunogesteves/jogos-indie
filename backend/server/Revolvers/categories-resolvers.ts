@@ -1,8 +1,12 @@
 import { Query, Resolver, Arg, Mutation } from 'type-graphql';
 
-import { CategoriesModel } from '../dtos/models/categories-models';
+import {
+  CategoriesModel,
+  CategoryNameModel,
+} from '../dtos/models/categories-models';
 
 import { PrismaClient } from '@prisma/client';
+import { CategoryNameInput } from '../dtos/inputs/category-input';
 const prisma = new PrismaClient();
 
 @Resolver()
@@ -39,6 +43,28 @@ export class CategoriesResolver {
       });
 
       if (isdeletedCategory) return true;
+    } catch (error) {}
+  }
+}
+
+@Resolver()
+export class CategoryNameResolver {
+  @Query(() => [CategoryNameModel])
+  async categoryName(@Arg('input') data: CategoryNameInput) {
+    const { categoryName } = data;
+
+    try {
+      let categoryResults = await prisma.post.findMany({
+        where: {
+          category: categoryName,
+        },
+        select: {
+          slug: true,
+          thumb: true,
+        },
+      });
+
+      return categoryResults;
     } catch (error) {}
   }
 }

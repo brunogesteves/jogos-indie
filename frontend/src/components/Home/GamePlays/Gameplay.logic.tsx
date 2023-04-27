@@ -1,5 +1,5 @@
-import { useQuery } from "@apollo/client";
-import { GET_ALL_POSTS_GAMEPLAY } from "../../../Graphql/Queries";
+import { useQuery } from '@apollo/client';
+import { GET_ALL_POSTS_GAMEPLAY } from '../../../Graphql/Queries';
 
 interface GameplayInfo {
   name: string;
@@ -13,23 +13,24 @@ interface GameplaysData {
 
 export const useLogic = () => {
   const { data } = useQuery<GameplaysData>(GET_ALL_POSTS_GAMEPLAY);
+  console.log(data);
   const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: false,
-    cssEase: "linear",
+    cssEase: 'linear',
     dots: false,
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,
     vertical: true,
-    verticalSwiping: true,
+    verticalSwiping: true
   };
 
   return {
     data: {
       data,
-      settings,
-    },
+      settings
+    }
   };
 };

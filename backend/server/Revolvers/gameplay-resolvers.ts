@@ -18,7 +18,10 @@ export class GameplayResolver {
 
       if (allGameplay) {
         return allGameplay;
+      } else {
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log('erro', error);
+    }
   }
 }

@@ -36,7 +36,6 @@ export default function Ads() {
           </button>
 
           <UploadImage fileName={undefined} />
-          {/* <UploadImage fileName={(name: string) => methods.setFileName(name)} /> */}
         </Modal>
       </Admin>
     </>

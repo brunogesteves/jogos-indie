@@ -1,20 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 // import slugify from "react-slugify";
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
+import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 // import Modal from "@mui/material/Modal";
-import { Field } from "formik";
+import { Field } from 'formik';
 
 // import NewCategory from "../../../components/Admin/NewCategory";
 
 // import "./NewPost.css";
 
-import { useQuery } from "@apollo/client";
-import {
-  GET_ALL_CATEGORIES,
-  GET_POST_TO_UPDATE,
-} from "../../../Graphql/Queries";
+import { useQuery } from '@apollo/client';
+import { GET_ALL_CATEGORIES, GET_POST_TO_UPDATE } from '../../../Graphql/Queries';
 // import { CREATE_POST } from "../../../Graphql/Mutations";
 
 interface PageIdProps {
@@ -22,13 +19,13 @@ interface PageIdProps {
 }
 export const useLogic = () => {
   const { id } = useParams<PageIdProps>();
-
-  const [thumb, setThumb] = useState<string>("");
+  const [thumbName, setThumbName] = useState<string>('');
   const editor = useRef<any>(null);
+  const [thumb, setThumb] = useState<string>('');
   // const file = useRef<any>(null);
   const { data: categories } = useQuery(GET_ALL_CATEGORIES);
   const { data: info_post } = useQuery(GET_POST_TO_UPDATE, {
-    variables: { input: { id: id } },
+    variables: { input: { id: id } }
   });
 
   let values = {
@@ -40,7 +37,7 @@ export const useLogic = () => {
     gameplay: info_post?.postQuery.gameplay,
     midSection: info_post?.postQuery.midSection,
     thumb: info_post?.postQuery.thumb,
-    content: info_post?.postQuery.content,
+    content: info_post?.postQuery.content
   };
 
   // useEffect(() => {
@@ -115,12 +112,13 @@ export const useLogic = () => {
     data: {
       categories,
       values,
-      thumb,
-      editor,
+      thumbName,
+      editor
     },
     methods: {
       formField,
       setThumb,
-    },
+      setThumbName
+    }
   };
 };

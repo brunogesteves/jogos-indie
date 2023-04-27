@@ -1,16 +1,15 @@
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ALL_CATEGORIES } from '../../../Graphql/Queries';
 import { DELETE_CATEGORY, NEW_CATEGORY } from '../../../Graphql/Mutations';
-
-import { InfoContext } from '../../../Contexts/Context';
 
 export const useLogic = () => {
   const { data, refetch } = useQuery(GET_ALL_CATEGORIES);
   const [wordInput, setWordInput] = useState('');
   const [deleteCategory, { data: isdeleted }] = useMutation(DELETE_CATEGORY);
   const [createCategory, { data: isAdded }] = useMutation(NEW_CATEGORY);
+  console.log('cat', data);
 
   useEffect(() => {
     if (isAdded?.createCategory) {

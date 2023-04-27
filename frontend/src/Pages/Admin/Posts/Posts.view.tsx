@@ -7,6 +7,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 export default function Posts() {
   const { data, methods } = useLogic();
+  console.log(data);
 
   const override: CSSProperties = {
     display: 'block',
@@ -104,13 +105,13 @@ export default function Posts() {
                           variables: {
                             data: {
                               id: res.id.toString(),
-                              option: 'public',
+                              option: 'publicPost',
                               info: (e.target as HTMLInputElement).checked
                             }
                           }
                         })
                       }
-                      defaultChecked={res.public}
+                      defaultChecked={res.publicPost}
                     />
                   </div>
                   <button

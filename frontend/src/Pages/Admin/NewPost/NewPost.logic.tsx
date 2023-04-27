@@ -18,7 +18,6 @@ export const useLogic = () => {
   // let history = useHistory();
   const [thumbName, setThumbName] = useState<string>('');
   const editor = useRef<any>(null);
-  // const file = useRef<any>(null);
 
   let values = {
     name: '',

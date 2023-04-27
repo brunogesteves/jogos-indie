@@ -14,7 +14,6 @@ import NewCategory from '../../../components/Admin/NewCategory/NewCategory.view'
 
 export default function UpdatePost() {
   const { data, methods } = useLogic();
-  // const [openInputCategory, setOpenInputCategory] = useState(false);
 
   return (
     <Admin>
@@ -38,29 +37,6 @@ export default function UpdatePost() {
               {methods.formField('middle', 'Meio', 'checkbox', errors, touched)}
               {methods.formField('gameplay', 'Gameplay', 'checkbox', errors, touched)}
               {methods.formField('main', 'Corpo da Página', 'checkbox', errors, touched)}
-              {/* <select
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                  console.log(e.target.value);
-                  setFieldValue('category', e.target.value);
-                  if (e.target.value === 'Adicionar uma categoria') {
-                    setOpenInputCategory(true);
-                    setFieldValue('category', '');
-                  } else {
-                    setOpenInputCategory(false);
-                  }
-                }}>
-                <option className="text-sm bg-red-500 text-black" value="0" selected disabled>
-                  Selecione uma categoria
-                </option>
-                <option className="text-sm bg-red-500 ">Adicionar uma categoria</option>
-                {data.categories?.getAllCategories.map((cat: { name: string }, i: number) => {
-                  return (
-                    <option key={i} value={cat.name} className="bg-red-500 text-lg">
-                      {cat.name}
-                    </option>
-                  );
-                })}
-              </select> */}
 
               <NewCategory setFieldValue={(cat: string) => setFieldValue('category', cat)} />
 

@@ -1,10 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import { useLogic } from "./Gameplay.logic";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import { useLogic } from './Gameplay.logic';
 
 export default function Gameplay() {
   const { data } = useLogic();
+
   return (
     <Slider {...data.settings} className=" w-1/4 max-sm:w-full">
       {data.data?.getAllGameplay.map((pic, i) => {

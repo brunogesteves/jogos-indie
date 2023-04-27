@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_ALL_CATEGORIES = gql`
-  query {
+  query GetAllCategories {
     getAllCategories {
       name
       id
@@ -30,11 +30,11 @@ export const GET_ALL_POSTS_MIDDLE = gql`
 `;
 
 export const GET_ALL_POSTS_GAMEPLAY = gql`
-  query {
+  query GetAllGameplay {
     getAllGameplay {
       name
-      slug
       thumb
+      slug
     }
   }
 `;

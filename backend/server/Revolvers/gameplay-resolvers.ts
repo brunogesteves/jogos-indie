@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 @Resolver()
 export class GameplayResolver {
   @Query(() => [GameplayModel])
-  async getallGameplay() {
+  async getAllGameplay() {
     try {
       let gameplay = await prisma.post.findMany({
         where: {
@@ -17,8 +17,12 @@ export class GameplayResolver {
       });
 
       if (gameplay) {
+        console.log('ga: ', gameplay);
+
         return gameplay;
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

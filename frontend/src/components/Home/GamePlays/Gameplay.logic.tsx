@@ -27,6 +27,10 @@ export const useLogic = () => {
     verticalSwiping: true
   };
 
+  console.log('====================================');
+  console.log(data);
+  console.log('====================================');
+
   return {
     data: {
       data,

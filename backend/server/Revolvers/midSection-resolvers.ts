@@ -19,6 +19,8 @@ export class MidSectionResolver {
       if (midSection) {
         return midSection;
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

@@ -11,7 +11,6 @@ export default function NewCategory({ setFieldValue }) {
           defaultValue={data.categoryChoosed}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
             setFieldValue(e.target.value);
-            console.log(e.target.value);
 
             if (e.target.value === 'Adicionar uma categoria') {
               methods.setInputArea(true);

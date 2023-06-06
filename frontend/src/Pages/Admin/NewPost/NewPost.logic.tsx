@@ -1,80 +1,84 @@
-import React, { useRef, useState } from 'react';
-// import slugify from "react-slugify";
-
-import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
-// import Modal from "@mui/material/Modal";
+import React, { useEffect, useRef, useState } from 'react';
+import slugify from 'react-slugify';
 import { Field } from 'formik';
+import { useHistory } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { CREATE_SAVE_POST } from '../../../Graphql/Mutations';
+import { PostProps } from '../../../Utils/types';
+import { toast } from 'react-toastify';
 
-// import NewCategory from "../../../components/Admin/NewCategory";
-
-// import "./NewPost.css";
-
-// import { useHistory } from "react-router-dom";
-// import { useQuery } from '@apollo/client';
-// import { GET_ALL_CATEGORIES } from "../../../Graphql/Queries";
-// import { CREATE_POST } from "../../../Graphql/Mutations";
+import type { ToastOptions } from 'react-toastify';
 
 export const useLogic = () => {
-  // let history = useHistory();
+  let history = useHistory();
   const [thumbName, setThumbName] = useState<string>('');
   const editor = useRef<any>(null);
 
-  let values = {
+  let values: PostProps = {
+    id: '0',
     name: '',
-    isScheduled: false,
+    content: '',
     category: '',
+    slug: '',
+    scheduled: true,
+    schedule: new Date(),
     slide: false,
     middle: false,
     gameplay: false,
+    publicPost: false,
     midSection: false,
-    thumb: '',
-    content: ''
+    thumb: ''
   };
 
-  // useEffect(() => {
-  //   let image = file.name;
-  //   const url = `${process.env.PUBLIC_URL}/upload/${image}`;
-  //   const data = new FormData();
-  //   data.append("file", file);
-  //   const options = {
-  //     headers: {
-  //       "Content-Type": "multipart/form-data",
-  //     },
-  //   };
-  //   axios.post(url, data, options);
-  // }, [file]);
+  const [createSavePost, { data: isCreated }] = useMutation(CREATE_SAVE_POST);
 
-  // const { data: categories } = useQuery(GET_ALL_CATEGORIES);
+  function notify(message: string) {
+    const options: ToastOptions = {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+    };
 
-  // const [createPost, { data: isCreated }] = useMutation(CREATE_POST);
+    toast.error(message, options);
+  }
 
-  // function create() {
-  //   createPost({
-  //     variables: {
-  //       name: name,
-  //       content: content,
-  //       category: category,
-  //       slug: slugify(name, { delimiter: "-" }),
-  //       scheduled: isscheduled,
-  //       schedule: schedule,
-  //       slide: slide,
-  //       middle: middle,
-  //       gameplay: gameplay,
-  //       publicPost: isscheduled,
-  //       midSection: midSection,
-  //       // thumb: thumb,
-  //     },
-  //   });
-  // }
+  function newPost(values: PostProps) {
+    createSavePost({
+      variables: {
+        input: {
+          category: values.category,
+          content: values.content,
+          gameplay: values.gameplay,
+          id: values.id,
+          midSection: values.midSection,
+          middle: values.middle,
+          name: values.name,
+          publicPost: values.publicPost,
+          scheduled: values.slide,
+          schedule: values.schedule,
+          slide: values.slide,
+          slug: slugify(values.slug),
+          thumb: values.thumb
+        }
+      },
 
-  // useEffect(() => {
-  //   if (isCreated) {
-  //     const newPostId = isCreated.createPost.id;
+      onError: () => {
+        notify('Desculpe, Tente novamente');
+      }
+    });
+  }
 
-  //     history.push(`/admin/updatepost/${newPostId}`);
-  //   }
-  //   //    eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isCreated]);
+  useEffect(() => {
+    if (isCreated) {
+      const newPostId = isCreated.createPost.id;
+      history.push(`/admin/updatepost/${newPostId}`);
+    }
+  }, [isCreated]);
 
   function formField(
     fieldName: string,
@@ -91,7 +95,6 @@ export const useLogic = () => {
           placeholder="nome do post"
           type={type}
           name={fieldName}
-          // value={}
         />
         <div className=""></div>
         {errors[fieldName] && touched[fieldName] ? (
@@ -103,14 +106,14 @@ export const useLogic = () => {
 
   return {
     data: {
-      // categories,
       values,
       thumbName,
       editor
     },
     methods: {
       formField,
-      setThumbName
+      setThumbName,
+      newPost
     }
   };
 };

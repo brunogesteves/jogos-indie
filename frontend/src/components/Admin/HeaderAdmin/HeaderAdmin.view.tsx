@@ -4,7 +4,7 @@ import Logotype from '../Logotype/Logotype.view';
 import useInfo from '../../../Contexts/Context';
 import { useHistory } from 'react-router-dom';
 
-export default function HeaderAdmin(props) {
+export default function HeaderAdmin() {
   let history = useHistory();
 
   const { time, username } = useInfo();

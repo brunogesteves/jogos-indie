@@ -1,12 +1,14 @@
 import React, { CSSProperties } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 import { GET_ALL_IMAGES } from '../../../../Graphql/Queries';
-// import { DELETE_IMAGE } from "../../../../Graphql/Mutations";
+import { DELETE_IMAGE } from '../../../../Graphql/Mutations';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 export default function AllImages({ thumbName }) {
-  const { data } = useQuery(GET_ALL_IMAGES);
+  const { data, refetch } = useQuery(GET_ALL_IMAGES);
+  const [deleteImage] = useMutation(DELETE_IMAGE);
 
   const override: CSSProperties = {
     display: 'block',
@@ -16,6 +18,19 @@ export default function AllImages({ thumbName }) {
 
   function clickImage(name: string) {
     thumbName(name);
+  }
+
+  function eraseImage(id: number) {
+    deleteImage({
+      variables: {
+        input: {
+          id: id
+        }
+      },
+      onCompleted: () => {
+        refetch();
+      }
+    });
   }
 
   return (
@@ -30,15 +45,22 @@ export default function AllImages({ thumbName }) {
           data-testid="loader"
         />
       ) : (
-        data.getAllImages.map((image: { name: string }, i: number) => {
+        data.getAllImages.map((image: { name: string; id: number }) => {
           return (
-            <img
-              key={i}
-              src={`/${image.name} `}
-              alt={image.name}
-              className="w-44  cursor-pointer"
-              onClick={() => clickImage(image.name)}
-            />
+            <div className="relative">
+              <img
+                key={image.id}
+                src={`${process.env.REACT_APP_API_URL_FILES}/${image.name} `}
+                alt={image.name}
+                className="w-44  cursor-pointer"
+                onClick={() => clickImage(image.name)}
+              />
+              <BsFillTrashFill
+                color="red"
+                className="absolute top-3 right-3"
+                onClick={() => eraseImage(image.id)}
+              />
+            </div>
           );
         })
       )}

@@ -1,14 +1,13 @@
 import { useParams } from 'react-router-dom';
 
-import Container from '../../components/Container/Container';
 import { useQuery } from '@apollo/client';
 import { GET_POSTS_FROM_CATEGORY } from '../../Graphql/Queries';
+import { CategoryProps, CategoryRouteParams } from '../../Utils/types';
 
 export const useLogic = () => {
   const { category } = useParams<CategoryRouteParams>();
-  console.log(category);
 
-  const { data } = useQuery(GET_POSTS_FROM_CATEGORY, {
+  const { data } = useQuery<CategoryProps>(GET_POSTS_FROM_CATEGORY, {
     variables: { input: { categoryName: category } }
   });
 

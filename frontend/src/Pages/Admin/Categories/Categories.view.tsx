@@ -9,7 +9,7 @@ export default function Categories() {
 
   return (
     <Admin>
-      <div className="h-auto py-2 text-center ">
+      <div className="h-screen py-2 text-center ">
         Digite a nova categoria:
         <div className="flex justify-center gap-x-2 items-start mt-2">
           <div>

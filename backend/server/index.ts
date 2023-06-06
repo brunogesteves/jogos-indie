@@ -6,43 +6,32 @@ import { buildSchema } from 'type-graphql';
 import {
   CategoriesResolver,
   CategoryNameResolver,
-} from './Revolvers/categories-resolvers';
-import { SlidesResolver } from './Revolvers/slides-resolvers';
-import { GameplayResolver } from './Revolvers/gameplay-resolvers';
-import { MiddleResolver } from './Revolvers/middle-resolvers';
-import { MidSectionResolver } from './Revolvers/midSection-resolvers';
-import { SignInResolver } from './Revolvers/signIn-resolvers';
-import { searchResolver } from './Revolvers/search-resolvers';
-import { ImagesResolver } from './Revolvers/images-resolvers';
+} from './Resolvers/categories-resolvers';
+import { MiddleResolver } from './Resolvers/home-resolvers';
+import { SignInResolver } from './Resolvers/signIn-resolvers';
+import { searchResolver } from './Resolvers/search-resolvers';
+import { ImagesResolver } from './Resolvers/images-resolvers';
 import {
   PostResolver,
-  FrontPostResolver,
   OptionPostResolver,
   PostsResolver,
   CreateSavePostResolver,
-} from './Revolvers/posts-resolvers';
-import { RandomPostsResolver } from './Revolvers/random-resolvers';
-import { UploadFileResolver } from './Revolvers/uploadFile-resolvers';
-import path from 'path';
+} from './Resolvers/posts-resolvers';
+import { UploadFileResolver } from './Resolvers/file-resolvers';
 
 const main = async () => {
   const schema = await buildSchema({
     resolvers: [
       CategoriesResolver,
       CategoryNameResolver,
-      SlidesResolver,
       MiddleResolver,
-      GameplayResolver,
-      MidSectionResolver,
       SignInResolver,
       PostsResolver,
-      FrontPostResolver,
       OptionPostResolver,
       PostsResolver,
       CreateSavePostResolver,
       searchResolver,
       ImagesResolver,
-      RandomPostsResolver,
       UploadFileResolver,
       PostResolver,
     ],
@@ -50,6 +39,8 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({ schema, cache: 'bounded' });
   const app = express();
+  app.use('/files', express.static('files'));
+
   await apolloServer.start();
   apolloServer.applyMiddleware({ app });
   app.listen(4000, () => {

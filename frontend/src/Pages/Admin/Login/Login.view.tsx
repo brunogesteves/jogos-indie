@@ -1,53 +1,64 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useLogic } from './Login.logic';
+import { Form, Formik, Field } from 'formik';
+import { LoginSchema } from '../../../Utils/Yup';
+import { LoginProps } from '../../../Utils/types';
 
 export default function Login() {
   const { data, methods } = useLogic();
-  console.log(data.isLogged);
 
   return (
     <>
       {data.isLogged ? <Redirect to="/admin" /> : null}
       <div className="bg-red-500 flex justify-center flex-col items-center h-screen">
         <div>
-          <img src={'/1.jpg'} alt="logotype" className="w-80" />
-        </div>
-        <div className="flex flex-col">
-          <p className="text-white text-lg my-1">Email:</p>
-          <input
-            type="text"
-            name="usernameField"
-            className="rounded-lg h-7 px-2 placeholder:px-2 focus:outline-none"
-            placeholder="Digite seu email"
-            onChange={(e) => methods.setSignInfo({ ...data.signInInfo, email: e.target.value })}
-            size={30}
+          <img
+            src={`${process.env.REACT_APP_API_URL_FILES}/logotype.png`}
+            alt="logotype"
+            className="w-80"
           />
         </div>
-        <div className="flex flex-col mt-5">
-          <p className="text-white text-lg my-1">Senha:</p>
-          <input
-            type="password"
-            name="passwordField"
-            className="rounded-lg h-7 placeholder:px-2 px-2 focus:outline-none"
-            placeholder="Digite sua senha"
-            onChange={(e) =>
-              methods.setSignInfo({
-                ...data.signInInfo,
-                password: e.target.value
-              })
-            }
-            size={30}
-          />
-        </div>
-        <div>
-          <input
-            type="button"
-            value="ENTRAR"
-            className="bg-white my-10 rounded-lg py-1 px-5 cursor-pointer"
-            onClick={() => methods.signIn()}
-          />
-        </div>
+
+        <Formik
+          initialValues={data.initialValues}
+          validationSchema={LoginSchema}
+          onSubmit={(values: LoginProps, actions) => {
+            methods.signIn(values);
+            actions.resetForm();
+          }}>
+          {({ errors, touched }) => (
+            <Form className=" flex justify-center flex-col  px-3 gap-x-3">
+              <p className="text-white text-lg my-1">Email:</p>
+              <div className=" h-14 ">
+                <Field
+                  name="email"
+                  placeholder="email"
+                  className="rounded-lg h-7 px-2 placeholder:px-2 focus:outline-none"
+                />
+                {errors.email && touched.email ? (
+                  <div className="text-white text-center">{errors.email}</div>
+                ) : null}
+              </div>
+              <p className="text-white text-lg my-1">Senha:</p>
+
+              <div className=" h-14 ">
+                <Field
+                  name="password"
+                  placeholder="password"
+                  className="rounded-lg h-7 px-2 placeholder:px-2 focus:outline-none"
+                />
+                {errors.password && touched.password ? (
+                  <div className="text-white text-center">{errors.password}</div>
+                ) : null}
+              </div>
+              <p className="text-white text-center text-xs h-1">{data.errorMessage}</p>
+              <button type="submit" className="bg-white my-10 rounded-lg py-1 px-5 cursor-pointer">
+                Entrar
+              </button>
+            </Form>
+          )}
+        </Formik>
         <div className=" flex flex-col text-center">
           <Link to="/" className="text-white">
             Home

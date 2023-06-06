@@ -1,3 +1,4 @@
+import { MaxLength } from 'class-validator';
 import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
@@ -11,6 +12,7 @@ export class SignInModel {
   @Field()
   auth: boolean;
 
-  // @Field()
-  // password: string;
+  @Field()
+  @MaxLength(30)
+  message: string;
 }

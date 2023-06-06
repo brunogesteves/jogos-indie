@@ -1,31 +1,30 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
-import { GET_POST_TO_SHOW_OFF, GET_RANDOM_POSTS } from '../../Graphql/Queries';
+import { GET_ONE_POST, GET_RANDOM_POSTS } from '../../Graphql/Queries';
+import { PostRouteParams, RamdonPostsProps } from '../../Utils/types';
 import useInfo from '../../Contexts/Context';
+import { useEffect } from 'react';
 
 export const useLogic = () => {
-  const { post } = useParams<PostRouteParams>();
+  const { slug } = useParams<PostRouteParams>();
+
+  const { data: contentPost } = useQuery(GET_ONE_POST, {
+    variables: { data: { slug: slug } }
+  });
 
   const { setIdPost } = useInfo();
 
-  const { data } = useQuery(GET_POST_TO_SHOW_OFF, {
-    variables: { input: { name: post } }
-  });
-
-  const { data: randomPosts } = useQuery(GET_RANDOM_POSTS, {
-    variables: { input: { name: post } }
-  });
-
   useEffect(() => {
-    setIdPost(data?.frontPostQuery?.id);
-  }, []);
+    setIdPost(contentPost?.getOnePost.id);
+  }, [contentPost]);
+
+  const { data: randomPosts } = useQuery<RamdonPostsProps>(GET_RANDOM_POSTS);
 
   return {
     data: {
       randomPosts,
-      data
+      contentPost
     }
   };
 };

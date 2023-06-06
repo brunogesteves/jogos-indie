@@ -12,7 +12,11 @@ export default function Gameplay() {
         return (
           <div key={i}>
             <Link to={`/${pic.slug}`}>
-              <img src={`/${pic.thumb}`} alt={pic.thumb} className="h-56 " />
+              <img
+                src={`${process.env.REACT_APP_API_URL_FILES}/${pic.thumb}`}
+                alt={pic.thumb}
+                className="h-56 "
+              />
             </Link>
           </div>
         );

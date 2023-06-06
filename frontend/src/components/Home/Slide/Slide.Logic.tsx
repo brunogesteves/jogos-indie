@@ -2,19 +2,10 @@ import React from 'react';
 
 import { useQuery } from '@apollo/client';
 import { GET_ALL_POSTS_SLIDE } from '../../../Graphql/Queries';
-
-interface SlidesInfo {
-  name: string;
-  thumb: string;
-  slug: string;
-}
-
-interface SlidesData {
-  getAllSlides: SlidesInfo[];
-}
+import { SlidesInfo } from '../../../../types';
 
 export const useLogic = () => {
-  const { data } = useQuery<SlidesData>(GET_ALL_POSTS_SLIDE);
+  const { data } = useQuery<SlidesInfo>(GET_ALL_POSTS_SLIDE);
 
   function NextArrow(props) {
     const { className, style, onClick } = props;

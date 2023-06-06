@@ -57,33 +57,20 @@ export const UPDATE_ADMIN_POST_INFO = gql`
     }
   }
 `;
-export const CREATE_SAVe_POST = gql`
+export const CREATE_SAVE_POST = gql`
   mutation CreateSavePost($input: PostUpdateCreateInput!) {
     createSavePost(input: $input)
   }
 `;
 
-export const AUTHENTICATION = gql`
-  mutation authentication($email: String!, $password: String!) {
-    authentication(email: $email, password: $password) {
-      token
-      refresh
-      successfull
-      username
-    }
-  }
-`;
-
 export const DELETE_IMAGE = gql`
-  mutation deleteImage($id: ID!) {
-    deleteImage(id: $id) {
-      successfull
-    }
+  mutation DeleteImage($input: DeleteFileInput!) {
+    deleteImage(input: $input)
   }
 `;
 
 export const FILE_UPLOAD = gql`
-  mutation UploadFile($input: Upload!) {
+  mutation Mutation($input: FileInput!) {
     uploadFile(input: $input)
   }
 `;

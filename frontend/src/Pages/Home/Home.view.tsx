@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <Container>
       <div className="flex flex-col">
-        <div className="flex justify-between w-full mt-10 h-auto max-sm:flex-col max-sm:gap-y-10">
+        <div className="flex justify-between w-full mt-2 h-auto max-sm:flex-col max-sm:gap-y-10">
           <Slide />
           <Middle />
           <GamePlays />

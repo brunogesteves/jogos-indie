@@ -12,14 +12,14 @@ model Post {
   id         Int         @id @default(autoincrement()) @db.UnsignedInt
   name       String   
   content    String      @db.LongText
-  category   String
+  category   String      @db.LongText
   slug       String
   scheduled  Boolean
-  schedule   String
+  schedule   DateTime
   slide      Boolean
   middle     Boolean
   gameplay   Boolean
-  public     Boolean
+  publicPost Boolean
   midSection Boolean
   thumb      String
 

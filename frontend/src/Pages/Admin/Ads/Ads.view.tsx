@@ -3,15 +3,15 @@ import Admin from '../../../components/Admin/AdminLayout.view';
 import { useLogic } from './Ads.logic';
 import Modal from 'react-modal';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-import UploadImage from '../../../components/Admin/ImagesAdmin/UploadImages/UploadImages';
 
 export default function Ads() {
   const { data, methods } = useLogic();
+
   return (
     <>
       <Admin>
         <div className="flex text-center text-black w-full flex-col pt-3 h-screen">
-          Atenção: Resolução da propaganda - largura: 930px, Altura: 100px
+          <div>Atenção: Resolução da propaganda - largura: 930px, Altura: 100px</div>
           <div>{methods.adInformation('ad1')}</div>
           <div>{methods.adInformation('ad2')}</div>
           <div>{methods.adInformation('ad3')}</div>
@@ -35,7 +35,28 @@ export default function Ads() {
             />
           </button>
 
-          <UploadImage fileName={undefined} />
+          <div className="flex justify-center items-center py-5">
+            <div {...methods.getRootProps({ className: 'dropzone' })} className="text-center">
+              {!data.thumbs ? (
+                data.thumbs
+              ) : (
+                <img
+                  src={`${process.env.REACT_APP_API_URL_FILES}/${
+                    data.nameAd
+                  }.png?cache=${new Date().valueOf()}`}
+                  className="flex justify-center w-4/4 mb-3"
+                  alt="nothumbnail"
+                />
+              )}
+
+              <button
+                type="button"
+                onClick={methods.open}
+                className="bg-[#c9c9cc] border-2 border-black p-1 my-3 elevation-5 w-40">
+                Escolher uma foto
+              </button>
+            </div>
+          </div>
         </Modal>
       </Admin>
     </>

@@ -7,7 +7,7 @@
     "rootDir": "./src",
     "allowJs": true,
     "removeComments": true,
-    "typeRoots": ["@types"],
+    "typeRoots": ["src/Utils"],
     "types": ["node"],
     "resolveJsonModule": true,
     "esModuleInterop": true,

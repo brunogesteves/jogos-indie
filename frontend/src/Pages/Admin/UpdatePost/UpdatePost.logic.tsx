@@ -1,87 +1,67 @@
-import React, { useRef, useState } from 'react';
-// import slugify from "react-slugify";
+import React, { useEffect, useRef, useState } from 'react';
+import slugify from 'react-slugify';
 import { useParams } from 'react-router-dom';
+import { Field } from 'formik';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_POST_TO_UPDATE } from '../../../Graphql/Queries';
 
 import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
-// import Modal from "@mui/material/Modal";
-import { Field } from 'formik';
+import { PostProps } from '../../../Utils/types';
+import { CREATE_SAVE_POST } from '../../../Graphql/Mutations';
 
-// import NewCategory from "../../../components/Admin/NewCategory";
-
-// import "./NewPost.css";
-
-import { useQuery } from '@apollo/client';
-import { GET_ALL_CATEGORIES, GET_POST_TO_UPDATE } from '../../../Graphql/Queries';
-// import { CREATE_POST } from "../../../Graphql/Mutations";
+import type { ToastOptions } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 interface PageIdProps {
   id: string;
 }
+
 export const useLogic = () => {
   const { id } = useParams<PageIdProps>();
   const [thumbName, setThumbName] = useState<string>('');
   const editor = useRef<any>(null);
-  const [thumb, setThumb] = useState<string>('');
-  // const file = useRef<any>(null);
-  const { data: categories } = useQuery(GET_ALL_CATEGORIES);
-  const { data: info_post } = useQuery(GET_POST_TO_UPDATE, {
-    variables: { input: { id: id } }
+  const [createSavePost] = useMutation(CREATE_SAVE_POST);
+  const { data } = useQuery(GET_POST_TO_UPDATE, {
+    variables: {
+      input: {
+        id: id.toString()
+      }
+    }
   });
 
-  let values = {
-    name: info_post?.postQuery.name,
-    isScheduled: info_post?.postQuery.scheduled,
-    category: info_post?.postQuery.category.toUpperCase(),
-    slide: info_post?.postQuery.slide,
-    middle: info_post?.postQuery.mid,
-    gameplay: info_post?.postQuery.gameplay,
-    midSection: info_post?.postQuery.midSection,
-    thumb: info_post?.postQuery.thumb,
-    content: info_post?.postQuery.content
-  };
+  const [initialValues, setinitialValues] = useState<PostProps>({
+    id: id.toString(),
+    name: '',
+    content: '',
+    category: '',
+    slug: '',
+    scheduled: true,
+    schedule: new Date(),
+    slide: false,
+    middle: false,
+    gameplay: false,
+    publicPost: false,
+    midSection: false,
+    thumb: ''
+  });
 
-  // useEffect(() => {
-  //   let image = file.name;
-  //   const url = `${process.env.PUBLIC_URL}/upload/${image}`;
-  //   const data = new FormData();
-  //   data.append("file", file);
-  //   const options = {
-  //     headers: {
-  //       "Content-Type": "multipart/form-data",
-  //     },
-  //   };
-  //   axios.post(url, data, options);
-  // }, [file]);
-
-  // const [createPost, { data: isCreated }] = useMutation(CREATE_POST);
-
-  // function create() {
-  //   createPost({
-  //     variables: {
-  //       name: name,
-  //       content: content,
-  //       category: category,
-  //       slug: slugify(name, { delimiter: "-" }),
-  //       scheduled: isscheduled,
-  //       schedule: schedule,
-  //       slide: slide,
-  //       middle: middle,
-  //       gameplay: gameplay,
-  //       publicPost: isscheduled,
-  //       midSection: midSection,
-  //       // thumb: thumb,
-  //     },
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   if (isCreated) {
-  //     const newPostId = isCreated.createPost.id;
-
-  //     history.push(`/admin/updatepost/${newPostId}`);
-  //   }
-  //   //    eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isCreated]);
+  useEffect(() => {
+    setinitialValues({
+      id: id,
+      name: data?.getOneUpdatePost.name,
+      content: data?.getOneUpdatePost?.content,
+      category: data?.getOneUpdatePost.category,
+      slug: data?.getOneUpdatePost.slug,
+      scheduled: data?.getOneUpdatePost.scheduled,
+      schedule: data?.getOneUpdatePost.schedule,
+      slide: data?.getOneUpdatePost.slide,
+      middle: data?.getOneUpdatePost.middle,
+      gameplay: data?.getOneUpdatePost.gameplay,
+      publicPost: data?.getOneUpdatePost.publicPost,
+      midSection: data?.getOneUpdatePost.midSection,
+      thumb: data?.getOneUpdatePost.thumb
+    });
+  }, [data]);
 
   function formField(
     fieldName: string,
@@ -98,7 +78,8 @@ export const useLogic = () => {
           placeholder="nome do post"
           type={type}
           name={fieldName}
-          value={values[fieldName]}
+          values={initialValues[fieldName]}
+          checked={initialValues[fieldName]}
         />
         <div className=""></div>
         {errors[fieldName] && touched[fieldName] ? (
@@ -108,17 +89,63 @@ export const useLogic = () => {
     );
   }
 
+  function notify(message: string, success: boolean) {
+    const options: ToastOptions = {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+    };
+    if (success) {
+      toast.success(message, options);
+    } else {
+      toast.error(message, options);
+    }
+  }
+
+  function updatePost(values: PostProps) {
+    createSavePost({
+      variables: {
+        input: {
+          category: values.category,
+          content: values.content,
+          gameplay: values.gameplay,
+          id: values.id,
+          midSection: values.midSection,
+          middle: values.middle,
+          name: values.name,
+          publicPost: values.publicPost,
+          scheduled: values.slide,
+          schedule: values.schedule,
+          slide: values.slide,
+          slug: slugify(values.slug),
+          thumb: values.thumb
+        }
+      },
+      onCompleted: () => {
+        notify('Post atualizado', true);
+      },
+      onError: () => {
+        notify('Tente novamente', false);
+      }
+    });
+  }
+
   return {
     data: {
-      categories,
-      values,
+      initialValues,
       thumbName,
       editor
     },
     methods: {
       formField,
-      setThumb,
-      setThumbName
+      setThumbName,
+      updatePost,
+      notify
     }
   };
 };

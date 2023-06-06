@@ -9,7 +9,6 @@ export const useLogic = () => {
   const [wordInput, setWordInput] = useState('');
   const [deleteCategory, { data: isdeleted }] = useMutation(DELETE_CATEGORY);
   const [createCategory, { data: isAdded }] = useMutation(NEW_CATEGORY);
-  console.log('cat', data);
 
   useEffect(() => {
     if (isAdded?.createCategory) {

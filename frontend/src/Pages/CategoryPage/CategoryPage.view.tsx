@@ -28,14 +28,14 @@ export default function CategoryPage() {
           data-testid="loader"
         />
       ) : (
-        <div className="items-start w-3/4 h-auto pt-4">
-          <div className="flex items-center flex justify-around">
-            {data.data.categoryName.map((res: CategoryInfo, i: number) => {
+        <div className="items-start w-full h-auto pt-4 ">
+          <div className="flex flex-wrap gap-4 justify-around">
+            {data.data.categoryName.map((res, i: number) => {
               const { thumb, slug } = res;
               return (
                 <div key={i}>
                   <Link to={`/${slug}`}>
-                    <img src={`/${thumb}`} alt={slug} />
+                    <img src={`${process.env.REACT_APP_API_URL_FILES}/${thumb}`} alt={slug} />
                   </Link>
                 </div>
               );

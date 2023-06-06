@@ -1,4 +1,4 @@
-import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Query, Resolver } from 'type-graphql';
 
 import { PrismaClient } from '@prisma/client';
 import { SignInInput } from '../dtos/inputs/signIn-inputs';
@@ -18,7 +18,7 @@ export class SignInResolver {
     try {
       let signInfo = await prisma.users.findUnique({
         where: {
-          email: email,
+          email,
         },
       });
 
@@ -33,8 +33,17 @@ export class SignInResolver {
             expiresIn: 300, // expires in 5min
           }
         );
-        return { auth: true, token: token };
+
+        return { auth: true, token: token, message: '' };
+      } else {
+        return {
+          auth: false,
+          token: '',
+          message: 'Email e/ou senha incorretas',
+        };
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

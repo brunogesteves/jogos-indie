@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_ALL_CATEGORIES = gql`
-  query GetAllCategories {
+  query Query {
     getAllCategories {
       name
       id
@@ -50,10 +50,11 @@ export const GET_ALL_POSTS_MIDSECTION = gql`
 `;
 
 export const SIGN_IN = gql`
-  query SignIn($input: SignInInput!) {
+  query Query($input: SignInInput!) {
     signIn(input: $input) {
-      auth
       token
+      auth
+      message
     }
   }
 `;
@@ -84,38 +85,40 @@ export const GET_LIST_POSTS = gql`
 `;
 
 export const GET_POST_TO_UPDATE = gql`
-  query PostQuery($input: PostInput!) {
-    postQuery(input: $input) {
-      category
-      content
-      gameplay
+  query GetOneUpdatePost($input: IdPostInput!) {
+    getOneUpdatePost(input: $input) {
       id
-      midSection
       name
-      publicPost
-      schedule
-      scheduled
-      slide
+      content
+      category
       slug
+      scheduled
+      schedule
+      slide
+      middle
+      gameplay
+      publicPost
+      midSection
       thumb
     }
   }
 `;
 
-export const GET_POST_TO_SHOW_OFF = gql`
-  query FrontPostQuery($input: NamePostInput!) {
-    frontPostQuery(input: $input) {
-      category
-      content
-      gameplay
+export const GET_ONE_POST = gql`
+  query GetOnePost($data: NamePostInput!) {
+    getOnePost(data: $data) {
       id
-      midSection
       name
-      publicPost
-      schedule
-      scheduled
-      slide
+      content
+      category
       slug
+      scheduled
+      schedule
+      slide
+      middle
+      gameplay
+      publicPost
+      midSection
       thumb
     }
   }

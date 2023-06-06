@@ -1,16 +1,16 @@
 import React from 'react';
-// import slugify from "react-slugify";
-import SunEditor from 'suneditor-react';
-
 import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
+import SunEditor from 'suneditor-react';
 import { Field, Form, Formik } from 'formik';
-import Admin from '../../../components/Admin/AdminLayout.view';
+import { ToastContainer } from 'react-toastify';
 
-// import { useHistory } from "react-router-dom";
+import Admin from '../../../components/Admin/AdminLayout.view';
 import { PostContentSchema } from '../../../libs/yup';
 import ImagesAdmin from '../../../components/Admin/ImagesAdmin/ImagesAdmin';
 import { useLogic } from './NewPost.logic';
 import NewCategory from '../../../components/Admin/NewCategory/NewCategory.view';
+
+import { PostProps } from '../../../Utils/types';
 
 export default function UpdatePost() {
   const { data, methods } = useLogic();
@@ -20,11 +20,12 @@ export default function UpdatePost() {
       <Formik
         initialValues={data.values}
         validationSchema={PostContentSchema}
-        onSubmit={(values, actions) => {
-          console.log(values);
+        onSubmit={(values: PostProps, actions) => {
+          methods.newPost(values);
+          actions.resetForm();
         }}>
         {({ errors, touched, setFieldValue }) => (
-          <Form className=" flex justify-center  px-3 gap-x-3">
+          <Form className=" flex justify-center h-screen px-3 gap-x-3">
             <div>
               <button
                 type="submit"
@@ -32,7 +33,7 @@ export default function UpdatePost() {
                 Publicar Post
               </button>
               {methods.formField('name', '', 'text', errors, touched)}
-              {methods.formField('isScheduled', 'Agendado', 'checkbox', errors, touched)}
+              {methods.formField('scheduled', 'Agendado', 'checkbox', errors, touched)}
               {methods.formField('slide', 'Slide', 'checkbox', errors, touched)}
               {methods.formField('middle', 'Meio', 'checkbox', errors, touched)}
               {methods.formField('gameplay', 'Gameplay', 'checkbox', errors, touched)}
@@ -55,7 +56,10 @@ export default function UpdatePost() {
                 ) : null}
               </div>
               <img
-                src={`/${data.thumbName || 'nothumbnail.png'}`}
+                src={`${process.env.REACT_APP_API_URL_FILES}/${
+                  data.thumbName || 'nothumbnail.png'
+                }`}
+                // src={`/${data.thumbName || 'nothumbnail.png'}`}
                 alt={data.thumbName || ' '}
                 className="w-40 m-6 mt-1"
               />
@@ -151,6 +155,7 @@ export default function UpdatePost() {
           </Form>
         )}
       </Formik>
+      <ToastContainer />
     </Admin>
   );
 }

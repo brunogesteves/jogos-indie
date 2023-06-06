@@ -16,7 +16,11 @@ const Blocks: React.FC = () => {
                   <div>
                     <Link to={`/${post.slug}`}>
                       <div>
-                        <img src={`/${post.thumb}`} alt={post.name} className="w-40" />
+                        <img
+                          src={`${process.env.REACT_APP_API_URL_FILES}/${post.thumb}`}
+                          alt={post.name}
+                          className="w-40"
+                        />
                       </div>
                     </Link>
                   </div>
@@ -38,7 +42,11 @@ const Blocks: React.FC = () => {
                   <div>
                     <Link to={`/${post.slug}`}>
                       <div>
-                        <img src={`/${post.thumb}`} alt={post.name} className="w-40" />
+                        <img
+                          src={`${process.env.REACT_APP_API_URL_FILES}/${post.thumb}`}
+                          alt={post.name}
+                          className="w-40"
+                        />
                       </div>
                     </Link>
                   </div>
@@ -54,7 +62,7 @@ const Blocks: React.FC = () => {
         </div>
         <div className=" max-sm:my-4 text-xs w-1/3 max-sm:w-full max-sm:flex max-sm:justify-center">
           <Link to={'https://apoia.se/jogosindiebrasil'} target="_blank">
-            <img src={'/apoie.jpg'} alt="crowdfunding" />{' '}
+            <img src={`${process.env.REACT_APP_API_URL_FILES}/apoie.png`} alt="crowdfunding" />{' '}
           </Link>
           {/* {data?.getPostsSideBar.map((res, i) => (
             <div key={i}>

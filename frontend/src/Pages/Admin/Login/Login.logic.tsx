@@ -2,45 +2,47 @@ import { useState, useEffect } from 'react';
 
 import { useQuery } from '@apollo/client';
 import { SIGN_IN } from '../../../Graphql/Queries';
+import { LoginProps } from '../../../Utils/types';
 
 export const useLogic = () => {
-  const [signInInfo, setSignInfo] = useState({
+  const initialValues = {
     email: '',
     password: ''
-  });
+  };
 
   const [isLogged, setIsLogged] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const { data, refetch } = useQuery(SIGN_IN);
 
   useEffect(() => {
-    if (data) {
+    if (data?.signIn.auth) {
       localStorage.setItem('token', data?.signIn.token);
       setIsLogged(true);
-    } else {
+      setErrorMessage(data?.signIn.message);
+    } else if (!data?.signIn.auth) {
       setIsLogged(false);
+      setErrorMessage(data?.signIn.message);
     }
   }, [data]);
 
-  function signIn() {
+  function signIn(values: LoginProps) {
     refetch({
       input: {
-        // email: signInfo.email,
-        // password: signInfo.password.toLowerCase(),
-        email: 'admin@mail.com',
-        password: '123'
+        email: values.email,
+        password: values.password.toLowerCase()
       }
     });
   }
 
   return {
     data: {
-      signInInfo,
-      isLogged
+      initialValues,
+      isLogged,
+      errorMessage
     },
     methods: {
-      signIn,
-      setSignInfo
+      signIn
     }
   };
 };

@@ -21,7 +21,9 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // server/dtos/models/categories-models.ts
 var categories_models_exports = {};
 __export(categories_models_exports, {
-  CategoriesModel: () => CategoriesModel
+  CategoriesModel: () => CategoriesModel,
+  CategoryNameModel: () => CategoryNameModel,
+  CreateCategoryModel: () => CreateCategoryModel
 });
 module.exports = __toCommonJS(categories_models_exports);
 var import_type_graphql = require("type-graphql");
@@ -45,10 +47,38 @@ __decorate([
   (0, import_type_graphql.Field)(),
   __metadata("design:type", String)
 ], CategoriesModel.prototype, "name", void 0);
+__decorate([
+  (0, import_type_graphql.Field)(),
+  __metadata("design:type", Number)
+], CategoriesModel.prototype, "id", void 0);
 CategoriesModel = __decorate([
   (0, import_type_graphql.ObjectType)()
 ], CategoriesModel);
+var CreateCategoryModel = /* @__PURE__ */ __name(class CreateCategoryModel2 {
+}, "CreateCategoryModel");
+__decorate([
+  (0, import_type_graphql.Field)(),
+  __metadata("design:type", Boolean)
+], CreateCategoryModel.prototype, "status", void 0);
+CreateCategoryModel = __decorate([
+  (0, import_type_graphql.ObjectType)()
+], CreateCategoryModel);
+var CategoryNameModel = /* @__PURE__ */ __name(class CategoryNameModel2 {
+}, "CategoryNameModel");
+__decorate([
+  (0, import_type_graphql.Field)(),
+  __metadata("design:type", String)
+], CategoryNameModel.prototype, "slug", void 0);
+__decorate([
+  (0, import_type_graphql.Field)(),
+  __metadata("design:type", String)
+], CategoryNameModel.prototype, "thumb", void 0);
+CategoryNameModel = __decorate([
+  (0, import_type_graphql.ObjectType)()
+], CategoryNameModel);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  CategoriesModel
+  CategoriesModel,
+  CategoryNameModel,
+  CreateCategoryModel
 });

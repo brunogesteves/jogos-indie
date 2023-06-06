@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import AdHeader from "./AdHeader/AdHeader.view";
-import Logotype from "./Logotype/Logotype.view";
-import { FiMenu } from "react-icons/fi";
-import useInfo from "../../../Contexts/Context";
+import AdHeader from './AdHeader/AdHeader.view';
+import Logotype from './Logotype/Logotype.view';
+import { FiMenu } from 'react-icons/fi';
+import useInfo from '../../../Contexts/Context';
 
 export default function Topbar() {
   const { openDrawer, setOpenDrawer } = useInfo();
@@ -13,7 +13,7 @@ export default function Topbar() {
       <FiMenu
         onClick={() => setOpenDrawer(!openDrawer)}
         color="#fff"
-        className="cursor-pointer hidden max-lg:block max-lg:absolute max-lg:left-3 max-lg:top-3"
+        className="cursor-pointer hidden max-lg:block max-lg:absolute max-lg:left-3 max-lg:top-9"
       />
       <Logotype />
       <AdHeader />

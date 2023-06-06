@@ -1,15 +1,5 @@
-import React, { useState, useEffect, CSSProperties } from 'react';
-// import PropTypes from "prop-types";
-// import SwipeableViews from "react-swipeable-views";
-// import AppBar from "@mui/material/AppBar";
-// import Tabs from "@mui/material/Tabs";
-// import Tab from "@mui/material/Tab";
-// import Typography from "@mui/material/Typography";
-// import Box from "@mui/material/Box";
-// import { IconButton } from "@mui/material";
+import React, { useState, useEffect } from 'react';
 
-// import "./ImagesWIndow.css";
-// import FileDrop from "../FileDrop/FileDrop";
 import { Tab, initTE } from 'tw-elements';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
@@ -141,7 +131,7 @@ export default function ImagesAdmin({ thumbName }) {
               id="tab-upload"
               role="tabpanel"
               aria-labelledby="tab-upload-tab">
-              <UploadImage fileName={(name: string) => setFileName(name)} />
+              <UploadImage thumbName={(name: string) => setFileName(name)} />
             </div>
           </div>
         </div>

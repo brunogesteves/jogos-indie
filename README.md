@@ -3,7 +3,7 @@
 
 Project: It is a personal project where I promote games from independent developers. The frontend is all made using Reactjs with Hooks, such as ContextApi, Typescript and styling with tailwindCss. The backend is using Apollo Graphql and Typescript.
 
-Deploy: <a href="https://ji-frontend.vercel.app/">Visit the Project here</a>
+Deploy: <a href="https://ji-frontend.vercel.app/" target="_blank">Visit the Project here</a>
 
 - 👨‍💻 All of my projects are available at [https://github.com/brunogesteves](https://github.com/brunogesteves)
 
